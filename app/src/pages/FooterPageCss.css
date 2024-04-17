@@ -1,0 +1,71 @@
+#footerPages{
+    /* position: absolute; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #0c582c;
+    display: flex;
+    text-align: center;
+}
+
+#footerPages #footerCenter{
+    width: 1100px;
+    padding: 15px;
+    margin: auto;
+    color: white;
+}
+
+#login{
+    float: left;
+    font-size: 16px;
+}
+
+#footerPages #footerCenter #creditosFooterPages{
+    color: white;
+    font-size: 12px;
+    padding: 32px 0;
+}
+
+#redesFooter{
+    float: right;
+}
+
+#redesFooter img:hover{
+    /*filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);*/
+    filter: invert(var(--invert)) sepia(var(--sepia)) saturate(var(--saturate)) hue-rotate(var(--hueRotate)) brightness(var(--brightness)) contrast(var(--contrast));
+    transition: ease-in-out 0.3s;
+}
+
+#camada1Footer {
+    font-size: 1.2rem;
+    padding: 0px 32px;
+    margin-bottom: 10px;
+}
+
+#redesFooter img {
+    padding-left: 5px;
+    filter: invert(71%) sepia(49%) saturate(488%) hue-rotate(31deg) brightness(98%) contrast(91%);
+    transition: ease-in-out 0.3s;
+}
+
+
+#camada1Footer * a:link{
+    color: white;
+    transition: ease-in-out 0.3s;
+    text-decoration: none;
+}
+#camada1Footer * a:visited{
+    color: #fff;
+    transition: ease-in-out 0.3s;
+}
+#camada1Footer * a:hover{
+    color: #04c052;
+    transition: ease-in-out 0.3s;
+}
+
+#camada1Footer a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: ease 0.4s;
+}

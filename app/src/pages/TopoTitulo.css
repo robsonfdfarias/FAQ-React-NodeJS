@@ -1,0 +1,27 @@
+#geralTopo{
+    width: 100%;
+    background-color: rgb(215, 214, 214);
+    width: calc(100% - 60px);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    color: #000;
+    margin-top: -16px;
+}
+
+#tabTop{
+    max-width: 550px;
+}
+
+#topo{
+    width: calc(1100px - 70px);
+    display: flex;
+    justify-content: left;
+    padding: 0 35px;
+}
+
+@media screen and (max-width: 838px){
+    #geralTopo{
+        margin-top: 0px;
+    }
+}

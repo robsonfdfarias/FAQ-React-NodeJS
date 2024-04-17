@@ -1,0 +1,11 @@
+#divCenterGeral {
+    width: 100%;
+}
+
+#divCenterGeral #central{
+    max-width: calc(1100px - 70px);
+    min-height: calc(100vh - 470px);
+    margin: auto;
+    /* padding: 35px; */
+    /* background-color: antiquewhite; */
+}
