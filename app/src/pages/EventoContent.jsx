@@ -4,9 +4,10 @@ import EventoContentSelectEvent from "./EventoContentSelectEvent";
 
 function EventoContent(props){
     const [evento, setEvento] = useState([]);
-    var arr = [];
+    const [update, setUpdate] = useState(false);
     var testa = 0;
-    useEffect(()=>{
+
+    function getData(){
         fetch('http://localhost:3003/actors/getTreiningByDate', {
             method: 'POST',
             headers: {
@@ -20,9 +21,8 @@ function EventoContent(props){
         .then((response) => response.json())
         .then((json) => {
             if(testa<1){
-                arr = json;
-                // console.log(json[0])
                 setEvento(json);
+                // console.log(evento)
                 testa++;
                 // message('Mensage......')
             }
@@ -30,6 +30,10 @@ function EventoContent(props){
         .catch((error) => {
             console.log(error);
         })
+    }
+
+    useEffect(()=>{
+        getData();
 
     }, [])
 
@@ -60,7 +64,9 @@ function EventoContent(props){
         })
         .then((response) => response.json())
         .then((json) => {
-            message(json.titulo)
+            message(json.titulo);
+            testa=0;
+            getData();
         })
     }
 
@@ -88,7 +94,7 @@ function EventoContent(props){
     return (
         <div id="artigo" style={{borderRadius: '5px', boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.5)'}}>
             <header id="titulo">Eventos do dia {convertDate(props.data)} </header>
-            {evento.map(obj => (
+            {evento?evento.map(obj => (
                 <div key={obj.id}>
                     <h2>Turma da hora: {obj.horainicio} </h2>
                     <article>
@@ -97,6 +103,7 @@ function EventoContent(props){
                         <EventoContentVagasDisponiveis
                             idEvento={obj.id}
                             totalVagas={obj.vagas}
+                            estado={update}
                         />
                         {/* {message('teste de mensagem....')} */}
                         <header id="data">Fornece certificado: <span id="catSpan"> {obj.certificado==1?'Sim':'Não'}</span></header>
@@ -107,7 +114,7 @@ function EventoContent(props){
                     <br />
                     
                 </div>
-            ))}
+            )):console.log('nenhum registro encontrado')}
             <div id="divFormInscGeral">
                 <div id="divFormInsc">
                     <h2>Formulario de inscrição para o evento</h2>
@@ -136,9 +143,7 @@ function EventoContent(props){
                                     <td><input type="email" name="email" required="" /></td>
                                 </tr><tr>
                                     <td colSpan="2">
-                                        <a onClick={insertData}>Inscrever</a>
-                                        {/* <input type="submit" name="enviar" id="enviar" value="Inscrever" onClick={insertData} /> */}
-                                        {/* <button onClick={insertData} >Inscrever</button> */}
+                                        <a onClick={insertData} style={{padding: '10px 20px', cursor: 'pointer'}}>Inscrever</a>
                                     </td>
                                 </tr>
                             </tbody>

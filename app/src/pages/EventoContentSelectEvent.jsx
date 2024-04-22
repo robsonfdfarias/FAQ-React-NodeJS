@@ -16,7 +16,7 @@ function EventoContentSelectEvent(props){
         })
         .then(response => response.json())
         .then((json) => {
-            console.log(json)
+            // console.log(json)
             if(testa<1){
                 setEventos(json);
                 testa++;

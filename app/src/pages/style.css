@@ -1,10 +1,11 @@
 @font-face {
     font-family: 'Inter';
-    src: url('AdminConfig/rffeditor/fontes/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+    /* src: url('AdminConfig/rffeditor/fontes/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype'); */
+    src: url('../fonts/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
 }
 @font-face {
     font-family: 'Bebas Neue';
-    src: url('AdminConfig/rffeditor/fontes/BebasNeue-Regular.ttf') format('truetype');
+    src: url('../fonts/BebasNeue-Regular.ttf') format('truetype');
 }
 *{
     scroll-behavior: smooth;
@@ -575,6 +576,13 @@ body{
 .tabUnidades{
     text-align: left;
     border-collapse: collapse;
+    font-family: 'Inter';
+}
+
+.tabUnidades *{
+    font-family: 'Inter';
+    font-size: 1.3rem;
+    /* background-color: #04c052; */
 }
 
 #menuPesq #valor {
@@ -1012,7 +1020,7 @@ span#categoria{
     background-color: #fff;
     padding: 20px 45px;
     border: 1px solid #dbdbdb;
-    width: 100%;
+    width: calc(100% - 90px);
     text-align: left;
 }
 

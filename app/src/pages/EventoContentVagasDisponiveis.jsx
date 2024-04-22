@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 function EventoContentVagasDisponiveis(props){
     const [valor, setValor] = useState(0);
     var testa = 0;
-    useEffect(()=>{
+
+    function getData(){
         fetch('http://localhost:3003/actors/getAvailableVacanciesToTreining', {
             method: 'POST',
             headers: {
@@ -20,6 +21,9 @@ function EventoContentVagasDisponiveis(props){
             // console.log('Vagas ocupadas: '+json[0]['COUNT(*)']);
             calculateVacancies(props.totalVagas, json[0]['COUNT(*)']);
         })
+    }
+    useEffect(()=>{
+        getData();
     }, [])
     const calculateVacancies = (totalVaga, vagas) => {
         const vg = totalVaga - vagas;
@@ -29,7 +33,10 @@ function EventoContentVagasDisponiveis(props){
         }
     }
     return (
-        <header id="data">Vagas disponíveis: <span id="catSpan"> {valor?valor:0}</span></header>
+        // <header id="data">Vagas disponíveis: <span id="catSpan"> {valor?valor:0}</span></header>
+        <header id="data">Vagas disponíveis: 
+            <span id="catSpan"> {props.estado?[getData(), valor]:[getData(), valor]}</span>
+        </header>
     )
 }
 

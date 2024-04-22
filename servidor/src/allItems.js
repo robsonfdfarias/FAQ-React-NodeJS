@@ -1,5 +1,7 @@
 const connection = require('./connection');
 
+const arrayMonth = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
 const allItems = async () => {
     const [query] = await connection.execute('SELECT * FROM apiJavascript.authors');
     return query;
@@ -74,6 +76,15 @@ const registerTreining = async (matricula, idEvento, nome, secretaria, email) =>
     }
 }
 
+const blockNextEvent = async () => {
+    let dateCurrent = new Date();
+    let dt = dateCurrent.getFullYear()+'-'+arrayMonth[(dateCurrent.getMonth()+1)]+'-'+dateCurrent.getDate();
+    console.log(dt)
+    const [query] = await connection.execute('SELECT * FROM base.agenda WHERE dtinicio >= ?', [dt]);
+    return query;
+}
+
+
 
 module.exports = {
     allItems, 
@@ -86,5 +97,6 @@ module.exports = {
     getTreiningBymonth, 
     getTreiningByDate, 
     getAvailableVacanciesToTreining,
-    registerTreining
+    registerTreining,
+    blockNextEvent
 };

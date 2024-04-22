@@ -97,10 +97,21 @@ router.post('/registerTreining', async (req, res) => {
     console.log(query);
     if(query){
         console.log('Inscrição efetuada com sucesso.');
-        res.status(200).json({'titulo': 'Inscrição efetuada com sucesso.'});
+        return res.status(200).json({'titulo': 'Inscrição efetuada com sucesso.'});
     }else{
         console.log('Usuário já inscrito nesta capacitação.');
-        res.status(400).json({'titulo': 'Usuário já inscrito nesta capacitação.'});
+        return res.status(400).json({'titulo': 'Usuário já inscrito nesta capacitação.'});
+    }
+});
+
+router.get('/blockNextEvent', async (req, res) => {
+    console.log('------------------')
+    const query = await querys.blockNextEvent();
+    console.log(query)
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'retorno': 'Nenhum registro encontrado'});
     }
 })
 
