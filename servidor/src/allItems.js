@@ -22,6 +22,11 @@ const returnRecentNews = async () => {
     return query;
 }
 
+const getAutorById = async (id) => {
+    const [query] = await connection.execute('SELECT * FROM base.usuarios WHERE id=?', [id]);
+    return query;
+}
+
 const paginateCommonQuestions = async (page, numberOfRecords) => {
     const regBegin = page*numberOfRecords;
     const [query] = await connection.execute('SELECT * FROM base.artigo ORDER BY id DESC LIMIT ?, ?', [regBegin, numberOfRecords]);
@@ -139,5 +144,6 @@ module.exports = {
     returnAllCommonQuestions,
     returnAllCommonQuestionsForCategoryById,
     getNumberCommonQuestionPesq,
-    getCommonQuestionPesq
+    getCommonQuestionPesq,
+    getAutorById
 };

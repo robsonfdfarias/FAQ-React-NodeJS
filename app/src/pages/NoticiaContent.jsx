@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import NoticiaContentAutor from "./NoticiaContentAutor";
 
 
 function NoticiaContent(props){
@@ -32,7 +33,10 @@ function NoticiaContent(props){
                     
                         <header id="titulo">{obj.titulo}</header>
                         <nav>
-                            Publicado por: {obj.autor}<br />
+                            <NoticiaContentAutor
+                                autor={obj.autor}
+                            />
+                            {/* Publicado por: {obj.autor}<br /> */}
                         </nav>
                         
                         <article>

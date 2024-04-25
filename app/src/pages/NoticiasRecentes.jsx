@@ -32,7 +32,7 @@ function NoticiasRecentes(){
                         id={obj.id}
                         titulo={obj.titulo}
                         autor={obj.autor}
-                        dataPub={obj.datapub}
+                        dataPub={obj.datacad}
                         content={obj.resumo}
                     />
                 ))}
