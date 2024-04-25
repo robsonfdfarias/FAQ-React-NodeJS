@@ -6,8 +6,11 @@ function PerguntasContent(props){
         <div id="itemdoisHome">
             <PerguntasCategoriaBloco />
             <PerguntasPaginator
+                idCategoria={1}
                 page={props.page}
                 numberOfRecords={props.numberOfRecords}
+                urlPergQuery={'http://localhost:3003/actors/commonQuestions'}
+                urlPergPaginator={'http://localhost:3003/actors/numberAllQuestions'}
             />
         </div>
     )

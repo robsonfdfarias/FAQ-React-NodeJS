@@ -24,18 +24,20 @@ router.get('/news/:id', async (req, res) => {
     return res.status(200).json(query);
 });
 
-router.get('/numberAllQuestions', async (req, res) => {
+router.post('/numberAllQuestions', async (req, res) => {
+    const {idCategoria} = req.body;
     const query = await querys.getNumberOfAllCommonQuestions();
     console.log('Quantidade de registros: '+query);
+    console.log(query)
     if(query.length>0){
         return res.status(200).json(query);
     }else{
-        return res.status(400).json({'Erro': 'Houve um problema na consulta...'});
+        return res.status(400).json({'Erro': 'Houve um problema na consulta do numberAllQUestions'});
     }
 })
 
 router.post('/commonQuestions', async (rec, res) => {
-    const page = rec.body.page;
+    const {id, page} = rec.body;
     const numberOfRecords = rec.body.numberOfRecords;
     const query = await querys.paginateCommonQuestions(page, numberOfRecords);
     if(query.length===0){
@@ -112,6 +114,43 @@ router.get('/blockNextEvent', async (req, res) => {
         return res.status(200).json(query);
     }else{
         return res.status(400).json({'retorno': 'Nenhum registro encontrado'});
+    }
+});
+
+router.post('/returnAllCategories', async (req, res) => {
+    const query = await querys.returnAllCategories();
+    console.log(query);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'retorno': 'Nenhum registro encontrado'});
+    }
+});
+
+router.post('/returnAllCommonQuestions', async (req, res) => {
+    const {idCategoria} = req.body;
+    console.log("Id da categoria: "+idCategoria);
+    console.log("Função returnAllCommonQuestions");
+    const query = await querys.returnAllCommonQuestions(idCategoria);
+    if(query>0){
+        return res.status(200).json([{"NumReg": query}]);
+    }else{
+        return res.status(400).json({'NumReg': 'Nenhum registro encontrado'})
+    }
+});
+
+router.post('/returnAllCommonQuestionsForCategoryById', async (req, res) => {
+    const {idCategoria, page, numberOfRecords} = req.body;
+    console.log("Id da categoria: "+idCategoria);
+    console.log("Página: "+page);
+    console.log("Número de registro: "+numberOfRecords);
+    console.log("função returnAllCommonQuestionsForCategoryById");
+    const query = await querys.returnAllCommonQuestionsForCategoryById(idCategoria, page, numberOfRecords);
+    console.log(query)
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'retorno': 'Nenhum registro encontrado'})
     }
 })
 

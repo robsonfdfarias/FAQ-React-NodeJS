@@ -5,6 +5,7 @@ function PerguntasPaginator(props){
     const [pagin, setPagin] = useState();
     var quantidade;
     var totalPages;
+    var testa=0;
 
     const convertForArray = (num) => {
         let rows = [];
@@ -37,18 +38,28 @@ function PerguntasPaginator(props){
         }
     }
 
+    const idCat = props.idCategoria!=undefined?props.idCategoria:1;
+
     useEffect(()=>{
-        fetch('http://localhost:3003/actors/numberAllQuestions',{
-            method: 'GET',
+        // fetch('http://localhost:3003/actors/numberAllQuestions',{
+        fetch(props.urlPergPaginator,{
+            method: 'POST',
             headers: {
                 Accept: 'application/json', 
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify({
+                idCategoria: idCat
+            })
         })
         .then((resposta) => resposta.json())
         .then((dados) => {
-            quantidade = dados[0]['COUNT(*)'];
-            setPagin(Math.ceil(quantidade/props.numberOfRecords));
+            quantidade = dados[0].NumReg;
+            // setPagin(Math.ceil(quantidade/props.numberOfRecords));
+            if(testa<1){
+                setPagin(Math.ceil(quantidade/props.numberOfRecords));
+                testa++;
+            }
         })
         .catch((error) => {
             console.log('Ocorreu o erro: '+error);
@@ -102,8 +113,10 @@ function PerguntasPaginator(props){
         <div>
             <div>
                 <PerguntasQuery
+                    idCategoria={props.idCategoria}
                     page={props.page}
                     numberOfRecords={props.numberOfRecords}
+                    urlPergQuery={props.urlPergQuery}
                 />
             </div>
 

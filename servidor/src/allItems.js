@@ -30,7 +30,9 @@ const paginateCommonQuestions = async (page, numberOfRecords) => {
 
 const getNumberOfAllCommonQuestions = async () => {
     const [query] = await connection.execute('SELECT COUNT(*) FROM base.artigo');
-    return query;
+    console.log('------------------------------------------------')
+    console.log(query)
+    return [{"NumReg": query[0]['COUNT(*)']}];
 }
 
 const getTreiningByDay = async (day, month, year) => {
@@ -84,6 +86,28 @@ const blockNextEvent = async () => {
     return query;
 }
 
+const returnAllCategories = async () => {
+    const [query] = await connection.execute('SELECT * FROM base.categoria');
+    var listObjQuery = [];
+    for(let i=0;i<query.length;i++){
+        // console.log(query[i]);
+        let objLineQuery = {"categoria": query[i], "NumReg": await returnAllCommonQuestions(query[i].id)};
+        listObjQuery.push(objLineQuery);
+    }
+    return listObjQuery;
+}
+
+const returnAllCommonQuestions = async (categoria) => {
+    const [query] = await connection.execute('SELECT COUNT(*) FROM base.artigo WHERE categoria = ?', [categoria]);
+    // console.log(query[0]['COUNT(*)']);
+    return query[0]['COUNT(*)'];
+}
+
+const returnAllCommonQuestionsForCategoryById = async (idCat, page, numberOfRecords) => {
+    const [query] = await connection.execute('SELECT * FROM base.artigo WHERE categoria=? ORDER BY id DESC LIMIT ?, ?', [idCat, page, numberOfRecords]);
+    return query;
+}
+
 
 
 module.exports = {
@@ -98,5 +122,8 @@ module.exports = {
     getTreiningByDate, 
     getAvailableVacanciesToTreining,
     registerTreining,
-    blockNextEvent
+    blockNextEvent,
+    returnAllCategories,
+    returnAllCommonQuestions,
+    returnAllCommonQuestionsForCategoryById
 };

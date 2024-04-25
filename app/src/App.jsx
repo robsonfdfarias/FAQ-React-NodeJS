@@ -9,6 +9,7 @@ import EstruturaAdministrativa from "./pages/EstruturaAdministrativa";
 import Login from "./pages/Login";
 import Noticia from "./pages/Noticia";
 import Evento from "./pages/Evento";
+import Categoria from "./pages/Categoria";
 function App(){
   return (
   <div>
@@ -24,6 +25,7 @@ function App(){
         <Route path="/login" element={<Login />} />
         <Route exact path="/noticia/:id" element={<Noticia />} />
         <Route exact path="/evento/:data?" element={<Evento />} />
+        <Route exact path="/categoria/:id?/:page?" element={<Categoria />} />
       </Routes>
     </BrowserRouter>
   </div>)

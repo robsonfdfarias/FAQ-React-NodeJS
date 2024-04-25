@@ -1,16 +1,37 @@
+import { useEffect, useState } from "react"
+
 function PerguntasCategoriaBloco(){
+    const [categoria, setCategoria] = useState([]);
+    var testa=0;
+    useEffect(()=>{
+        fetch('http://localhost:3003/actors/returnAllCategories', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            if(testa<1){
+                console.log(json);
+                setCategoria(json);
+                testa++;
+            }
+        })
+        .catch((error)=>{
+            console.log('Erro: '+error);
+        })
+    }, [])
     return (
-        // <div style={{minWidth: '200px'}}>
-        //     <span style={{fontWeight: 'bold', fontSize:'1.5rem'}}>Categoria</span><br />
-        //     Conhecendo a interface<br />
-        //     Pagamentos<br />
-        //     Geral<br />
-        // </div>
         <div id="categoriaPergFreq" style={{display: 'block', minWidth: '222px'}}>
             <span id="tituloAcessoRapido"><strong>Categorias</strong></span><br />
-            <a href="categoria.php?id=1">Conhecendo a interface</a>(4)<br />
+            {categoria.length>0?categoria.map((obj) => (
+                <a href={"/categoria/"+obj.categoria.id+"/"} key={obj.categoria.id}>{obj.categoria.titulo+" ("+obj.NumReg+")"}<br /></a>
+            )):console.log('')}
+            {/* <a href={"/categoria/"}>Conhecendo a interface</a>(4)<br />
             <a href="categoria.php?id=2">Pagamentos</a>(1)<br />
-            <a href="categoria.php?id=3">Geral</a>(2)<br />
+            <a href="categoria.php?id=3">Geral</a>(2)<br /> */}
         </div>
     )
 }
