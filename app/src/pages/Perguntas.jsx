@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import PerguntasContent from "./PerguntasContent";
 function Perguntas(){
     const {page} = useParams();
-    console.log(page)
+    // console.log(page)
     const pagAtual = page==undefined?0:page-1;
     const numberOfRecords = 1;
     // console.log(page)

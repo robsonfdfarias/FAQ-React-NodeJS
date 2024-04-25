@@ -108,6 +108,18 @@ const returnAllCommonQuestionsForCategoryById = async (idCat, page, numberOfReco
     return query;
 }
 
+const getNumberCommonQuestionPesq = async (pesq) => {
+    const [query] = await connection.execute('SELECT COUNT(*) FROM base.artigo WHERE titulo like ? OR conteudo like ? OR resumo like ?', [('%'+pesq+'%'), ('%'+pesq+'%'), ('%'+pesq+'%')]);
+    console.log(query);
+    return query[0]['COUNT(*)'];
+}
+
+const getCommonQuestionPesq = async (pesq, page, numberOfRecords) => {
+    const [query] = await connection.execute('SELECT * FROM base.artigo WHERE  titulo like ? OR conteudo like ? OR resumo like ? ORDER BY id DESC LIMIT ?, ?', [('%'+pesq+'%'), ('%'+pesq+'%'), ('%'+pesq+'%'), page, numberOfRecords]);
+    // console.log(query);
+    return query;
+}
+
 
 
 module.exports = {
@@ -125,5 +137,7 @@ module.exports = {
     blockNextEvent,
     returnAllCategories,
     returnAllCommonQuestions,
-    returnAllCommonQuestionsForCategoryById
+    returnAllCommonQuestionsForCategoryById,
+    getNumberCommonQuestionPesq,
+    getCommonQuestionPesq
 };

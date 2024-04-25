@@ -3,6 +3,15 @@ import { useState } from "react"
 import LinkMenu from "./LinkMenu";
 function MenuFaq(){
     const [texto, setTexto] = useState(false);
+
+    const pesq = (event) => {
+        //a linha abaixo pega cada letra digitada podendo ser usado para filtrar o que entra
+        // console.log(event.target.value)
+        if(event.key === 'Enter'){
+            let pesquisa = event.target.value;
+            window.location.href = "/pesquisar/"+pesquisa+"/1";
+        }
+    }
  
     return (
         <div style={{width:'100%', backgroundColor: '#0c582c', minHeight: '80px'}}>
@@ -63,9 +72,9 @@ function MenuFaq(){
                         href={"/contatos"}
                         chave={"contatos"}
                     />
-                    <li id="liBuscar" style={{marginTop: '-8px'}}><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" /></li>
+                    <li id="liBuscar" style={{marginTop: '-8px'}}><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" onKeyDown={(e)=>pesq(e)} /></li>
                 </ul>
-                <div id="divBuscar"><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" /></div>
+                <div id="divBuscar"><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" onKeyDown={(e)=>pesq(e)} /></div>
             </div>
         </div>
     )

@@ -24,7 +24,7 @@ function ProximosTreinamentos(){
         <div id="NextEvents" style={{marginTop: '0px', float: 'left'}}>
             <div id="titleBlockEvents"><strong>Próximos treinamentos</strong></div>
             {nextTreining.length>0?nextTreining.map((obj)=>(
-                <div><a href={"/evento/"+obj.dtinicio}> Evento {obj.id} - {obj.dtinicio}</a></div>
+                <div key={obj.id}><a href={"/evento/"+obj.dtinicio}> Evento {obj.id} - {obj.dtinicio}</a></div>
             )):console.log('')}
         </div>
     )

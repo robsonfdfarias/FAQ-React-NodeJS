@@ -152,6 +152,31 @@ router.post('/returnAllCommonQuestionsForCategoryById', async (req, res) => {
     }else{
         return res.status(400).json({'retorno': 'Nenhum registro encontrado'})
     }
+});
+
+router.post('/getNumberCommonQuestionPesq', async (req, res) => {
+    const {idCategoria} = req.body;
+    console.log("Pesquisa: "+idCategoria);
+    const query = await querys.getNumberCommonQuestionPesq(idCategoria);
+    if(query>0){
+        return res.status(200).json([{"NumReg": query}]);
+    }else{
+        return res.status(400).json({'NumReg': 'Nenhum registro encontrado'});
+    }
+});
+
+router.post('/getCommonQuestionPesq', async (req, res) => {
+    const {idCategoria, page, numberOfRecords} = req.body;
+    console.log('Pesquisa: '+idCategoria);
+    console.log('Página: '+page);
+    console.log('Número de registros: '+numberOfRecords);
+    const query = await querys.getCommonQuestionPesq(idCategoria, page, numberOfRecords);
+    // console.log(query);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'retorno': 'Nenhum registro encontrado'})
+    }
 })
 
 
