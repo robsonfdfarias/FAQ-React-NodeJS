@@ -72,9 +72,9 @@ function MenuFaq(){
                         href={"/contatos"}
                         chave={"contatos"}
                     />
-                    <li id="liBuscar" style={{marginTop: '-8px'}}><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" onKeyDown={(e)=>pesq(e)} /></li>
+                    <li id="liBuscar" style={{marginTop: '-8px'}}><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" onKeyDown={(e)=>pesq(e)} id="pesqLi" /></li>
                 </ul>
-                <div id="divBuscar"><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" onKeyDown={(e)=>pesq(e)} /></div>
+                <div id="divBuscar"><input type="search" className="buscar" aria-label="Search" placeholder="Digite a pesquisa" onKeyDown={(e)=>pesq(e)} id="pesqDiv" /></div>
             </div>
         </div>
     )

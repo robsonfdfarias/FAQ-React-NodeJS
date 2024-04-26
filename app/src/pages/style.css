@@ -286,6 +286,24 @@ body{
     line-height: 32px;
 }
 
+.post-content{
+    padding: 10px 0 !important;
+}
+
+@media screen and (max-width: 830px) {
+    #categoriaPergFreq {
+        padding: 20px 10px !important;
+    }
+
+    .post-content{
+        padding: 10px !important;
+    }
+
+    #divNoticias{
+        padding: 0 10px;
+    }
+}
+
 /* ---------------------- FIM do perguntas frequentes do usuario comum ------------------------------ */
 
 /* ------------------------------ Inicio do Artigo classe do usuario comum ------------------------------ */
@@ -443,6 +461,9 @@ body{
     }
     #calendar tr td a{
         padding: 0 !important;
+    }
+    #contentAbout{
+        padding: 0 20px;
     }
 }
 
@@ -970,6 +991,9 @@ hr#recentes{
     #centroItemDoisPergFreq {
         width: 100%;
     }
+    #blockLeft{
+        padding: 10px;
+    }
 }
 
 table#principal{
@@ -1172,6 +1196,20 @@ span#catSpan{
 
 #enviar:hover {
     background-color:rgb(69, 136, 7);
+}
+
+@media screen AND (max-width: 830px){
+    #formLogin{
+        width: calc(100% - 40px);
+    }
+    #senha{
+        width: calc(100% - 40px) !important;
+        padding-right: 35px;
+    }
+    #email{
+        width: calc(100% - 40px) !important;
+        padding-right: 35px;
+    }
 }
 
 /******************************************** LOGIN FIM ****************************************************/

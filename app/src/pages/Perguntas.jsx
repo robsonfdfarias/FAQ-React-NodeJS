@@ -12,7 +12,7 @@ function Perguntas(){
     // console.log(page)
     
     return (
-        <div>
+        <div style={{position: 'relative', height: '100vh'}}>
             <MenuFaq />
             <TopoTitulo titulo={'Perguntas Frequentes'} />
             <DivCenterContent

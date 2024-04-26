@@ -4,8 +4,12 @@
 
 #divCenterGeral #central{
     max-width: calc(1100px - 70px);
-    min-height: calc(100vh - 470px);
+    min-height: calc(100vh - 416px);
     margin: auto;
     /* padding: 35px; */
     /* background-color: antiquewhite; */
+}
+
+#central{
+    /* padding-bottom: 100px; */
 }

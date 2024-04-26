@@ -1,6 +1,6 @@
 function LegislacaoContent(){
     return (
-        <div>
+        <div id="contentAbout">
                     
             <h1>Estadual</h1>
 

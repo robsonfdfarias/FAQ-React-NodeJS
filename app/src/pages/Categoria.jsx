@@ -14,7 +14,7 @@ function Categoria(){
     const pagAtual = page==undefined?0:page-1;
     const numberOfRecords = 1;
     return (
-        <div>
+        <div style={{position: 'relative', height: '100vh'}}>
             <MenuFaq />
             <TopoTitulo titulo={'Perguntas Frequentes por categoria'} />
             <DivCenterContent

@@ -5,7 +5,7 @@ import FooterPage from './Footerpage'
 import HomeContent from './HomeContent'
 function Home(){
     return (
-        <div style={{position: 'relative', height: '100vh', width: '100vw'}}>
+        <div style={{position: 'relative', height: '100vh'}}> 
             <MenuFaq />
             <TopoTitulo titulo={'Home'} />
             <DivCenterContent

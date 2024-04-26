@@ -1,6 +1,6 @@
 function EstrutAdminContent(){
     return (
-        <div>
+        <div id="contentAbout">
             <header className="entry-header">
                 <h1 className="entry-title">Introdução:</h1>
             </header>

@@ -25,7 +25,7 @@ function NoticiasRecentes(){
 
     if(noticias!=[]){
         return (
-            <div>
+            <div id="divNoticias">
                 {noticias.map((obj) => (
                     <NoticiasRecentesModeloLayout
                         key={obj.id}

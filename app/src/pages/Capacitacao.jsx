@@ -7,7 +7,7 @@ import CapacitacaoContent from './CapacitacaoContent'
 function Capacitacao(){
     const {dia, mes, ano} = useParams();
     return (
-        <div>
+        <div style={{position: 'relative', height: '100vh'}}>
             <MenuFaq />
             <TopoTitulo titulo={'Capacitação'} />
             <DivCenterContent
