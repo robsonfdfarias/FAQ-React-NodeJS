@@ -121,7 +121,7 @@ function PerguntasPaginator(props){
             </div>
 
             <div className="paginator">
-                {pagin>0?print2(pagin).map(link => ( link )):console.log('')}
+                {pagin>0?print2(pagin).map(link => ( link )):testa=testa}
 
                 {/* {props.page==0?<a style={{backgroundColor: '#0c582c', color: 'white'}}>1</a>:<a href="./1">1</a>}
                 {props.page==1?<a style={{backgroundColor: '#0c582c', color: 'white'}}>2</a>:<a href="./2">2</a>}

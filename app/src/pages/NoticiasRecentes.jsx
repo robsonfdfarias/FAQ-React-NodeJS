@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 var testa=0;
 function NoticiasRecentes(){
     const [ noticias , setNoticias] = useState([]);
-    var recentNews = [];
-    var noticia;
+    // var recentNews = [];
+    // var noticia;
     const endpoint = 'http://localhost:3003/actors/news/';
     
     useEffect(()=>{
@@ -13,7 +13,7 @@ function NoticiasRecentes(){
         .then((resposta) => resposta.json())
         .then((json) => {
             if(testa<1){
-                console.log(testa)
+                // console.log(testa)
                 setNoticias(json);
                 testa++;
             }

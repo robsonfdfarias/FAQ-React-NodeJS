@@ -193,7 +193,7 @@ function CarrosselComplete(){
         }
         function actionBt(obj){
             var id=obj.getAttribute("id");
-            console.log(id+"<<<<<<<")
+            // console.log(id+"<<<<<<<")
             clearInterval(intervalo);
             if(mover>=(itens.length*parseInt(style.width))){
                     numItem=1;

@@ -5,7 +5,7 @@ import NoticiaContentAutor from "./NoticiaContentAutor";
 
 function NoticiaContent(props){
     const {id} = useParams();
-    console.log(id)
+    // console.log(id)
     var testa = 0;
     const [noticia, setNoticia] = useState([]);
     
@@ -17,7 +17,7 @@ function NoticiaContent(props){
             .then((data) => {
                 // console.log(data);
                 if(testa<1){
-                    console.log(testa);
+                    // console.log(testa);
                     setNoticia(data);
                     testa++;
                 }

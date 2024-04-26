@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import PerguntasQueryCategoria from "./PerguntasQueryCategoria";
 
 function PerguntasQuery(props){
     const [questions, setQuestions] = useState([]);
@@ -117,7 +118,9 @@ function PerguntasQuery(props){
                             <div dangerouslySetInnerHTML={{ __html: obj.conteudo }}>
                             </div>
                         </article>
-                        <aside><section id="cat" style={{height: 'fit-content'}}>Categoria: <span id="catSpan">{obj.categoria}</span></section></aside>
+                        <PerguntasQueryCategoria
+                            idCateg={obj.categoria}
+                        />
                         <footer>
                             <p>{obj.dataAlter?<time pubdate="" dateTime="2014-01-10">Última atualização: {obj.dataAlter}</time>:console.log("")}</p>
                         </footer>

@@ -13,7 +13,7 @@ function ProximosTreinamentos(){
         })
         .then((response) => response.json())
         .then((json) => {
-            console.log(json);
+            // console.log(json);
             if(testa<1){
                 setNextTreining(json);
                 testa++;
@@ -25,7 +25,7 @@ function ProximosTreinamentos(){
             <div id="titleBlockEvents"><strong>Próximos treinamentos</strong></div>
             {nextTreining.length>0?nextTreining.map((obj)=>(
                 <div key={obj.id}><a href={"/evento/"+obj.dtinicio}> Evento {obj.id} - {obj.dtinicio}</a></div>
-            )):console.log('')}
+            )):testa=testa}
         </div>
     )
 }

@@ -125,6 +125,11 @@ const getCommonQuestionPesq = async (pesq, page, numberOfRecords) => {
     return query;
 }
 
+const returnCategoryById = async (id) => {
+    const [query] = await connection.execute('SELECT * FROM base.categoria WHERE id=?', [id]);
+    return query;
+}
+
 
 
 module.exports = {
@@ -145,5 +150,6 @@ module.exports = {
     returnAllCommonQuestionsForCategoryById,
     getNumberCommonQuestionPesq,
     getCommonQuestionPesq,
-    getAutorById
+    getAutorById,
+    returnCategoryById
 };

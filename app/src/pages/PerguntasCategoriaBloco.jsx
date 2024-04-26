@@ -14,7 +14,7 @@ function PerguntasCategoriaBloco(){
         .then((response) => response.json())
         .then((json) => {
             if(testa<1){
-                console.log(json);
+                // console.log(json);
                 setCategoria(json);
                 testa++;
             }
@@ -28,7 +28,7 @@ function PerguntasCategoriaBloco(){
             <span id="tituloAcessoRapido"><strong>Categorias</strong></span><br />
             {categoria.length>0?categoria.map((obj) => (
                 <a href={"/categoria/"+obj.categoria.id+"/"} key={obj.categoria.id}>{obj.categoria.titulo+" ("+obj.NumReg+")"}<br /></a>
-            )):console.log('')}
+            )):testa=testa}
             {/* <a href={"/categoria/"}>Conhecendo a interface</a>(4)<br />
             <a href="categoria.php?id=2">Pagamentos</a>(1)<br />
             <a href="categoria.php?id=3">Geral</a>(2)<br /> */}

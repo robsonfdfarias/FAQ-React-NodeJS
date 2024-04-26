@@ -224,9 +224,12 @@ function CapacitacaoCalendario(props){
                     let d = data[1]+'-'+arrayMonth[dd]+'-'+content;
                     // console.log(d)
                     //     console.log(valor[0].dtinicio)
-                    if(d==valor[0].dtinicio){
-                        td.style.border = '2px solid green';
+                    for(let r=0; r<valor.length; r++){
+                        if(d==valor[r].dtinicio){
+                            td.style.border = '2px solid green';
+                        }
                     }
+                    
                 }else{
                     // console.log('vazio...'+j)
                 }

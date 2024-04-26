@@ -189,6 +189,17 @@ router.post('/getAutorById', async (req, res) => {
     }else{
         return res.status(400).json({'retorno': 'Nenhum registro encontrado'});
     }
+});
+
+router.post('/returnCategoryById', async (req, res) => {
+    const {id} = req.body;
+    console.log('O ID da categoria pesquisada foi: '+id);
+    const query = await querys.returnCategoryById(id);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'retorno': 'Nenhum registro encontrado'});
+    }
 })
 
 

@@ -9,7 +9,7 @@ import NoticiaContent from "./NoticiaContent";
 
 function Noticia(){
     const {id} = useParams();
-    console.log(id)
+    // console.log(id)
     return (
         <div>
             <MenuFaq />

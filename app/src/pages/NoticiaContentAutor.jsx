@@ -27,7 +27,7 @@ function NoticiaContentAutor(props){
         <div>
             {autor.length>0?
                 <div>{"Publicado por: "+autor[0].nome}<br /></div>
-            :console.log('')}
+            :testa=testa}
         </div>
     )
 }

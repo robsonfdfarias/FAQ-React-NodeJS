@@ -28,7 +28,7 @@ function NoticiasRecentesModeloLayout(props){
             <span className="titleNewsFeed">{props.titulo}</span>
             {autor.length>0?
                 <span className="dateNewsFeed">Publicado por: {autor[0].nome} - {props.dataPub}</span>
-            :console.log('')}<br /><br />
+            :testa=testa}<br /><br />
             <span className="summaryNewsFeed">{props.content}</span><br />
             {/* <div dangerouslySetInnerHTML={{ __html: props.content }}></div> */}
             <span className="readMore"><a href={'/noticia/'+props.id}>Leia mais <img src="imgs/seta-para-a-direita.svg" alt="seta" width="15" /></a></span><br />
