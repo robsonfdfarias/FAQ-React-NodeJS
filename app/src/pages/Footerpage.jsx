@@ -15,7 +15,7 @@ function FooterPage(){
         <div id="footerPages">
             <div id="footerCenter">
                 <div id="camada1Footer">
-                    <span id="login"><a href="/login" target="_blank" rel="noopener noreferrer">Logar</a></span>
+                    <span id="login">{localStorage.getItem("nome")?<span>Logado como: {localStorage.getItem("nome")} - <a href="\sair"> Sair</a></span>:<a href="/login" target="_blank" rel="noopener noreferrer">Logar</a>}</span>
                     <span id="redesFooter">
                         <a href="#">
                             {/* <img src="imgsFooter/facebook.svg" style="--invert: 24%; --sepia: 38%; --saturate:1515%; --hueRotate: 192deg; --brightness: 110%; --contrast: 81%;" alt="Acesse nosso canal do Facebook" title="Acesse nosso canal do Facebook" height="20"> */}

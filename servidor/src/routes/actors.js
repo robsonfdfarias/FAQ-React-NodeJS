@@ -200,6 +200,19 @@ router.post('/returnCategoryById', async (req, res) => {
     }else{
         return res.status(400).json({'retorno': 'Nenhum registro encontrado'});
     }
+});
+
+router.post('/logar', async (req, res) => {
+    const {email, password} = req.body;
+    console.log('email: '+email)
+    console.log('senha: '+password);
+    const query = await querys.logar(email, password);
+    // console.log(query)
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'id': false});
+    }
 })
 
 

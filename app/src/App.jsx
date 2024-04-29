@@ -11,6 +11,7 @@ import Noticia from "./pages/Noticia";
 import Evento from "./pages/Evento";
 import Categoria from "./pages/Categoria";
 import Pesquisar from "./pages/Pesquisar";
+import Sair from "./pages/Sair";
 function App(){
   return (
   <div>
@@ -28,6 +29,7 @@ function App(){
         <Route exact path="/evento/:data?" element={<Evento />} />
         <Route exact path="/categoria/:id?/:page?" element={<Categoria />} />
         <Route exact path="/pesquisar/:pesq?/:page?" element={<Pesquisar />} />
+        <Route exact path="/sair" element={<Sair />} />
       </Routes>
     </BrowserRouter>
   </div>)

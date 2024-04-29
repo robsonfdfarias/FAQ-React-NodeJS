@@ -2,6 +2,8 @@ const connection = require('./connection');
 
 const arrayMonth = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
+var md5 = require('md5');
+
 const allItems = async () => {
     const [query] = await connection.execute('SELECT * FROM apiJavascript.authors');
     return query;
@@ -130,6 +132,10 @@ const returnCategoryById = async (id) => {
     return query;
 }
 
+const logar = async (email, password) => {
+    const [query] = await connection.execute('SELECT * FROM base.usuarios WHERE email=? AND senha=?', [email, md5(password)]);
+    return query;
+}
 
 
 module.exports = {
@@ -151,5 +157,6 @@ module.exports = {
     getNumberCommonQuestionPesq,
     getCommonQuestionPesq,
     getAutorById,
-    returnCategoryById
+    returnCategoryById,
+    logar
 };
