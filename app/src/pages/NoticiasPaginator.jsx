@@ -54,7 +54,8 @@ function NoticiasPaginator(props){
         })
         .then((resposta) => resposta.json())
         .then((dados) => {
-            quantidade = dados[0].NumReg;
+            quantidade = dados.NumReg;
+            // console.log(quantidade+'--------------')
             // setPagin(Math.ceil(quantidade/props.numberOfRecords));
             if(testa<1){
                 setPagin(Math.ceil(quantidade/props.numberOfRecords));

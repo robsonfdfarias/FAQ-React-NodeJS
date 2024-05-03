@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { ButtonIcon } from "./ButtonIcon";
 
 function NoticiasQuery(props){
     const [questions, setQuestions] = useState([]);
@@ -104,25 +105,28 @@ function NoticiasQuery(props){
     }
     getUrl();
 
+
     return (
         <div>
             {questions.map(obj => (
-                <div id="generalFeedNews" key={obj.id} style={{display: "flex", border:'1px solid #DEE2E6', borderRadius: '4px', flexDirection: "row", padding: "20px", justifyContent: "center", textAlign: "center", verticalAlign: "middle", alignItems: "center", margin: '10px 0'}}>
+                <div id="generalFeedNews" key={obj.id} style={{display: "flex", border:'1px solid #DEE2E6', borderRadius: '4px', flexDirection: "row", padding: "20px", justifyContent: "center", textAlign: "center", verticalAlign: "middle", alignItems: "center", margin: '5px 0'}}>
                     <div style={{textAlign: "left", width:"91%"}}>
                         <span id="titleNewsFeed" style={{fontSize: '20px', fontWeight: '700', lineHeight: '30px'}}>{obj.titulo}</span><br />
                         <span id="summaryNewsFeed">{obj.resumo}</span><br />
                     </div>
                     <div style={{display:"flex"}}>
-                        <a href="noticiaEdit.php?id=7">
-                            <div id="divBtEdit" style={{padding: '10px', backgroundColor: '#0c582c', borderRadius: '4px', marginRight: '5px'}}>
-                                <img src="../../imgs/edit-lapis.svg" width="20" title="Editar notícia" />
-                            </div>
-                        </a>
-                        <a href="noticiaDelete.php?id=7" target="_blank">
-                            <div id="divBtDelete" style={{padding: '10px', backgroundColor: 'rgb(143, 0, 0)', borderRadius: '4px'}}>
-                                <img src="../../imgs/delete-bin.svg" width="20" title="Deletar notícia" />
-                            </div>
-                        </a>
+                        <ButtonIcon
+                            img={"imgs/edit-lapis.svg"}
+                            href={"/divBtEdit/"+obj.id}
+                            colorDefault={"#0c582c"}
+                            colorHover={"#32CD32"}
+                        />
+                        <ButtonIcon
+                            img={"imgs/delete-bin.svg"}
+                            href={"/divBtDelete/"+obj.id}
+                            colorDefault={"#8B0000"}
+                            colorHover={"#FF0000"}
+                        />
                     </div>
                 </div>
             ))}

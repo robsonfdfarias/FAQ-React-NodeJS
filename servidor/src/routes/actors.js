@@ -226,6 +226,12 @@ router.post('/getAdmNewsPage', async (req, res) => {
     }else{
         return res.status(400).json({'id': false});
     }
+});
+
+router.post('/getNumberNews', async (req, res) => {
+    const query = await querys.getNumberNews();
+    console.log('Quantidade de registros: '+query);
+    return res.status(200).json({'NumReg': query});
 })
 
 

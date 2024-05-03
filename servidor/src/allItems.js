@@ -138,8 +138,14 @@ const logar = async (email, password) => {
 }
 
 const getAdmNewsPage = async (page, numberOfRecords) => {
-    const [query] = await connection.execute('SELECT * FROM base.noticias ORDER BY id DESC LIMIT ?, ?', [page, numberOfRecords]);
+    const pageA = page*numberOfRecords;
+    const [query] = await connection.execute('SELECT * FROM base.noticias ORDER BY id DESC LIMIT ?, ?', [pageA, numberOfRecords]);
     return query;
+}
+
+const getNumberNews = async () =>{
+    const [query] = await connection.execute('SELECT COUNT(*) FROM base.noticias');
+    return query[0]['COUNT(*)'];
 }
 
 
@@ -164,5 +170,6 @@ module.exports = {
     getAutorById,
     returnCategoryById,
     logar,
-    getAdmNewsPage
+    getAdmNewsPage,
+    getNumberNews
 };

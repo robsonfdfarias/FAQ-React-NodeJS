@@ -9,7 +9,7 @@ function NoticiaAdmin(){
     const {page} = useParams();
     // console.log(page)
     const pagAtual = page==undefined?0:page-1;
-    const numberOfRecords = 2;
+    const numberOfRecords = 3;
     return (
         <div>
             <MenuAdmin />

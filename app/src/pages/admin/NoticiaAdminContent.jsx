@@ -11,6 +11,7 @@ function NoticiaAdminContent(props){
         borderRadius: '5px',
         backgroundColor: '#0c582c',
         border: 'none',
+        cursor: 'pointer',
         transition: 'all ease-in-out 0.5s'
     };
     const estiloHover = {
@@ -22,7 +23,7 @@ function NoticiaAdminContent(props){
     }
     return (
         <div>
-            <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '20px'}}>
+            <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '20px', marginBottom: '15px'}}>
                 <div id="tituloCatMenuPag" style={{fontWeight: 'bold', fontSize: '2rem'}}>Últimas notícias</div>
                 <div id="addCatMenuPag">
                     <button id="insertArticle" onClick={()=>newArticle()}
@@ -37,7 +38,7 @@ function NoticiaAdminContent(props){
                 page={props.page}
                 numberOfRecords={props.numberOfRecords}
                 urlPergQuery={'http://localhost:3003/actors/getAdmNewsPage'}
-                urlPergPaginator={'http://localhost:3003/actors/numberAllQuestions'}
+                urlPergPaginator={'http://localhost:3003/actors/getNumberNews'}
             />
         </div>
     )
