@@ -137,6 +137,11 @@ const logar = async (email, password) => {
     return query;
 }
 
+const getAdmNewsPage = async (page, numberOfRecords) => {
+    const [query] = await connection.execute('SELECT * FROM base.noticias ORDER BY id DESC LIMIT ?, ?', [page, numberOfRecords]);
+    return query;
+}
+
 
 module.exports = {
     allItems, 
@@ -158,5 +163,6 @@ module.exports = {
     getCommonQuestionPesq,
     getAutorById,
     returnCategoryById,
-    logar
+    logar,
+    getAdmNewsPage
 };

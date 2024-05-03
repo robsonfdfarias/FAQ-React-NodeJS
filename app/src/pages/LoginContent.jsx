@@ -67,7 +67,7 @@ function LoginContent(){
                         localStorage.setItem("email", json[0].email);
                         localStorage.setItem("status", json[0].status);
                         localStorage.setItem("nivel", json[0].nivel);
-                        window.location.href='/home'
+                        window.location.href='/admin/inicio'
                     }
                 }else{
                     console.log('Usuário ou senha incorreto');

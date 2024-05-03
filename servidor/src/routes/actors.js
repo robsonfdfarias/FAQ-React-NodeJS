@@ -213,6 +213,19 @@ router.post('/logar', async (req, res) => {
     }else{
         return res.status(400).json({'id': false});
     }
+});
+
+router.post('/getAdmNewsPage', async (req, res) => {
+    const {page, numberOfRecords} = req.body;
+    console.log('Início do getAdmNewsPage');
+    console.log('Página: '+page);
+    console.log('Número de registros: '+numberOfRecords);
+    const query = await querys.getAdmNewsPage(page, numberOfRecords);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'id': false});
+    }
 })
 
 

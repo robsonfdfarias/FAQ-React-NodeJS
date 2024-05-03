@@ -12,6 +12,8 @@ import Evento from "./pages/Evento";
 import Categoria from "./pages/Categoria";
 import Pesquisar from "./pages/Pesquisar";
 import Sair from "./pages/Sair";
+import HomeAdmin from "./pages/admin/HomeAdmin";
+import NoticiaAdmin from "./pages/admin/NoticiaAdmin";
 function App(){
   return (
   <div>
@@ -30,6 +32,8 @@ function App(){
         <Route exact path="/categoria/:id?/:page?" element={<Categoria />} />
         <Route exact path="/pesquisar/:pesq?/:page?" element={<Pesquisar />} />
         <Route exact path="/sair" element={<Sair />} />
+        <Route exact path="/admin/inicio" element={<HomeAdmin />} />
+        <Route exact path="/admin/noticia/:page?" element={<NoticiaAdmin />} />
       </Routes>
     </BrowserRouter>
   </div>)

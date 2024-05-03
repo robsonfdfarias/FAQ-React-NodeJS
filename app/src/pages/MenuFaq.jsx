@@ -1,7 +1,9 @@
 import urlImg from "../assets/logo-pref-jar.svg"
 import { useState } from "react"
 import LinkMenu from "./LinkMenu";
+import { ConfigUrlImg } from "./ConfigUrlImg";
 function MenuFaq(){
+    const urlImg = ConfigUrlImg('imgs/');
     const [texto, setTexto] = useState(false);
 
     const pesq = (event) => {
@@ -29,7 +31,7 @@ function MenuFaq(){
                     }}>Menu</button>
                 </div>
                 <div style={{position: 'absolute', top: '10px', zIndex: 1000}}>
-                    <a href="/"><img src={urlImg} height={55} alt="imagem" /></a>
+                    <a href="/"><img src={urlImg+"logo-pref-jar.svg"} height={55} alt="imagem" /></a>
                 </div>
                 <ul id="menu" className="menu">
                     <LinkMenu 

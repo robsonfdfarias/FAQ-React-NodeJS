@@ -1,16 +1,20 @@
+import { ConfigUrlImg } from "./ConfigUrlImg"
+
 function FooterPage(){
-    const url = window.location.href;
-    const urlPartes = url.split('/');
-    var urlImage;
-    if(urlPartes[5]!=''){
-        urlImage = '../../../imgsFooter/';
-    }else if(urlPartes[4]!=''){
-        urlImage = '../../imgsFooter/';
-    }else if(urlPartes[3]!=''){
-        urlImage = '../imgsFooter/';
-    }else{
-        urlImage = 'imgsFooter/';
-    }
+    const urlImage = ConfigUrlImg('imgsFooter/');
+    // urlImage+='imgsFooter/';
+    // const url = window.location.href;
+    // const urlPartes = url.split('/');
+    // var urlImage;
+    // if(urlPartes[5]!=''){
+    //     urlImage = '../../../imgsFooter/';
+    // }else if(urlPartes[4]!=''){
+    //     urlImage = '../../imgsFooter/';
+    // }else if(urlPartes[3]!=''){
+    //     urlImage = '../imgsFooter/';
+    // }else{
+    //     urlImage = 'imgsFooter/';
+    // }
     return(
         <div id="footerPages">
             <div id="footerCenter">
