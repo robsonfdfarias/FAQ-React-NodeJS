@@ -7,13 +7,13 @@ function NoticiasPaginator(props){
     var totalPages;
     var testa=0;
 
-    const convertForArray = (num) => {
-        let rows = [];
-        for(let i=0; i<num; i++){
-            rows.push((i+1));
-        }
-        return rows;
-    }
+    // const convertForArray = (num) => {
+    //     let rows = [];
+    //     for(let i=0; i<num; i++){
+    //         rows.push((i+1));
+    //     }
+    //     return rows;
+    // }
 
     var printLink = (link, tipo, tot) => {
         // console.log(props.page+' - '+link)
@@ -123,10 +123,6 @@ function NoticiasPaginator(props){
             <br />
             <div className="paginator">
                 {pagin>0?print2(pagin).map(link => ( link )):testa=testa}
-
-                {/* {props.page==0?<a style={{backgroundColor: '#0c582c', color: 'white'}}>1</a>:<a href="./1">1</a>}
-                {props.page==1?<a style={{backgroundColor: '#0c582c', color: 'white'}}>2</a>:<a href="./2">2</a>}
-                {props.page==2?<a style={{backgroundColor: '#0c582c', color: 'white'}}>3</a>:<a href="./3">3</a>} */}
             </div>
         </div>
     )

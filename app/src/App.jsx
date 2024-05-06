@@ -14,6 +14,7 @@ import Pesquisar from "./pages/Pesquisar";
 import Sair from "./pages/Sair";
 import HomeAdmin from "./pages/admin/HomeAdmin";
 import NoticiaAdmin from "./pages/admin/NoticiaAdmin";
+import InsertNoticias from "./pages/admin/noticias/InsertNoticias";
 function App(){
   return (
   <div>
@@ -34,6 +35,7 @@ function App(){
         <Route exact path="/sair" element={<Sair />} />
         <Route exact path="/admin/inicio" element={<HomeAdmin />} />
         <Route exact path="/admin/noticia/:page?" element={<NoticiaAdmin />} />
+        <Route exact path="/admin/noticias/insert/" element={<InsertNoticias />} />
       </Routes>
     </BrowserRouter>
   </div>)

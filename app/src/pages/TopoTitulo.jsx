@@ -16,7 +16,7 @@ function TopoTitulo(props){
         <div id="geralTopo">
             <div id="topo">
                 <div id="centroTop">
-                    <div style={{fontSize: '40px', fontWeight: '700', lineHeight: '65px', marginTop: '-15px'}}>{props.titulo}</div>
+                    <div style={{fontSize: '2rem', fontWeight: '700', lineHeight: '65px', marginTop: '-15px'}}>{props.titulo}</div>
                     {props.subtitulo?<div style={{marginTop: '0px'}}>{props.subtitulo}</div>:<span></span>}
                 </div>
             </div>

@@ -37,36 +37,36 @@ function MenuAdmin(){
                     <LinkMenu 
                         texto={"Início"}
                         barraName={"barraEfeito"}
-                        href={"/inicio"}
+                        href={"/admin/inicio/"}
                         chave={"inicio"}
                     />
                     <LinkMenu 
                         texto={"Notícia"}
                         barraName={"barraEfeito"}
-                        href={"/admin/noticia"}
+                        href={"/admin/noticia/"}
                         chave={"noticia"}
                     />
                     <LinkMenu 
                         texto={"Perguntas"}
                         barraName={"barraEfeito"}
-                        href={"/perguntasAdm"}
+                        href={"/admin/perguntasAdm/"}
                         chave={"perguntasAdm"}
                     />
                     <LinkMenu 
                         texto={"Agenda"}
                         barraName={"barraEfeito"}
-                        href={"/agenda"}
+                        href={"/admin/agenda/"}
                         chave={"agenda"}
                     />
                     <LinkMenu 
                         texto={"Categoria"}
                         barraName={"barraEfeito"}
-                        href={"/categoria"}
+                        href={"/admin/categoria/"}
                         chave={"categoria"}
                     />
                     <LinkMenu 
                         texto={"Sair"}
-                        barraName={"barraEfeito"}
+                        barraName={"barraEfeito/"}
                         href={"../sair"}
                         chave={"sair"}
                     />

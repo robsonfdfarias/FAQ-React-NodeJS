@@ -111,7 +111,7 @@ function NoticiasQuery(props){
             {questions.map(obj => (
                 <div id="generalFeedNews" key={obj.id} style={{display: "flex", border:'1px solid #DEE2E6', borderRadius: '4px', flexDirection: "row", padding: "20px", justifyContent: "center", textAlign: "center", verticalAlign: "middle", alignItems: "center", margin: '5px 0'}}>
                     <div style={{textAlign: "left", width:"91%"}}>
-                        <span id="titleNewsFeed" style={{fontSize: '20px', fontWeight: '700', lineHeight: '30px'}}>{obj.titulo}</span><br />
+                        <span id="titleNewsFeed" style={{fontSize: '1.1rem', fontWeight: '700', lineHeight: '30px'}}>{obj.titulo}</span><br />
                         <span id="summaryNewsFeed">{obj.resumo}</span><br />
                     </div>
                     <div style={{display:"flex"}}>

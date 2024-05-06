@@ -19,12 +19,12 @@ function NoticiaAdminContent(props){
         backgroundColor: 'green'
     };
     const newArticle = () =>{
-        alert('Novo');
+        window.location.href = '/admin/noticias/insert/'
     }
     return (
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '20px', marginBottom: '15px'}}>
-                <div id="tituloCatMenuPag" style={{fontWeight: 'bold', fontSize: '2rem'}}>Últimas notícias</div>
+                <div id="tituloCatMenuPag" style={{fontWeight: 'bold', fontSize: '1.5rem'}}>Últimas notícias</div>
                 <div id="addCatMenuPag">
                     <button id="insertArticle" onClick={()=>newArticle()}
                         style={isHovered?{...estiloBase, ...estiloHover}:estiloBase}
