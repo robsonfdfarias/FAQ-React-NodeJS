@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { ssrImportKey } from "vite/runtime";
 import { ConfigUrlImg } from "../../ConfigUrlImg";
 
 function Editor(){
@@ -31,7 +30,7 @@ function Editor(){
         document.getElementById('scripts').appendChild(upload);
 
         const funcEditoRobson = document.createElement('script');
-        funcEditoRobson.src = ConfigUrlImg("rffeditor/func.editor.robson.js.js");
+        funcEditoRobson.src = ConfigUrlImg("rffeditor/func.editor.robson.js");
         document.getElementById('scripts').appendChild(funcEditoRobson);
 
         const dragDrop = document.createElement('script');
@@ -42,10 +41,6 @@ function Editor(){
         scriptInterno.src = ConfigUrlImg("rffeditor/scriptInterno.js");
         document.getElementById('scripts').appendChild(scriptInterno);
 
-        document.head.appendChild(upload);
-        document.head.appendChild(funcEditoRobson);
-        document.head.appendChild(dragDrop);
-        document.head.appendChild(scriptInterno);
 
         // document.getElementById('cite').addEventListener('click', ()=>{
         //     alert("dajcdaj")
@@ -60,163 +55,164 @@ function Editor(){
         // }
         
     }, []);
-    function insertTagsNew(valor) {
-        // alert(valor)
-        // console.log(valor.toLowerCase())
-        // console.log(getTags())
-        if(valor.toLowerCase() == getTags()){
-            // alert(valor)
-            document.getElementById(valor).setAttribute('style', 'background-color:none;');
-            // selectElem();
-            delElement();
-            exit;
-        }
-        let selection = window.getSelection().toString();
-        console.log(selection)
-        let wrappedselection = '<'+valor+'>' + selection + '</'+valor+'>';
-        //var img = new Image();
-        document.execCommand('insertHTML', false, wrappedselection);
-    }
-    function getTags(){
-        var selecao = window.getSelection().getRangeAt(0).startContainer;
-        // console.log(selecao)
-        var tag = selecao.parentNode;
-        // console.log('111111111111111111111111-------------'+tag.nodeName)
-        // console.log(getTagName(tag.nodeName))
-        return getTagName(tag.nodeName)
-    }
-    function getTagName(tag){
-        if(tag == 'DIV'){
-            return 'div';
-        }else if(tag=='B'){
-            return 'b';
-        }else if(tag=='RFFEFEITOBGTEXT1'){
-            return 'rffefeitobgtext1';
-        }else if(tag=='RFFEFEITOBGTEXT2'){
-            return 'rffefeitobgtext2';
-        }else if(tag=='RFFEFEITOBGTEXT3'){
-            return 'rffefeitobgtext3';
-        }else if(tag=='RFFEFEITOBGTEXT4'){
-            return 'rffefeitobgtext4';
-        }else if(tag=='RFFEFEITOBGTEXT5'){
-            return 'rffefeitobgtext5';
-        }else if(tag=='RFFEFEITOBGTEXT6'){
-            return 'rffefeitobgtext6';
-        }else if(tag=='RFFEFEITOBGTEXT7'){
-            return 'rffefeitobgtext7';
-        }else if(tag=='RFFEFEITOBGTEXT8'){
-            return 'rffefeitobgtext8';
-        }else if(tag=='RFFEFEITOBGTEXT9'){
-            return 'rffefeitobgtext9';
-        }else if(tag=='RFFEFEITOBGTEXT10'){
-            return 'rffefeitobgtext10';
-        }else if(tag=='RFFEFEITOBGTEXT11'){
-            return 'rffefeitobgtext11';
-        }else if(tag=='RFFEFEITOBGTEXT12'){
-            return 'rffefeitobgtext12';
-        }else if(tag=='RFFEFEITOBGTEXT13'){
-            return 'rffefeitobgtext13';
-        }else if(tag=='RFFEFEITOBGTEXT14'){
-            return 'rffefeitobgtext14';
-        }else if(tag=='RFFEFEITOBGTEXT15'){
-            return 'rffefeitobgtext15';
-        }else if(tag=='RFFEFEITOBGTEXT16'){
-            return 'rffefeitobgtext16';
-        }else if(tag=='RFFEFEITOBGTEXT17'){
-            return 'rffefeitobgtext17';
-        }else if(tag=='RFFEFEITOBGTEXT18'){
-            return 'rffefeitobgtext18';
-        }else if(tag=='RFFEFEITOBGTEXT19'){
-            return 'rffefeitobgtext19';
-        }else if(tag=='RFFEFEITOBGTEXT20'){
-            return 'rffefeitobgtext20';
-        }else if(tag=='RFFEFEITOBGTEXT21'){
-            return 'rffefeitobgtext21';
-        }else if(tag=='RFFEFEITOBGTEXT'){
-            return 'rffefeitobgtext';
-        }else if(tag=='RFFTEXTSHADOW'){
-            return 'rfftextshadow';
-        }else if(tag=='RFFNEONTEXT'){
-            return 'rffneontext';
-        }else if(tag=='RFFNEONTEXTECOLORWHITE'){
-            return 'rffneontextecolorwhite';
-        }else if(tag=='RFFTEXT3D'){
-            return 'rfftext3d';
-        }else if(tag=='RFFTEXT3DSIMPLES'){
-            return 'rfftext3dsimples';
-        }else if(tag=='RFFTEXT3DEXTREME'){
-            return 'rfftext3dextreme';
-        }else if(tag=='RFFTEXTDEGRADE'){
-            return 'rfftextdegrade';
-        }else if(tag=='CITE'){
-            return 'cite';
-        }else if(tag=='A'){
-            return 'a';
-        }else if(tag=='P'){
-            return 'p';
-        }else if(tag=='H1'){
-            return 'h1';
-        }else if(tag=='H2'){
-            return 'h2';
-        }else if(tag=='H3'){
-            return 'h3';
-        }else if(tag=='H4'){
-            return 'h4';
-        }else if(tag=='H5'){
-            return 'h5';
-        }
-    }
-    function delElement(){
-        // console.log('////////////////////////////////////////////////////////////')
-        // var range = window.getSelection().getRangeAt(0).toString();
-        var range = window.getSelection().getRangeAt(0);
-        var selecao = window.getSelection().getRangeAt(0).startContainer;
-        // console.log(selecao)
-        var tag = selecao.parentNode;
-        // if(getTags()=='div'){
-        //     return;
-        // }
-        // console.log(tag);
-        // console.log(tag.nodeName);
-        let pai = tag.parentNode;
-        if(pai.nodeName=='DIV'){
-            // console.log(pai.nodeName)
-            // console.log(pai.getAttribute('id'))
-            if(pai.getAttribute('id')=='texto' && pai.getAttribute('id')!=null){
-                return;
-            }
-        }
-        let p = pai.outerHTML;
-        // pai.removeChild(tag)
-        var t = tag.outerHTML;
-        // console.log(t)
+    // function insertTagsNew(valor) {
+    //     // alert(valor)
+    //     // console.log(valor.toLowerCase())
+    //     // console.log(getTags())
+    //     if(valor.toLowerCase() == getTags()){
+    //         alert(valor)
+    //         console.log(document.getElementById(valor))
+    //         document.getElementById(valor).setAttribute('style', 'background-color:none;');
+    //         // selectElem();
+    //         delElement();
+    //         exit;
+    //     }
+    //     let selection = window.getSelection().toString();
+    //     console.log(selection)
+    //     let wrappedselection = '<'+valor+'>' + selection + '</'+valor+'>';
+    //     //var img = new Image();
+    //     document.execCommand('insertHTML', false, wrappedselection);
+    // }
+    // function getTags(){
+    //     var selecao = window.getSelection().getRangeAt(0).startContainer;
+    //     // console.log(selecao)
+    //     var tag = selecao.parentNode;
+    //     // console.log('111111111111111111111111-------------'+tag.nodeName)
+    //     // console.log(getTagName(tag.nodeName))
+    //     return getTagName(tag.nodeName)
+    // }
+    // function getTagName(tag){
+    //     if(tag == 'DIV'){
+    //         return 'div';
+    //     }else if(tag=='B'){
+    //         return 'b';
+    //     }else if(tag=='RFFEFEITOBGTEXT1'){
+    //         return 'rffefeitobgtext1';
+    //     }else if(tag=='RFFEFEITOBGTEXT2'){
+    //         return 'rffefeitobgtext2';
+    //     }else if(tag=='RFFEFEITOBGTEXT3'){
+    //         return 'rffefeitobgtext3';
+    //     }else if(tag=='RFFEFEITOBGTEXT4'){
+    //         return 'rffefeitobgtext4';
+    //     }else if(tag=='RFFEFEITOBGTEXT5'){
+    //         return 'rffefeitobgtext5';
+    //     }else if(tag=='RFFEFEITOBGTEXT6'){
+    //         return 'rffefeitobgtext6';
+    //     }else if(tag=='RFFEFEITOBGTEXT7'){
+    //         return 'rffefeitobgtext7';
+    //     }else if(tag=='RFFEFEITOBGTEXT8'){
+    //         return 'rffefeitobgtext8';
+    //     }else if(tag=='RFFEFEITOBGTEXT9'){
+    //         return 'rffefeitobgtext9';
+    //     }else if(tag=='RFFEFEITOBGTEXT10'){
+    //         return 'rffefeitobgtext10';
+    //     }else if(tag=='RFFEFEITOBGTEXT11'){
+    //         return 'rffefeitobgtext11';
+    //     }else if(tag=='RFFEFEITOBGTEXT12'){
+    //         return 'rffefeitobgtext12';
+    //     }else if(tag=='RFFEFEITOBGTEXT13'){
+    //         return 'rffefeitobgtext13';
+    //     }else if(tag=='RFFEFEITOBGTEXT14'){
+    //         return 'rffefeitobgtext14';
+    //     }else if(tag=='RFFEFEITOBGTEXT15'){
+    //         return 'rffefeitobgtext15';
+    //     }else if(tag=='RFFEFEITOBGTEXT16'){
+    //         return 'rffefeitobgtext16';
+    //     }else if(tag=='RFFEFEITOBGTEXT17'){
+    //         return 'rffefeitobgtext17';
+    //     }else if(tag=='RFFEFEITOBGTEXT18'){
+    //         return 'rffefeitobgtext18';
+    //     }else if(tag=='RFFEFEITOBGTEXT19'){
+    //         return 'rffefeitobgtext19';
+    //     }else if(tag=='RFFEFEITOBGTEXT20'){
+    //         return 'rffefeitobgtext20';
+    //     }else if(tag=='RFFEFEITOBGTEXT21'){
+    //         return 'rffefeitobgtext21';
+    //     }else if(tag=='RFFEFEITOBGTEXT'){
+    //         return 'rffefeitobgtext';
+    //     }else if(tag=='RFFTEXTSHADOW'){
+    //         return 'rfftextshadow';
+    //     }else if(tag=='RFFNEONTEXT'){
+    //         return 'rffneontext';
+    //     }else if(tag=='RFFNEONTEXTECOLORWHITE'){
+    //         return 'rffneontextecolorwhite';
+    //     }else if(tag=='RFFTEXT3D'){
+    //         return 'rfftext3d';
+    //     }else if(tag=='RFFTEXT3DSIMPLES'){
+    //         return 'rfftext3dsimples';
+    //     }else if(tag=='RFFTEXT3DEXTREME'){
+    //         return 'rfftext3dextreme';
+    //     }else if(tag=='RFFTEXTDEGRADE'){
+    //         return 'rfftextdegrade';
+    //     }else if(tag=='CITE'){
+    //         return 'cite';
+    //     }else if(tag=='A'){
+    //         return 'a';
+    //     }else if(tag=='P'){
+    //         return 'p';
+    //     }else if(tag=='H1'){
+    //         return 'h1';
+    //     }else if(tag=='H2'){
+    //         return 'h2';
+    //     }else if(tag=='H3'){
+    //         return 'h3';
+    //     }else if(tag=='H4'){
+    //         return 'h4';
+    //     }else if(tag=='H5'){
+    //         return 'h5';
+    //     }
+    // }
+    // function delElement(){
+    //     // console.log('////////////////////////////////////////////////////////////')
+    //     // var range = window.getSelection().getRangeAt(0).toString();
+    //     var range = window.getSelection().getRangeAt(0);
+    //     var selecao = window.getSelection().getRangeAt(0).startContainer;
+    //     // console.log(selecao)
+    //     var tag = selecao.parentNode;
+    //     // if(getTags()=='div'){
+    //     //     return;
+    //     // }
+    //     // console.log(tag);
+    //     // console.log(tag.nodeName);
+    //     let pai = tag.parentNode;
+    //     if(pai.nodeName=='DIV'){
+    //         // console.log(pai.nodeName)
+    //         // console.log(pai.getAttribute('id'))
+    //         if(pai.getAttribute('id')=='texto' && pai.getAttribute('id')!=null){
+    //             return;
+    //         }
+    //     }
+    //     let p = pai.outerHTML;
+    //     // pai.removeChild(tag)
+    //     var t = tag.outerHTML;
+    //     // console.log(t)
     
-        let abre = '';
-        let fecha = '';
-        if(getTagName(tag.nodeName)=='p'){
-            abre = '<'+getTagName(tag.nodeName)+' class="p">';
-            fecha = '</'+getTagName(tag.nodeName)+'>';
-            // console.log('era para ter pego o class '+tag.nodeName)
-        }else{
-            abre = '<'+getTagName(tag.nodeName)+'>';
-            fecha = '</'+getTagName(tag.nodeName)+'>';
-        }
-        // console.log('--->>'+getTagName(tag.nodeName))
-        // t = t.replace(abre, '');
-        // t = t.replace(fecha, '');
-        p = p.replace(abre, '');
-        p = p.replace(fecha, '');
+    //     let abre = '';
+    //     let fecha = '';
+    //     if(getTagName(tag.nodeName)=='p'){
+    //         abre = '<'+getTagName(tag.nodeName)+' class="p">';
+    //         fecha = '</'+getTagName(tag.nodeName)+'>';
+    //         // console.log('era para ter pego o class '+tag.nodeName)
+    //     }else{
+    //         abre = '<'+getTagName(tag.nodeName)+'>';
+    //         fecha = '</'+getTagName(tag.nodeName)+'>';
+    //     }
+    //     // console.log('--->>'+getTagName(tag.nodeName))
+    //     // t = t.replace(abre, '');
+    //     // t = t.replace(fecha, '');
+    //     p = p.replace(abre, '');
+    //     p = p.replace(fecha, '');
     
-        abre = '<'+getTagName(pai.nodeName)+'>';
-        fecha = '</'+getTagName(pai.nodeName)+'>';
-        // t = t.replace(abre, '');
-        // t = t.replace(fecha, '');
-        p = p.replace(abre, '');
-        p = p.replace(fecha, '');
-        pai.innerHTML = p
-        // document.execCommand('insertHTML', true, pai)
-        range.insertNode(pai);
-    }
+    //     abre = '<'+getTagName(pai.nodeName)+'>';
+    //     fecha = '</'+getTagName(pai.nodeName)+'>';
+    //     // t = t.replace(abre, '');
+    //     // t = t.replace(fecha, '');
+    //     p = p.replace(abre, '');
+    //     p = p.replace(fecha, '');
+    //     pai.innerHTML = p
+    //     // document.execCommand('insertHTML', true, pai)
+    //     range.insertNode(pai);
+    // }
     
     return (
         <div>
@@ -358,22 +354,22 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/backcolor.svg")} title="Cor de destaque do texto" onClick={()=>{window.open('rffeditor/windowColorBackGroundText.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}} />
             
                 <img src={ConfigUrlImg("rffeditor/imgEditor/resetattributes.svg")} title="Remover formatação" onClick={()=>{removeFormatT()}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/subscript.svg")} title="Colocar em subescrito" onClick={()=>{addSubScript(), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="subescrito" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/superscript.svg")} title="Colocar em superescrito" onClick={()=>{addSuperScript(), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="superescrito" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/subscript.svg")} title="Colocar em subescrito" onClick={()=>{addSubScript(), document.getElementById('subescrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="subescrito" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/superscript.svg")} title="Colocar em superescrito" onClick={()=>{addSuperScript(), document.getElementById('superescrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="superescrito" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetoupper.svg")} title="Deixar texto em caixa alta" onClick={()=>{insertTag("span", "style=\"text-transform:uppercase;\"")}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetolower.svg")} title="Deixar texto em caixa baixa" onClick={()=>{insertTag("span", "style=\"text-transform:lowercase;\"")}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/capitalize.svg")} title="Deixar iniciais das palavras em caixa alta" onClick={()=>{insertTag("span", "style=\"text-transform:capitalize;\"")}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/capitular.svg")} title="Inserir capitular" onClick={()=>{insertTag("p", "className=\"p\""), this.setAttribute("style", "background-color:#cdcdcd;"), selectElem()}} id="p" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/capitular.svg")} title="Inserir capitular" onClick={()=>{insertTag("p", "className=\"p\""), document.getElementById('p').setAttribute("style", "background-color:#cdcdcd;"), selectElem()}} id="p" />
                 
-                <img src={ConfigUrlImg("rffeditor/imgEditor/insertShadowText.svg")} title="Inserir sombra no texto" onClick={()=>{insertTagsNew('rffTextShadow'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffTextShadow" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/insertNeonText.svg")} title="Inserir um neon no texto" onClick={()=>{insertTagsNew('rffNeonText'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffNeonText" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/insertNeonTextEColorWhite.svg")} title="Inserir um neon no texto e deixar o texto transparente" onClick={()=>{insertTagsNew('rffNeonTextEColorWhite'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffNeonTextEColorWhite" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/insertShadowText.svg")} title="Inserir sombra no texto" onClick={()=>{insertTagsNew('rffTextShadow'), document.getElementById('rffTextShadow').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffTextShadow" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/insertNeonText.svg")} title="Inserir um neon no texto" onClick={()=>{insertTagsNew('rffNeonText'), document.getElementById('rffNeonText').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffNeonText" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/insertNeonTextEColorWhite.svg")} title="Inserir um neon no texto e deixar o texto transparente" onClick={()=>{insertTagsNew('rffNeonTextEColorWhite'), document.getElementById('rffNeonTextEColorWhite').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffNeonTextEColorWhite" />
                 
                 
-                <img src={ConfigUrlImg("rffeditor/imgEditor/rffText3D.svg")} title="rffText3D" onClick={()=>{insertTagsNew('rffText3D'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3D" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextSimples.svg")} title="rffText3DSimples" onClick={()=>{insertTagsNew('rffText3DSimples'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3DSimples" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextExtreme.svg")} title="rffText3DExtreme" onClick={()=>{insertTagsNew('rffText3DExtreme'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3DExtreme" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextDegrade.svg")} title="rffTextDegrade" onClick={()=>{insertTagsNew('rffTextDegrade'), this.setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffTextDegrade" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/rffText3D.svg")} title="rffText3D" onClick={()=>{insertTagsNew('rffText3D'), document.getElementById('rffText3D').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3D" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextSimples.svg")} title="rffText3DSimples" onClick={()=>{insertTagsNew('rffText3DSimples'), document.getElementById('rffText3DSimples').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3DSimples" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextExtreme.svg")} title="rffText3DExtreme" onClick={()=>{insertTagsNew('rffText3DExtreme'), document.getElementById('rffText3DExtreme').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3DExtreme" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextDegrade.svg")} title="rffTextDegrade" onClick={()=>{insertTagsNew('rffTextDegrade'), document.getElementById('rffTextDegrade').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffTextDegrade" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/coroa2.svg")} title="rffEfeitoBGText" onClick={()=>{abreJanEfeitosTexto()}} />
                 
                 <select name="formatH" id="formatH">
@@ -418,7 +414,7 @@ function Editor(){
             </div>
             <div id="conteiner">
                 <div id="texto" contentEditable="true" autoFocus="" required="" autoComplete="off" spellCheck="true" className="box">
-                    <div>Digite o seu <span style={{textTransform: "uppercase"}}><font color="#99cccc">artigo</font></span> aqui...</div>
+                    <div>Digite o seu artigo aqui...</div>
                     <div><br /></div>
                     <div><br /></div>
                     <div><br /></div>

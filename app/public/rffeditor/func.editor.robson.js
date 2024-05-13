@@ -94,6 +94,7 @@ function delElement(){
     // var range = window.getSelection().getRangeAt(0).toString();
     var range = window.getSelection().getRangeAt(0);
     var selecao = window.getSelection().getRangeAt(0).startContainer;
+    var textSel = window.getSelection().toString();
     // console.log(selecao)
     var tag = selecao.parentNode;
     // if(getTags()=='div'){
@@ -110,35 +111,51 @@ function delElement(){
         }
     }
     let p = pai.outerHTML;
+    // console.log(p)
     // pai.removeChild(tag)
     var t = tag.outerHTML;
     // console.log(t)
 
     let abre = '';
     let fecha = '';
-    if(getTagName(tag.nodeName)=='p'){
-        abre = '<'+getTagName(tag.nodeName)+' class="p">';
-        fecha = '</'+getTagName(tag.nodeName)+'>';
-        // console.log('era para ter pego o class '+tag.nodeName)
-    }else{
-        abre = '<'+getTagName(tag.nodeName)+'>';
-        fecha = '</'+getTagName(tag.nodeName)+'>';
-    }
-    // console.log('--->>'+getTagName(tag.nodeName))
+    // if(getTagName(tag.nodeName)=='p'){
+    //     abre = '<'+getTagName(tag.nodeName)+' class="p">';
+    //     fecha = '</'+getTagName(tag.nodeName)+'>';
+    //     // console.log('era para ter pego o class '+tag.nodeName)
+    // }else{
+    //     abre = '<'+getTagName(tag.nodeName)+'>';
+    //     fecha = '</'+getTagName(tag.nodeName)+'>';
+    // }
+    // console.log('Nome do node que vai ser apagado:')
+    // console.log(abre)
     // t = t.replace(abre, '');
     // t = t.replace(fecha, '');
-    p = p.replace(abre, '');
-    p = p.replace(fecha, '');
-
-    abre = '<'+getTagName(pai.nodeName)+'>';
-    fecha = '</'+getTagName(pai.nodeName)+'>';
-    // t = t.replace(abre, '');
-    // t = t.replace(fecha, '');
-    p = p.replace(abre, '');
-    p = p.replace(fecha, '');
-    pai.innerHTML = p
+    // p = p.replace(abre, '');
+    // p = p.replace(fecha, '');
+    // pai.innerHTML = ''
+    var content='ss';
+    
+    // console.log(content)
     // document.execCommand('insertHTML', true, pai)
-    range.insertNode(pai);
+    if(getTagName(tag.nodeName)=='p'){
+        abre = '<'+getTagName(tag.nodeName)+' classname="p">';
+        fecha = '</'+getTagName(tag.nodeName)+'>';
+        t = t.replace(abre, '');
+        t = t.replace(fecha, '');
+        pai.innerHTML = t;
+        content = document.createTextNode(t);
+        return '';
+    }else{
+        content = document.createTextNode(textSel);
+    }
+    try{
+        window.getSelection().toString().deleteContents();
+    }catch{
+        // selecao.deleteContents();
+        // console.log('erro')
+    }
+    pai.removeChild(tag)
+    range.insertNode(content)
 }
 
 function getTagName(tag){
@@ -446,6 +463,7 @@ function italico() {
     document.execCommand("italic", window.getSelection(), null);
 }
 function negrito() {
+    console.log('negriiiiiiiiitoooooo.....')
     document.execCommand("bold");
 }
 function sublinhado() {
@@ -508,6 +526,7 @@ function refazer(){
 
 function removeFormatT(){
     document.execCommand("removeFormat", false, null);
+    delElement();
 }
 
 function addStrikeThrough(){
@@ -543,17 +562,22 @@ function tagRffTextShadow() {
 }
 
 function insertTagsNew(valor) {
+    // console.log(valor.toLowerCase()+'-------------------------')
+    // console.log(getTags())
+    // console.log(document.getElementById(valor))
     if(valor.toLowerCase() == getTags()){
         // alert(valor)
         document.getElementById(valor).setAttribute('style', 'background-color:none;');
         // selectElem();
         delElement();
-        exit;
+        return '';
     }
+    let range = window.getSelection().getRangeAt(0);
     let selection = window.getSelection().toString();
-    let wrappedselection = '<'+valor+'>' + selection + '</'+valor+'>';
-    //var img = new Image();
-    document.execCommand('insertHTML', false, wrappedselection);
+    let span = document.createElement(valor);
+    span.innerHTML = selection;
+    range.deleteContents();
+    range.insertNode(span);
 }
 
 function insertTag(valor, style) {
@@ -562,7 +586,7 @@ function insertTag(valor, style) {
         document.getElementById(valor).setAttribute('style', 'background-color:none;');
         // selectElem();
         delElement();
-        exit;
+        return '';
     }
     let selection = window.getSelection().toString();
     // console.log(selection)
@@ -2147,7 +2171,7 @@ function convertPToDiv(tag){
 let p = document.createElement('p');
 p.setAttribute('style', 'color:red;')
 p.innerHTML = 'Exemplo'
-console.log(convertPToDiv(p));
+// console.log(convertPToDiv(p));
 
 function convertTable(table){
     if(table.nodeName=='TABLE'){
