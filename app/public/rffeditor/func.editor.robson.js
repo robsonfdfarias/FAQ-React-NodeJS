@@ -623,8 +623,31 @@ function insertH(valor) {
 /////////////////////////////////////////////////////////
 
 function insertTable() {
-    window.open("rffeditor/windowInsertTable.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+    // window.open("rffeditor/windowInsertTable.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+    window.open("/admin/table/insert/", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
 }
+
+
+function insertTabWin(url){
+    var numRow = document.getElementById("numRow").value;
+    if(numRow<=0 || numRow==null || numRow==''){
+        numRow=1;
+    }
+    var numCol=document.getElementById("numCol").value;
+    if(numCol<=0 || numCol==null || numCol==''){
+        numCol=1;
+    }
+
+    top.opener.insertTableNovo(numRow, numCol, url);
+    window.close();
+}
+
+function cancel(){
+    window.close();
+}
+
+
+
 
 var styleFirstColumn = 'width: 10px !important; background-color: #cdcdcd; resize: vertical !important; overflow: auto; box-sizing: border-box;';
 
@@ -716,7 +739,8 @@ var styleFirstColumn = 'width: 10px !important; background-color: #cdcdcd; resiz
 
 
 
-function insertTableNovo(numRow, numCol) {
+function insertTableNovo(numRow, numCol, url) {
+    // console.log(url)
     let range = window.getSelection().getRangeAt(0);
     let selection = window.getSelection().toString();
     let divPai = document.createElement('div');
@@ -726,48 +750,48 @@ function insertTableNovo(numRow, numCol) {
     var table ='<div class="configTable" contenteditable="false" spellcheck="false">'
     // table+='<button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="rffeditor/imgEditor/mesclar-celula.svg" width="50" title="Opções de mesclagem"></button>';
     table+='<ul id="menuTable">';
-    table+='<li><img src="rffeditor/imgEditor/mesclar-celula.svg" height="40" title="Opções de mesclagem">';
+    table+='<li><img src="'+url+'rffeditor/imgEditor/mesclar-celula.svg" height="40" title="Opções de mesclagem">';
     table+='<ul>';
-    table+='<li><button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="rffeditor/imgEditor/mesclar-lado.svg" height="40" title="Mesclar célula a direita"></button></li>';
-    table+='<li><button id="testeSel" onclick="merge(\'column\', \'add\')"><img src="rffeditor/imgEditor/mesclar-abaixo.svg" height="40" title="Mesclar célula abaixo"></button></li>';
-    table+='<li><button id="testeSel" onclick="merge(\'row\', \'remove\')"><img src="rffeditor/imgEditor/mesclar-remover-lado.svg" height="40" title="Remove mesclagem a direita"></button></li>';
-    table+='<li><button id="testeSel" onclick="merge(\'column\', \'remove\')"><img src="rffeditor/imgEditor/mesclar-remover-abaixo.svg" height="40" title="Remover mesclagem abaixo"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'row\', \'add\')"><img src="'+url+'rffeditor/imgEditor/mesclar-lado.svg" height="40" title="Mesclar célula a direita"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'column\', \'add\')"><img src="'+url+'rffeditor/imgEditor/mesclar-abaixo.svg" height="40" title="Mesclar célula abaixo"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'row\', \'remove\')"><img src="'+url+'rffeditor/imgEditor/mesclar-remover-lado.svg" height="40" title="Remove mesclagem a direita"></button></li>';
+    table+='<li><button id="testeSel" onclick="merge(\'column\', \'remove\')"><img src="'+url+'rffeditor/imgEditor/mesclar-remover-abaixo.svg" height="40" title="Remover mesclagem abaixo"></button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><img src="rffeditor/imgEditor/configRow.svg" height="40" title="Configuração de linha">';
+    table+='<li><img src="'+url+'rffeditor/imgEditor/configRow.svg" height="40" title="Configuração de linha">';
     table+='<ul>';
-    table+='<li><button id="testeSel" onclick="insertTrAfter()"><img src="rffeditor/imgEditor/inserttableRowAfter.svg" height="40" title="Inserir linha depois"></li>';
-    table+='<li><button id="testeSel" onclick="insertTrBefore()"><img src="rffeditor/imgEditor/inserttableRowBefore.svg" height="40" title="Inserir linha antes"></li>';
-    table+='<li><button id="testeSel" onclick="delTr()"><img src="rffeditor/imgEditor/deleteTableRowAfter.svg" height="40" title="Apagar linha"></li>';
+    table+='<li><button id="testeSel" onclick="insertTrAfter()"><img src="'+url+'rffeditor/imgEditor/inserttableRowAfter.svg" height="40" title="Inserir linha depois"></li>';
+    table+='<li><button id="testeSel" onclick="insertTrBefore()"><img src="'+url+'rffeditor/imgEditor/inserttableRowBefore.svg" height="40" title="Inserir linha antes"></li>';
+    table+='<li><button id="testeSel" onclick="delTr()"><img src="'+url+'rffeditor/imgEditor/deleteTableRowAfter.svg" height="40" title="Apagar linha"></li>';
     // table+='<li><button id="testeSel" onclick="insertTrAfter()">Inserir linha depois</button></li>';
     // table+='<li><button id="testeSel" onclick="insertTrBefore()">Inserir linha antes</button></li>';
     // table+='<li><button id="testeSel" onclick="delTr()">Apagar linha</button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><img src="rffeditor/imgEditor/configColumn.svg" height="40" title="Configuração de coluna">';
+    table+='<li><img src="'+url+'rffeditor/imgEditor/configColumn.svg" height="40" title="Configuração de coluna">';
     table+='<ul>';
-    table+='<li><button id="testeSel" onclick="insertTdAfter()"><img src="rffeditor/imgEditor/inserttableColumnAfter.svg" height="40" title="Inserir coluna depois"></button></li>';
-    table+='<li><button id="testeSel" onclick="insertTdBefore()"><img src="rffeditor/imgEditor/inserttableColumnBefore.svg" height="40" title="Inserir coluna antes"></button></li>';
-    table+='<li><button id="testeSel" onclick="delTd()"><img src="rffeditor/imgEditor/deleteTableColumn.svg" height="40" title="Apagar coluna"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertTdAfter()"><img src="'+url+'rffeditor/imgEditor/inserttableColumnAfter.svg" height="40" title="Inserir coluna depois"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertTdBefore()"><img src="'+url+'rffeditor/imgEditor/inserttableColumnBefore.svg" height="40" title="Inserir coluna antes"></button></li>';
+    table+='<li><button id="testeSel" onclick="delTd()"><img src="'+url+'rffeditor/imgEditor/deleteTableColumn.svg" height="40" title="Apagar coluna"></button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><img src="rffeditor/imgEditor/configCell.svg" height="40" title="Configurar célula">';
+    table+='<li><img src="'+url+'rffeditor/imgEditor/configCell.svg" height="40" title="Configurar célula">';
     table+='<ul>';
     // table+='<li><button id="testeSel" onclick="rotateTdSel(\'sc\')"><img src="rffeditor/imgEditor/configCell-rotate-text.svg" height="40" title="Rotacionar o texto na célula"></button></li>';
     // table+='<li><button id="testeSel" onclick="getWindowBckgroundColorTDsel()"><img src="rffeditor/imgEditor/configCell-background.svg" height="40" title="Mudar a cor da célula"></button></li>';
     // table+='<li><button id="testeSel" onclick="openConfigBorderTdSel()"><img src="rffeditor/imgEditor/configCell-border.svg" height="40" title="Configurar borda da célula"></button></li>';
-    table+='<li><button id="testeSel" onclick="openConfigTdSel()"><img src="rffeditor/imgEditor/configCell-prop.svg" height="40" title="Configurar propriedade da célula"></button></li>';
+    table+='<li><button id="testeSel" onclick="openConfigTdSel()"><img src="'+url+'rffeditor/imgEditor/configCell-prop.svg" height="40" title="Configurar propriedade da célula"></button></li>';
 
-    table+='<li><button id="testeSel" onclick="insertCellRight()"><img src="rffeditor/imgEditor/configCell-insert-after.svg" height="40" title="Inserir célula depois"></button></li>';
-    table+='<li><button id="testeSel" onclick="insertCellLeft()"><img src="rffeditor/imgEditor/configCell-insert-before.svg" height="40" title="Inserir célula antes"></button></li>';
-    table+='<li><button id="testeSel" onclick="removeCell()"><img src="rffeditor/imgEditor/configCell-delete.svg" height="40" title="Apagar célula"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertCellRight()"><img src="'+url+'rffeditor/imgEditor/configCell-insert-after.svg" height="40" title="Inserir célula depois"></button></li>';
+    table+='<li><button id="testeSel" onclick="insertCellLeft()"><img src="'+url+'rffeditor/imgEditor/configCell-insert-before.svg" height="40" title="Inserir célula antes"></button></li>';
+    table+='<li><button id="testeSel" onclick="removeCell()"><img src="'+url+'rffeditor/imgEditor/configCell-delete.svg" height="40" title="Apagar célula"></button></li>';
     table+='</ul>';
     table+='</li>';
 
-    table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()"><img src="rffeditor/imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
+    table+='<li><button id="testeSel" onclick="openWindowConfigBackgroundTable()"><img src="'+url+'rffeditor/imgEditor/configTable.svg" height="40" title="Configurar tabela"></button></li>';
     table+='</ul>';
     table+='<button onclick="fecharJanTab(this)" draggable="false" droppable="false">X</button>';
     table+='</div>';
@@ -1491,7 +1515,7 @@ function openConfigTdSel(){
     if(tdSel.length>0){
         let style = tdSel[0].getAttribute('style');
         localStorage.setItem('style', style);
-        window.open('rffeditor/windowConfigBorderCell.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+        window.open('/admin/table/configCell/', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
     }else{
         alert('Nenhuma célula selecionada! Para selecionar uma célula, segure a tecla CTRL e clique em cima da célula, com isso aparecerá uma cor de seleção nela!')
     }
@@ -1583,7 +1607,7 @@ function openWindowConfigBackgroundTable(){
         //     }
         // }
         localStorage.setItem('style', table.getAttribute('style'));
-        window.open('rffeditor/windowConfigTable.php', 'janela', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,height=350,width=500,top=50,left=100,fullscreen=no');
+        window.open('/admin/table/configTable/', 'janela', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,height=350,width=500,top=50,left=100,fullscreen=no');
     }else{
         alert('Nenhuma Tabela selecionada! Clique em uma tabela para editar sua propriedade de background!')
     }

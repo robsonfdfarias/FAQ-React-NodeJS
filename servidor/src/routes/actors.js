@@ -1,5 +1,19 @@
 const {Router} = require('express');
 const querys = require('../allItems');
+const multer = require('multer');
+// const cors = require('cors');
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb(null, './upload');
+    },
+    filename: function (req, file, cb){
+        const extensaoArquivo = file.originalname.split('.')[1];
+        // const novoNome = require('crypto').randomBytes(64).toString('hex');
+        cb(null, `${file.originalname}.${extensaoArquivo}`);
+    }
+})
+const upload = multer({storage});
 
 const router = Router();
 
@@ -232,7 +246,15 @@ router.post('/getNumberNews', async (req, res) => {
     const query = await querys.getNumberNews();
     console.log('Quantidade de registros: '+query);
     return res.status(200).json({'NumReg': query});
-})
+});
+
+router.post('/upload', upload.array('file'), async (req, res) => {
+    console.log('Files received: '+req.files.length);
+    res.send({
+        upload: true,
+        files: req.files,
+    });
+});
 
 
 module.exports = router;

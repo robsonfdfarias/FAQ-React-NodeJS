@@ -15,6 +15,10 @@ import Sair from "./pages/Sair";
 import HomeAdmin from "./pages/admin/HomeAdmin";
 import NoticiaAdmin from "./pages/admin/NoticiaAdmin";
 import InsertNoticias from "./pages/admin/noticias/InsertNoticias";
+import TableInsert from "./pages/admin/rffeditor/TableInsert";
+import TableInsertConfigCell from "./pages/admin/rffeditor/TableInsertConfigCell";
+import TableInsertConfigTable from "./pages/admin/rffeditor/TableInsertConfigTable";
+import InsertImgDefault from "./pages/admin/rffeditor/InsertImgDefault";
 function App(){
   return (
   <div>
@@ -36,6 +40,10 @@ function App(){
         <Route exact path="/admin/inicio" element={<HomeAdmin />} />
         <Route exact path="/admin/noticia/:page?" element={<NoticiaAdmin />} />
         <Route exact path="/admin/noticias/insert/" element={<InsertNoticias />} />
+        <Route exact path="/admin/table/insert/" element={<TableInsert />} />
+        <Route exact path="/admin/table/configCell/" element={<TableInsertConfigCell />} />
+        <Route exact path="/admin/table/configTable/" element={<TableInsertConfigTable />} />
+        <Route exact path="/admin/table/insertImg/" element={<InsertImgDefault />} />
       </Routes>
     </BrowserRouter>
   </div>)
