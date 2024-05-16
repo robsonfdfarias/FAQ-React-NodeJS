@@ -12,34 +12,32 @@ if(localStorage.getItem('style')!=null){
     let dirText = '';
     for(let i =0; i<styleChar.length; i++){
         let attrib = styleChar[i].split(':');
-        if(attrib[0]==' background' || attrib[0]=='background'){
-            let urlG = attrib[2].split(' ');
-            console.log(urlG)
-            //Imagem url
-            let url = urlG[0].replace('url(\'', '');
-            url = url.replace('\')', '');
-            url=url.substring(url.indexOf('/imagens') + 3);
-            url='../../im'+url;
-            console.log('URL: '+url)
+        console.log(attrib[0])
+        if(attrib[0]==' background-image' || attrib[0]=='background-image'){
+            let url = styleChar[i].split('(\'');
+            url = url[1].split('\')');
+            url=url[0];
+            console.log(url)
             let divIm = document.getElementById('viewImage');
             divIm.innerHTML = '<img src="'+url+'" width="50" height="50">';
+        }else if(attrib[0]==' background-position' || attrib[0]=='background-position'){
+            let position = attrib[1].split(' ');
             //Alinhamento LEFT
-            let leftAl = urlG[1].split('+');
-            leftAl=leftAl[1].replace('px', '');
-            console.log('Left: '+leftAl)
+            let leftAl=position[2].replace('px', '');
+            console.log('Left: '+leftAl);
             document.getElementById('marginLeft').value = leftAl;
             //Alinhamento TOP
-            let topAl = urlG[2].split('+');
-            topAl=topAl[1].replace('px', '');
+            let topAl=position[4].replace('px', '');
             console.log('Topo: '+topAl)
             document.getElementById('marginTop').value = topAl;
-            //Imagem SIZE
-            let sizeImg = urlG[4].replace('%', '');
+        }else if(attrib[0]==' background-size' || attrib[0]=='background-size'){
+            let sizeImg = attrib[1].replace('%', '');
+            sizeImg = sizeImg.replace(' ', '');
             console.log('SIze: '+sizeImg)
             document.getElementById('size').value = sizeImg;
-            //REPEAT image
-            let repeat = urlG[5];
-            console.log('Repeat: '+repeat);
+        }else if(attrib[0]==' background-repeat' || attrib[0]=='background-repeat'){
+            let repeat = attrib[1].replace(' ', '');
+            console.log('repeat: '+repeat)
             let nomeRep = '';
             for(let i=0; i<repeatChar.length; i++){
                 if(repeatChar[i][0]==repeat){
@@ -49,8 +47,8 @@ if(localStorage.getItem('style')!=null){
             let option = new Option('-> Atual - '+nomeRep, repeat);
             option.setAttribute('selected', 'selected');
             document.getElementById('repeatImage').add(option);
-            //ORIGIN image
-            let origin = urlG[6];
+        }else if(attrib[0]==' background-origin' || attrib[0]=='background-origin'){
+            let origin = attrib[1].replace(' ', '');
             console.log('Origin: '+origin);
             let nomeOrig = '';
             for(let i=0; i<originChar.length; i++){
@@ -61,40 +59,11 @@ if(localStorage.getItem('style')!=null){
             let option2 = new Option('-> Atual - '+nomeOrig, origin);
             option2.setAttribute('selected', 'selected');
             document.getElementById('originImage').add(option2);
-            // document.getElementById('expessura').value = exp;
-            // let option = new Option(borderAtt[2]+' -> Atual', borderAtt[2]);
-            // option.setAttribute('selected', 'selected');
-            // document.getElementById('typeBorder').add(option);
-
-            // let rr = borderAtt[3].split('(')[1];
-            // rr= rr.replace(',', '');
-            // let gg = borderAtt[4].replace(',', '');
-            // let bb = borderAtt[5].replace(')', '');
-            // document.getElementById('colorBorder').value = rgbToHex(parseInt(rr), parseInt(gg), parseInt(bb));
-            //
+        }else if(attrib[0]==' opacity' || attrib[0]=='opacity'){
+            let opacity = attrib[1].replace(' ', '');
+            opacity = opacity.replace('px', '');
+            document.getElementById('opacity').value = opacity;
         }
-        // if(attrib[0]==' padding' || attrib[0]=='padding'){
-        //     let val = attrib[1].replace(' ', '');
-        //     val = val.replace('px', '');
-        //     // console.log(val)
-        //     document.getElementById('paddingBorder').value = val;
-        // }
-        // if(attrib[0]==' background-color' || attrib[0]=='background-color'){
-        //     let ops = attrib[1].split(' ');
-        //     let rr = '';
-        //     rr = ops[1].replace('rgb(', '');
-        //     rr = rr.replace(',', '');
-        //     let gg = ops[2].replace(',', '');
-        //     let bb = ops[3].replace(')', '');
-        //     console.log(rr+' - '+gg+' - '+bb)
-        //     document.getElementById('colorbackg').value = rgbToHex(parseInt(rr), parseInt(gg), parseInt(bb));
-        // }
-        // if(attrib[0]==' writing-mode' || attrib[0]=='writing-mode'){
-        //     dirText+= attrib[1].replace(' ', '');
-        // }
-        // if(attrib[0]==' text-orientation' || attrib[0]=='text-orientation'){
-        //     dirText+= attrib[1].replace(' ', '');
-        // }
     }
     if(dirText!=''){
         let option = new Option('Opção atual', dirText);
@@ -129,6 +98,16 @@ document.getElementById('marginTop').addEventListener('input', function(){
     }
     document.getElementById('valueMarginTop').innerHTML = '<strong>'+valor+'</strong>';
 })
+
+document.getElementById('opacity').addEventListener('input', function(){
+    let valor = document.getElementById('opacity').value;
+    // if(valor == 0 && valor == '0'){
+    //     valor = '0px';
+    // }else{
+    //     valor +=' px';
+    // }
+    document.getElementById('valueOpacity').innerHTML = '<strong>'+valor+'</strong>';
+})
 function insertConfig(){
 
     let divImg = document.getElementById('viewImage');
@@ -143,13 +122,16 @@ function insertConfig(){
         let repeatImage = document.getElementById('repeatImage').value;
         let originImage = document.getElementById('originImage').value;
         let marginLeft = document.getElementById('marginLeft').value;
-        marginLeft='left+'+marginLeft+'px';
+        marginLeft='left '+marginLeft+'px';
         let marginTop = document.getElementById('marginTop').value;
-        marginTop='top+'+marginTop+'px';
+        marginTop='top '+marginTop+'px';
+        let opacity = document.getElementById('opacity').value;
+        opacity=opacity/10;
+        opacity='opacity '+opacity+'px';
         if(size==0 && size=='0'){
             size = 'contain';
         }
-        let config = 'url(\''+img.src+'\') '+marginLeft+' '+marginTop+' / '+size+' '+repeatImage+' '+originImage;
+        let config = 'url(\''+img.src+'\')@-@'+marginLeft+' '+marginTop+'@-@'+size+'@-@'+repeatImage+'@-@'+originImage+'@-@'+opacity;
         console.log(config)
         top.opener.configBackgroundTable(config);
         localStorage.setItem('style', null);

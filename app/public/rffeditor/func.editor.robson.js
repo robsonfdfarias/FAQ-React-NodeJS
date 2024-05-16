@@ -1577,18 +1577,36 @@ function configBorderTable(border){
 
 function configBackgroundTable(obj){
     let table = verifyGetNode('TABLE');
+    console.log(obj)
     if(table!=null){
         if(obj=='limpar'){
             table.style.background = null;
         }else{
-            table.style.background = obj;
-            let styleBack = table.getAttribute('style').replace('(\"', '(\'');
-            styleBack = styleBack.replace('\")', '\')');
-            styleBack = styleBack.replace('left ', 'left+');
-            styleBack = styleBack.replace('top ', 'top+');
-            // console.log(table.getAttribute('style'));
-            // console.log(styleBack);
-            table.setAttribute('style', styleBack);
+            // table.style.background = obj;
+            // let styleBack = table.getAttribute('style').replace('(\"', '(\'');
+            // styleBack = styleBack.replace('\")', '\')');
+            // styleBack = styleBack.replace('left ', 'left+');
+            // styleBack = styleBack.replace('top ', 'top+');
+            // // console.log(table.getAttribute('style'));
+            // // console.log(styleBack);
+            // table.setAttribute('style', styleBack);
+
+            // let configBk = obj.replace('@-@');
+            // table.style.backgroundImage = configBk[0];
+            // table.style.backgroundPosition = configBk[1];
+            // table.style.backgroundSize = configBk[2];
+            // table.style.backgroundRepeat = configBk[3];
+            // table.style.backgroundOrigin = configBk[4];
+
+            let configBk = obj.split('@-@');
+            let backgroundImage = 'background-image: '+configBk[0];
+            let backgroundPosition = 'background-position: '+configBk[1];
+            let backgroundSize = 'background-size: '+configBk[2];
+            let backgroundRepeat = 'background-repeat: '+configBk[3];
+            let backgroundOrigin = 'background-origin: '+configBk[4];
+            let opacity = 'opacity: '+configBk[5];
+            let style = backgroundImage+'; '+backgroundPosition+'; '+backgroundSize+'; '+backgroundRepeat+'; '+backgroundOrigin+'; '+opacity;
+            table.setAttribute('style', style);
         }
     }
 }

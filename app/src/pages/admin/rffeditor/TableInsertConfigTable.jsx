@@ -44,7 +44,8 @@ function TableInsertConfigTable(){
         <div>
             <h2>Configuração da célula</h2>
             <div>
-                <button onClick={()=>window.open('windowInsertImageBackgroundTable.php', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Selecionar Imagem</button><div id="viewImage"></div>
+                <button onClick={()=>window.open('/admin/table/insertImg/', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Selecionar Imagem</button><div id="viewImage"></div>
+                <div id="viewImage"></div>
             </div>
             <div>Tamanho da imagem: 
             <input type="range" list="tickmarks" min="0" max="100" step="1" defaultValue={"1"} id="size" name="size" />
@@ -144,6 +145,34 @@ function TableInsertConfigTable(){
                 <option value="content-box">Começar do limite da janela</option>
             </select>
             <br /><br />
+            <div>Transparência da imagem: 
+            <input type="range" list="listOpacity" min="0" max="100" step="1" defaultValue={"1"} id="opacity" name="opacity" />
+            <datalist id="listOpacity">
+                <option value="0" label="0%">
+                </option><option value="5">
+                </option><option value="10">
+                </option><option value="15">
+                </option><option value="20">
+                </option><option value="25">
+                </option><option value="30">
+                </option><option value="35">
+                </option><option value="40">
+                </option><option value="45">
+                </option><option value="50" label="50%">
+                </option><option value="55">
+                </option><option value="60">
+                </option><option value="65">
+                </option><option value="70">
+                </option><option value="75">
+                </option><option value="80">
+                </option><option value="85">
+                </option><option value="90">
+                </option><option value="95">
+                </option><option value="100" label="100%">
+                </option>
+            </datalist>
+            <span id="valueOpacity"></span>
+            </div><br />
             <div><button id="aplicar" onClick={()=>insertConfig()}>Aplicar</button>
             <button id="removeCor" onClick={()=>removeConfig()}>Remover Configurações</button></div><br />
             <div id="scripts"></div>

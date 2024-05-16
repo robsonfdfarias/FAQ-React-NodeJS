@@ -2,15 +2,21 @@ const {Router} = require('express');
 const querys = require('../allItems');
 const multer = require('multer');
 // const cors = require('cors');
+const fs = require('fs')
+
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
-        cb(null, './upload');
+        cb(null, './public/upload');
     },
     filename: function (req, file, cb){
         const extensaoArquivo = file.originalname.split('.')[1];
+        // const nomeArquivo = file.originalname.split('.')[0];
+        const data = Date.now();
+        console.log(data);
         // const novoNome = require('crypto').randomBytes(64).toString('hex');
-        cb(null, `${file.originalname}.${extensaoArquivo}`);
+        cb(null, `${data}.${extensaoArquivo}`);
     }
 })
 const upload = multer({storage});
@@ -255,6 +261,13 @@ router.post('/upload', upload.array('file'), async (req, res) => {
         files: req.files,
     });
 });
+
+router.post('/getImages', (req, res) => {
+    const filenames = fs.readdirSync('./public/upload')
+    console.log('acessando as imagens')
+    console.log(filenames)
+    res.status(200).json(filenames);
+})
 
 
 module.exports = router;

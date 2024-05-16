@@ -1,6 +1,8 @@
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { ConfigUrlImg } from "../../ConfigUrlImg";
 
 function InsertImgDefault(){
+    const [image, setImage] = useState('');
     var conta=0;
     const filesElement = useRef(null);
     const sendFile = async () => {
@@ -18,19 +20,55 @@ function InsertImgDefault(){
         .then((response) => response.json())
         .then((json)=>{
             console.log(json);
+            var img = "http://localhost:3003/upload/";
+            img+=json.files[0].filename;
+            console.log(img);
             if(conta<1){
-                //
+                setImage(img);
+                conta++;
             }
         })
         .catch((erro)=>{
             console.log('Ocorreu um erro: '+erro);
         });
     }
+    const configImg = (obj, imgURL)=>{
+        let img = document.createElement('img');
+        img.src = imgURL;
+        var att = 'width';
+        if(img.getAttribute('width')<img.getAttribute('height')){
+            att='height'
+        }
+        obj.setAttribute(att, '200');
+    }
+    const geraImg = (imgURL)=>{
+        return (
+            <div>
+                {image!=''?
+                    <img src={imgURL} alt="imagem escolhida" id="imgSel" onLoad={()=>configImg(document.getElementById('imgSel'), imgURL)} />    
+                :conta=conta}
+            </div>
+        )
+    }
+
+    useEffect(()=>{
+        const scriptInterno = document.createElement('script');
+        scriptInterno.src = ConfigUrlImg("rffeditor/windowTableConfigInserImg.js");
+        document.getElementById('scripts').appendChild(scriptInterno);
+    }, []);
     return (
-        <div style={{marginTop: '100px'}}>
-            <input type="file" name="imagem" id="imagem" multiple ref={filesElement} />
-            <button onClick={sendFile}>Enviar imagem</button>
-            <img src="http://localhost:3003/upload/ae5397602b0987e2e3af78b8166eb6597410d6d0726288283bae5e177ee460cba27924c4fd047992409ccc7889b3c1b5ed7b1c77fa1d0b334979da64f111d576.png" alt="" />
+        <div style={{width: '100vw', height: '100vh', display: 'flex'}}>
+            <div style={{margin: 'auto'}}>
+                <input type="file" name="imagem" id="imagem" multiple ref={filesElement} />
+                <button onClick={sendFile}>Enviar imagem</button>
+                <br />
+                {geraImg(image)}
+                <br />
+                <button onClick={()=>insert(document.getElementById('imgSel'))}>Inserir imagem</button>
+                <br />
+                <button onClick={()=>window.open('/admin/table/img/', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Ver pasta</button>
+            </div>
+            <div id="scripts"></div>
         </div>
     )
 }

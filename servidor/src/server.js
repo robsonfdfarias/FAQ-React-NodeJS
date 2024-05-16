@@ -3,6 +3,7 @@ const allItems = require('./allItems');
 const cors = require('cors');
 const actors = require('./routes/actors');
 
+
 var allowlist = ['http://localhost', 'http://localhost:5173/', 'http://127.0.0.1', 'http://127.0.0.1:5173/'];
 var corsOptionsDelegate = function (req, callback) {
     var corsOptions;
@@ -22,6 +23,9 @@ var corsOptionsDelegate = function (req, callback) {
 
 
 const app = express();
+
+//para permitir acesso a pasta de imagens
+app.use(express.static('public'));
 
 app.use(express.json());
 
