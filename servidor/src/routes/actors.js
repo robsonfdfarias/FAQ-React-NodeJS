@@ -3,12 +3,16 @@ const querys = require('../allItems');
 const multer = require('multer');
 // const cors = require('cors');
 const fs = require('fs')
+const { mkdir } = require('node:fs/promises');
 
 
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb){
-        cb(null, './public/upload');
+    destination: async function (req, file, cb){
+        const dt = new Date();
+        const pasta = '/'+dt.getFullYear()+'/'+dt.getMonth()+'/'+dt.getDay();
+        await mkdir('./public/upload'+pasta, { recursive: true });
+        cb(null, './public/upload'+pasta);
     },
     filename: function (req, file, cb){
         const extensaoArquivo = file.originalname.split('.')[1];
@@ -263,7 +267,15 @@ router.post('/upload', upload.array('file'), async (req, res) => {
 });
 
 router.post('/getImages', (req, res) => {
-    const filenames = fs.readdirSync('./public/upload')
+    var { pasta } = req.body;
+    console.log('A pasta escolhida foi: '+pasta)
+    // const filenames = fs.readdirSync('./public/upload')
+    if(pasta!=undefined && pasta!=null){
+        pasta = './public/upload/'+pasta;
+    }else{
+        pasta = './public/upload';
+    }
+    const filenames = fs.readdirSync(pasta)
     console.log('acessando as imagens')
     console.log(filenames)
     res.status(200).json(filenames);

@@ -20,8 +20,10 @@ function InsertImgDefault(){
         .then((response) => response.json())
         .then((json)=>{
             console.log(json);
-            var img = "http://localhost:3003/upload/";
-            img+=json.files[0].filename;
+            var img = "http://localhost:3003/";
+            img+=json.files[0].path;
+            img = img.replace('public/', '')
+            img = img.replace(',', '')
             console.log(img);
             if(conta<1){
                 setImage(img);
@@ -46,7 +48,7 @@ function InsertImgDefault(){
             <div>
                 {image!=''?
                     <img src={imgURL} alt="imagem escolhida" id="imgSel" onLoad={()=>configImg(document.getElementById('imgSel'), imgURL)} />    
-                :conta=conta}
+                :console.log('')}
             </div>
         )
     }
@@ -62,7 +64,7 @@ function InsertImgDefault(){
                 <input type="file" name="imagem" id="imagem" multiple ref={filesElement} />
                 <button onClick={sendFile}>Enviar imagem</button>
                 <br />
-                {geraImg(image)}
+                <div id="porcento">{geraImg(image)}</div>
                 <br />
                 <button onClick={()=>insert(document.getElementById('imgSel'))}>Inserir imagem</button>
                 <br />
