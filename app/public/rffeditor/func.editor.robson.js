@@ -426,9 +426,9 @@ function openWindowLink(){
         // console.log(tag.getAttribute('target'))
         localStorage.setItem('link', tag.getAttribute('href'))
         localStorage.setItem('target', tag.getAttribute('target'))
-        window.open('rffeditor/windowEditLink.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+        window.open('/admin/link/', 'janela', 'height=400, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
     }else{
-        window.open("rffeditor/windowInsertLink.php", 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+        window.open("/admin/link/", '_blank', 'height=400, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
     }
 }
 
@@ -444,6 +444,8 @@ function link(link, target) {
 }
 function unlink() {
     document.execCommand("unlink", false, null);
+    localStorage.removeItem('link')
+    localStorage.removeItem('target')
     selectElem();
 }
 function justificar() {
@@ -1645,7 +1647,7 @@ function insertVideoOld() {
 }
 
 function openWindowInsertVideo(){
-    window.open("rffeditor/windowInsertVideo.php");
+    window.open("/admin/video/", '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 // function insertVideo(codVideo, si, width, height) {

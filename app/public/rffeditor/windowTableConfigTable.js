@@ -126,8 +126,7 @@ function insertConfig(){
         let marginTop = document.getElementById('marginTop').value;
         marginTop='top '+marginTop+'px';
         let opacity = document.getElementById('opacity').value;
-        opacity=opacity/10;
-        opacity='opacity '+opacity+'px';
+        opacity=opacity/100;
         if(size==0 && size=='0'){
             size = 'contain';
         }

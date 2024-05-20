@@ -44,7 +44,7 @@ function TableInsertConfigTable(){
         <div>
             <h2>Configuração da célula</h2>
             <div>
-                <button onClick={()=>window.open('/admin/table/insertImg/', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Selecionar Imagem</button><div id="viewImage"></div>
+                <button onClick={()=>window.open('/admin/insertImg/', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Selecionar Imagem</button><div id="viewImage"></div>
                 <div id="viewImage"></div>
             </div>
             <div>Tamanho da imagem: 

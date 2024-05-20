@@ -20,6 +20,8 @@ import TableInsertConfigCell from "./pages/admin/rffeditor/TableInsertConfigCell
 import TableInsertConfigTable from "./pages/admin/rffeditor/TableInsertConfigTable";
 import InsertImgDefault from "./pages/admin/rffeditor/InsertImgDefault";
 import ImageList from "./pages/admin/rffeditor/ImageList";
+import InsertVideo from "./pages/admin/rffeditor/InsertVideo";
+import InsertLink from "./pages/admin/rffeditor/InsertLink";
 function App(){
   return (
   <div>
@@ -44,9 +46,12 @@ function App(){
         <Route exact path="/admin/table/insert/" element={<TableInsert />} />
         <Route exact path="/admin/table/configCell/" element={<TableInsertConfigCell />} />
         <Route exact path="/admin/table/configTable/" element={<TableInsertConfigTable />} />
-        <Route exact path="/admin/table/insertImg/" element={<InsertImgDefault />} />
-        <Route exact path="/admin/table/insertImg/" element={<InsertImgDefault />} />
-        <Route exact path="/admin/table/img/" element={<ImageList />} />
+        {/* <Route exact path="/admin/table/insertImg/" element={<InsertImgDefault />} /> */}
+        <Route exact path="/admin/insertImg/" element={<InsertImgDefault />} />
+        {/* <Route exact path="/admin/table/img/" element={<ImageList />} /> */}
+        <Route exact path="/admin/img/" element={<ImageList />} />
+        <Route exact path="/admin/video/" element={<InsertVideo />} />
+        <Route exact path="/admin/link/" element={<InsertLink />} />
       </Routes>
     </BrowserRouter>
   </div>)

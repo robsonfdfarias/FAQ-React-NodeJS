@@ -90,6 +90,7 @@ console.log(i)
 function insertImg() {
   let range = window.getSelection().getRangeAt(0);
   var img = document.getElementById("previewImage");
+  console.log(img)
   srcImg = img.getAttribute("src");
   width = img.getAttribute("width");
   height = img.getAttribute("height");
@@ -248,7 +249,7 @@ function onDragStart(event, elem) {
 }
 
 function openWindowInsertImage(){
-  window.open("rffeditor/windowInsertImage.php");
+  window.open("/admin/insertImg/", '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no');
 }
 
 function openWindowEditImage(img){

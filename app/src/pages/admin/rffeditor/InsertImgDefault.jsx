@@ -68,7 +68,7 @@ function InsertImgDefault(){
                 <br />
                 <button onClick={()=>insert(document.getElementById('imgSel'))}>Inserir imagem</button>
                 <br />
-                <button onClick={()=>window.open('/admin/table/img/', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Ver pasta</button>
+                <button onClick={()=>window.open('/admin/img/', '_blank', 'height=600, width=800, top=50, left=100, scrollbar=no, fullscreen=no')}>Ver pasta</button>
             </div>
             <div id="scripts"></div>
         </div>

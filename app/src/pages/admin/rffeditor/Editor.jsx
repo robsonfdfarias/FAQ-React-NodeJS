@@ -55,164 +55,24 @@ function Editor(){
         // }
         
     }, []);
-    // function insertTagsNew(valor) {
-    //     // alert(valor)
-    //     // console.log(valor.toLowerCase())
-    //     // console.log(getTags())
-    //     if(valor.toLowerCase() == getTags()){
-    //         alert(valor)
-    //         console.log(document.getElementById(valor))
-    //         document.getElementById(valor).setAttribute('style', 'background-color:none;');
-    //         // selectElem();
-    //         delElement();
-    //         exit;
-    //     }
-    //     let selection = window.getSelection().toString();
-    //     console.log(selection)
-    //     let wrappedselection = '<'+valor+'>' + selection + '</'+valor+'>';
-    //     //var img = new Image();
-    //     document.execCommand('insertHTML', false, wrappedselection);
-    // }
-    // function getTags(){
-    //     var selecao = window.getSelection().getRangeAt(0).startContainer;
-    //     // console.log(selecao)
-    //     var tag = selecao.parentNode;
-    //     // console.log('111111111111111111111111-------------'+tag.nodeName)
-    //     // console.log(getTagName(tag.nodeName))
-    //     return getTagName(tag.nodeName)
-    // }
-    // function getTagName(tag){
-    //     if(tag == 'DIV'){
-    //         return 'div';
-    //     }else if(tag=='B'){
-    //         return 'b';
-    //     }else if(tag=='RFFEFEITOBGTEXT1'){
-    //         return 'rffefeitobgtext1';
-    //     }else if(tag=='RFFEFEITOBGTEXT2'){
-    //         return 'rffefeitobgtext2';
-    //     }else if(tag=='RFFEFEITOBGTEXT3'){
-    //         return 'rffefeitobgtext3';
-    //     }else if(tag=='RFFEFEITOBGTEXT4'){
-    //         return 'rffefeitobgtext4';
-    //     }else if(tag=='RFFEFEITOBGTEXT5'){
-    //         return 'rffefeitobgtext5';
-    //     }else if(tag=='RFFEFEITOBGTEXT6'){
-    //         return 'rffefeitobgtext6';
-    //     }else if(tag=='RFFEFEITOBGTEXT7'){
-    //         return 'rffefeitobgtext7';
-    //     }else if(tag=='RFFEFEITOBGTEXT8'){
-    //         return 'rffefeitobgtext8';
-    //     }else if(tag=='RFFEFEITOBGTEXT9'){
-    //         return 'rffefeitobgtext9';
-    //     }else if(tag=='RFFEFEITOBGTEXT10'){
-    //         return 'rffefeitobgtext10';
-    //     }else if(tag=='RFFEFEITOBGTEXT11'){
-    //         return 'rffefeitobgtext11';
-    //     }else if(tag=='RFFEFEITOBGTEXT12'){
-    //         return 'rffefeitobgtext12';
-    //     }else if(tag=='RFFEFEITOBGTEXT13'){
-    //         return 'rffefeitobgtext13';
-    //     }else if(tag=='RFFEFEITOBGTEXT14'){
-    //         return 'rffefeitobgtext14';
-    //     }else if(tag=='RFFEFEITOBGTEXT15'){
-    //         return 'rffefeitobgtext15';
-    //     }else if(tag=='RFFEFEITOBGTEXT16'){
-    //         return 'rffefeitobgtext16';
-    //     }else if(tag=='RFFEFEITOBGTEXT17'){
-    //         return 'rffefeitobgtext17';
-    //     }else if(tag=='RFFEFEITOBGTEXT18'){
-    //         return 'rffefeitobgtext18';
-    //     }else if(tag=='RFFEFEITOBGTEXT19'){
-    //         return 'rffefeitobgtext19';
-    //     }else if(tag=='RFFEFEITOBGTEXT20'){
-    //         return 'rffefeitobgtext20';
-    //     }else if(tag=='RFFEFEITOBGTEXT21'){
-    //         return 'rffefeitobgtext21';
-    //     }else if(tag=='RFFEFEITOBGTEXT'){
-    //         return 'rffefeitobgtext';
-    //     }else if(tag=='RFFTEXTSHADOW'){
-    //         return 'rfftextshadow';
-    //     }else if(tag=='RFFNEONTEXT'){
-    //         return 'rffneontext';
-    //     }else if(tag=='RFFNEONTEXTECOLORWHITE'){
-    //         return 'rffneontextecolorwhite';
-    //     }else if(tag=='RFFTEXT3D'){
-    //         return 'rfftext3d';
-    //     }else if(tag=='RFFTEXT3DSIMPLES'){
-    //         return 'rfftext3dsimples';
-    //     }else if(tag=='RFFTEXT3DEXTREME'){
-    //         return 'rfftext3dextreme';
-    //     }else if(tag=='RFFTEXTDEGRADE'){
-    //         return 'rfftextdegrade';
-    //     }else if(tag=='CITE'){
-    //         return 'cite';
-    //     }else if(tag=='A'){
-    //         return 'a';
-    //     }else if(tag=='P'){
-    //         return 'p';
-    //     }else if(tag=='H1'){
-    //         return 'h1';
-    //     }else if(tag=='H2'){
-    //         return 'h2';
-    //     }else if(tag=='H3'){
-    //         return 'h3';
-    //     }else if(tag=='H4'){
-    //         return 'h4';
-    //     }else if(tag=='H5'){
-    //         return 'h5';
-    //     }
-    // }
-    // function delElement(){
-    //     // console.log('////////////////////////////////////////////////////////////')
-    //     // var range = window.getSelection().getRangeAt(0).toString();
-    //     var range = window.getSelection().getRangeAt(0);
-    //     var selecao = window.getSelection().getRangeAt(0).startContainer;
-    //     // console.log(selecao)
-    //     var tag = selecao.parentNode;
-    //     // if(getTags()=='div'){
-    //     //     return;
-    //     // }
-    //     // console.log(tag);
-    //     // console.log(tag.nodeName);
-    //     let pai = tag.parentNode;
-    //     if(pai.nodeName=='DIV'){
-    //         // console.log(pai.nodeName)
-    //         // console.log(pai.getAttribute('id'))
-    //         if(pai.getAttribute('id')=='texto' && pai.getAttribute('id')!=null){
-    //             return;
-    //         }
-    //     }
-    //     let p = pai.outerHTML;
-    //     // pai.removeChild(tag)
-    //     var t = tag.outerHTML;
-    //     // console.log(t)
-    
-    //     let abre = '';
-    //     let fecha = '';
-    //     if(getTagName(tag.nodeName)=='p'){
-    //         abre = '<'+getTagName(tag.nodeName)+' class="p">';
-    //         fecha = '</'+getTagName(tag.nodeName)+'>';
-    //         // console.log('era para ter pego o class '+tag.nodeName)
-    //     }else{
-    //         abre = '<'+getTagName(tag.nodeName)+'>';
-    //         fecha = '</'+getTagName(tag.nodeName)+'>';
-    //     }
-    //     // console.log('--->>'+getTagName(tag.nodeName))
-    //     // t = t.replace(abre, '');
-    //     // t = t.replace(fecha, '');
-    //     p = p.replace(abre, '');
-    //     p = p.replace(fecha, '');
-    
-    //     abre = '<'+getTagName(pai.nodeName)+'>';
-    //     fecha = '</'+getTagName(pai.nodeName)+'>';
-    //     // t = t.replace(abre, '');
-    //     // t = t.replace(fecha, '');
-    //     p = p.replace(abre, '');
-    //     p = p.replace(fecha, '');
-    //     pai.innerHTML = p
-    //     // document.execCommand('insertHTML', true, pai)
-    //     range.insertNode(pai);
-    // }
+
+    const styles = {
+        esquerda: {
+            backgroundImage: 'url('+ConfigUrlImg('rffeditor/imgEditor/alignMedia-float-left.svg')+')'
+        },
+        direita: {
+            backgroundImage: 'url('+ConfigUrlImg('rffeditor/imgEditor/alignMedia-float-right.svg')+')'
+        },
+        breakTextLeft: {
+            backgroundImage: 'url('+ConfigUrlImg('rffeditor/imgEditor/alignMedia-breakText-left.svg')+')'
+        },
+        breakTextCenter: {
+            backgroundImage: 'url('+ConfigUrlImg('rffeditor/imgEditor/alignMedia-breakText-center.svg')+')'
+        },
+        breakTextRight: {
+            backgroundImage: 'url('+ConfigUrlImg('rffeditor/imgEditor/alignMedia-breakText-right.svg')+')'
+        },
+    }
     
     return (
         <div>
@@ -240,27 +100,27 @@ function Editor(){
                 <ul className="payment-methods" onMouseDown={()=>removeDrag()}>
                     <li className="payment-method esquerda">
                         <input name="payment_methods" type="radio" id="esquerda" />
-                        <label htmlFor="esquerda">esquerda</label>
+                        <label htmlFor="esquerda" style={styles.esquerda}>esquerda</label>
                     </li>
             
                     <li className="payment-method direita">
                         <input name="payment_methods" type="radio" id="direita" />
-                        <label htmlFor="direita">direita</label>
+                        <label htmlFor="direita" style={styles.direita}>direita</label>
                     </li>
             
                     <li className="payment-method breakTextLeft">
                         <input name="payment_methods" type="radio" id="breakTextLeft" />
-                        <label htmlFor="breakTextLeft">solto</label>
+                        <label htmlFor="breakTextLeft" style={styles.breakTextLeft}>solto</label>
                     </li>
             
                     <li className="payment-method breakTextCenter">
                         <input name="payment_methods" type="radio" id="breakTextCenter" />
-                        <label htmlFor="breakTextCenter">breakTextCenter</label>
+                        <label htmlFor="breakTextCenter" style={styles.breakTextCenter}>breakTextCenter</label>
                     </li>
             
                     <li className="payment-method breakTextRight">
                         <input name="payment_methods" type="radio" id="breakTextRight" />
-                        <label htmlFor="breakTextRight">breakTextRight</label>
+                        <label htmlFor="breakTextRight" style={styles.breakTextRight}>breakTextRight</label>
                     </li>
                 </ul><br />
                 <span id="tipoObj" style={{display: "none"}}></span>
@@ -393,7 +253,7 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/undo.svg")} title="Desfazer" onClick={()=>{desfazer()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/insertvideo.svg")} title="Inserir Vídeo" onClick={()=>{openWindowInsertVideo()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/graphic.svg")} title="Inserir Imagem" onClick={()=>{openWindowInsertImage()}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/editImage.svg")} title="Acrescentar a função de editar as imagens" onClick={()=>{funcBtImg()}} />
+                {/* <img src={ConfigUrlImg("rffeditor/imgEditor/editImage.svg")} title="Acrescentar a função de editar as imagens" onClick={()=>{funcBtImg()}} /> */}
                 <img src={ConfigUrlImg("rffeditor/imgEditor/inserttable.svg")} title="Inserir tabela" onClick={()=>{insertTable()}} />
                 
             
@@ -424,6 +284,7 @@ function Editor(){
                         
                     <div id="preview"></div>
                     <div id="porcento"></div>
+                    {/* <div id="viewImage"></div> */}
                 <div id="scripts"></div>
             
         </div>

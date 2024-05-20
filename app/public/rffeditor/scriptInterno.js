@@ -52,16 +52,17 @@ function editVideo(ob, event, tipoObj){
     // console.log(paipai.getAttribute('style'))
     let valores = paipai.getAttribute('style');
     valores = valores.split(';');
+    // console.log(valores)
     let l='';
     let a='';
     // console.log('------------'+valores)
     for(let i=0; i<valores.length;i++){
         let item = valores[i].split(':');
-        // console.log(item)
+        console.log(item)
         if(item[0].includes("width")){
-            l=item[1].replace(' ', '').replace('px', '');
+            l=item[1].replace(' ', '').replace('px', '').replace(' !important', '');
         }else if(item[0].includes("height")){
-            a=item[1].replace(' ', '').replace('px', '');
+            a=item[1].replace(' ', '').replace('px', '').replace(' !important', '');
         }
         if(item[0].includes("float")){
             if(item[1].includes('left')){
@@ -153,11 +154,18 @@ function salveUpdateIframe(){
         margin='0 0 0 auto';
         order=1;
     }
+    // nodePai.style.width=larg+' !important';
+    // nodePai.style.height=alt+' !important';
+    nodePai.setAttribute('style', 'width: '+larg+' !important; height: '+alt+' !important;');
     nodePai.style.margin=margin;
     nodePai.style.order=order;
-    nodePai.style.width=larg;
-    nodePai.style.height=alt;
     nodePai.style.float=direcao;
+
+    // nodePai.style.margin=margin;
+    // nodePai.style.order=order;
+    // nodePai.style.width=larg+' !important';
+    // nodePai.style.height=alt+' !important';
+    // nodePai.style.float=direcao;
     nodePai.setAttribute('alt', resourceAlt.value);
     nodePai.setAttribute('title', resourceTitle.value);
     document.getElementById('editVideo').setAttribute('style', 'display:none;')
