@@ -282,4 +282,12 @@ router.post('/getImages', (req, res) => {
 })
 
 
+const emotions = require('../getEmotions');
+router.get('/getEmotions', (req, res) => {
+    const filenames = emotions.getEmotions();
+    console.log('acessando as emotion')
+    res.status(200).json(filenames);
+})
+
+
 module.exports = router;

@@ -282,12 +282,12 @@ input[type="text"]{
 
 
 #emotions {
-    width: 100%;
+    /* width: 100%; */
     position: absolute;
-    margin: auto;
+    /* margin: auto; */
     background-color: white;
     padding: 20px;
-    height: 70%;
+    height: 100%;
     /* overflow-y: auto; */
     display: none;
     flex-direction: column;

@@ -22,6 +22,7 @@ import InsertImgDefault from "./pages/admin/rffeditor/InsertImgDefault";
 import ImageList from "./pages/admin/rffeditor/ImageList";
 import InsertVideo from "./pages/admin/rffeditor/InsertVideo";
 import InsertLink from "./pages/admin/rffeditor/InsertLink";
+import ColorFont from "./pages/admin/rffeditor/ColorFont";
 function App(){
   return (
   <div>
@@ -52,6 +53,7 @@ function App(){
         <Route exact path="/admin/img/" element={<ImageList />} />
         <Route exact path="/admin/video/" element={<InsertVideo />} />
         <Route exact path="/admin/link/" element={<InsertLink />} />
+        <Route exact path="/admin/color/" element={<ColorFont />} />
       </Routes>
     </BrowserRouter>
   </div>)
