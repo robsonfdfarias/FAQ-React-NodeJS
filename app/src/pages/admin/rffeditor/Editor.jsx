@@ -42,6 +42,10 @@ function Editor(){
         const scriptInterno = document.createElement('script');
         scriptInterno.src = ConfigUrlImg("rffeditor/scriptInterno.js");
         document.getElementById('scripts').appendChild(scriptInterno);
+
+        const pdf = document.createElement('script');
+        pdf.src = ConfigUrlImg("rffeditor/simplePDF.js");
+        document.getElementById('scripts').appendChild(pdf);
         
     }, []);
 
@@ -138,7 +142,7 @@ function Editor(){
                     <option value="Bebas Neue" name="Bebas Neue" id="Bebas Neue">Bebas Neue</option>
                 </select>
                 
-                
+                <button onClick={()=>window.open('/admin/colarDaWeb/', 'janela', 'height=550, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}>Colar da Web</button>
                 <img src={ConfigUrlImg("rffeditor/imgEditor/bold.svg")} title="Colocar em Negrito" onClick={()=>{negrito(), document.getElementById('negrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} unselectable="on" spaw_state="true" id="negrito" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/italic.svg")} title="Colocar em Itálico" onClick={()=>{italico(), document.getElementById('italico').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="italico" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/underline.svg")} title="Colocar em Sublinhado" onClick={()=>{sublinhado(), document.getElementById('sublinhado').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="sublinhado" />
@@ -163,9 +167,9 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/defaultnumbering.svg")} title="Numeração" onClick={()=>{ordenarLista()}} />
                 
             
-                <img src={ConfigUrlImg("rffeditor/imgEditor/color.svg")} title="Mudar a cor do texto" onClick={()=>{window.open('rffeditor/windowColorText.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/color.svg")} title="Mudar a cor do texto" onClick={()=>{openWindowSetColor('colorTexto')}} />
                 
-                <img src={ConfigUrlImg("rffeditor/imgEditor/backcolor.svg")} title="Cor de destaque do texto" onClick={()=>{window.open('rffeditor/windowColorBackGroundText.php', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/backcolor.svg")} title="Cor de destaque do texto" onClick={()=>{openWindowSetColor('colorBkTexto')}} />
             
                 <img src={ConfigUrlImg("rffeditor/imgEditor/resetattributes.svg")} title="Remover formatação" onClick={()=>{removeFormatT()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/subscript.svg")} title="Colocar em subescrito" onClick={()=>{addSubScript(), document.getElementById('subescrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="subescrito" />
@@ -222,7 +226,7 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/breakPage.svg")} title="Inserir quebra de página" onClick={()=>{insertBreakPage()}} unselectable="on" spaw_state="true" id="breakPage" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/summary.svg")} title="Inserir/remover Sumário" onClick={()=>{setOrRemoveHeading()}} unselectable="on" spaw_state="true" id="sumario" />
                 
-                <img src={ConfigUrlImg("rffeditor/imgEditor/print.svg")} title="Imprimir" onClick={()=>{printPageDiv()}} unselectable="on" spaw_state="true" id="print" />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/print.svg")} title="Imprimir" onClick={()=>{pdf()}} unselectable="on" spaw_state="true" id="print" />
                                 
                 
             </div>

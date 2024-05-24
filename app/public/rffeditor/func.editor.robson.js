@@ -483,11 +483,11 @@ function backColorText() {
 }
 
 function corText(cor) {
-    document.execCommand("foreColor", window.getSelection(), '#'+cor);
+    document.execCommand("foreColor", window.getSelection(), ''+cor);
 }
 
 function backColorTextNew(color) {
-    document.execCommand("backColor", window.getSelection(), '#'+color);
+    document.execCommand("backColor", window.getSelection(), ''+color);
 }
 
 function tamanhoFont(size) {
@@ -2158,7 +2158,7 @@ function pasteContentOfWeb(conteudo){
     // console.log(pai)
     console.log(conteudo)
     let position = range;
-        alterLineHeight(conteudo);
+        // alterLineHeight(conteudo);
     for(var c = 0; c < conteudo.children.length; c++){
         // console.log(c)
         let div = document.createElement('div');
@@ -2341,4 +2341,9 @@ function checkAndReturnConfigTD(td){
         config += 'style="'+td.getAttribute('style')+'" ';
     }
     return config;
+}
+
+function openWindowSetColor(type){
+    localStorage.setItem("type", ''+type);
+    window.open('/admin/color/', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
 }

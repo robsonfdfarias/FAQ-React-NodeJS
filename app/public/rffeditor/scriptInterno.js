@@ -174,3 +174,15 @@ function salveUpdateIframe(){
 window.addEventListener('load', function(){
     selectBtSumario();
 })
+
+function pdf(){
+    let pdf = new SimplePDF();
+    pdf.setBookName('Meu primeiro livro');
+    // console.log(pdf.bookName)
+    pdf.toGenerateCleanPage('<center><h1>Livro Show de bola</h1></center>')
+    pdf.toGenerateCleanPage('<center><h2>SUMMARY</h2></center>')
+    pdf.header(pdf.bookName+' - Cabeçalho da página', '25px 25px 10px 25px');
+    pdf.getContent(document.getElementById('texto'));
+    pdf.footer('rodapé das páginas', '10px 70px 35px 70px', 'alternado');
+    pdf.toGeneratePDF();
+}

@@ -26,7 +26,7 @@ class SimplePDF{
 
     /************ definir a configuração das páginas, como margem, cor da fonte, background da página, entre outros */
     stylePages(prop){
-        console.log(prop)
+        // console.log(prop)
         let width = '100vw';
         let height = '100vh';
         let position = 'relative';
@@ -158,8 +158,8 @@ class SimplePDF{
             }else{
                 if(position=='alternado'){
                     let div='';
-                    console.log('é par? ')
-                    console.log((i+1)%2==0)
+                    // console.log('é par? ')
+                    // console.log((i+1)%2==0)
                     let array = [];
                     if((i+1)%2!=0){
                         div = '<div id="footer" style="position:absolute; box-sizing: border-box; bottom: 35px; right: 0; min-height: 25px; padding: '+padding+'; color:'+this.color+';">';

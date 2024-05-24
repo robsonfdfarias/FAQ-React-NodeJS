@@ -24,12 +24,12 @@ function Emotions(){
                     <div id="fecharEmotions" onClick={()=>fechaJanEmotions()}>X</div>
                 </div>
                 <div id="listaEmotions">
-                    {emotions.length>0?emotions.map(obj=>(
-                        <div style={{maxWidth:"100%", alignItems: "center", display: "flex", flexDirection: "column", flexWrap: "wrap", justifyContent: "center", padding: "20px"}}>
+                    {emotions.length>0?emotions.map((obj, index)=>(
+                        <div key={index} style={{maxWidth:"100%", alignItems: "center", display: "flex", flexDirection: "column", flexWrap: "wrap", justifyContent: "center", padding: "20px"}}>
                             <div><h3>{obj.pasta}</h3></div>
                             <div style={{maxWidth:"100%", alignItems: "center", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", padding: "20px"}}>
-                                {obj.files.map(files=>(
-                                    <div className="emotionsList"><img src={urlImagem+obj.pasta+'/'+files} alt={files} title={files} id={files} onClick={()=>{insertEmotions(document.getElementById(files)), fechaJanEmotions()}} /></div>
+                                {obj.files.map((files, index)=>(
+                                    <div key={"file"+index} className="emotionsList"><img src={urlImagem+obj.pasta+'/'+files} alt={files} title={files} id={files} onClick={()=>{insertEmotions(document.getElementById(files)), fechaJanEmotions()}} /></div>
                                 ))}
                             </div>
                         </div>

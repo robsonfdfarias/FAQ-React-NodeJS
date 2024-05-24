@@ -1225,3 +1225,10 @@ span#catSpan{
     padding: 5px 10px;
     border: 1px solid #cdcdcd;
 }
+
+.divSetColor:focus-visible{
+    background-color: #bef4fd;
+    outline: 2px dotted #ff1414 !important;
+    border-radius: 5px;
+    /* box-shadow: 0 0 5px 3px rgb(166, 255, 2), 0 0 5px 3px rgb(2, 255, 116); */
+}
