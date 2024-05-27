@@ -2156,9 +2156,9 @@ function pasteContentOfWeb(conteudo){
     let range = verifyGetNode('DIV');
     let pai = range.parentNode;
     // console.log(pai)
-    console.log(conteudo)
     let position = range;
-        // alterLineHeight(conteudo);
+        alterLineHeight(conteudo);
+    // console.log(conteudo)
     for(var c = 0; c < conteudo.children.length; c++){
         // console.log(c)
         let div = document.createElement('div');
@@ -2168,6 +2168,7 @@ function pasteContentOfWeb(conteudo){
             // console.log(conteudo.children[c].cloneNode(true))
             let tag = convertPToDiv(conteudo.children[c].cloneNode(true));
             // div.appendChild(tag);
+            alterLineHeight(tag)
             pai.insertBefore(tag, range);
         }else if(conteudo.children[c].nodeName=='TABLE'){
             console.log(conteudo.children[c].cloneNode(true))
@@ -2184,16 +2185,18 @@ function pasteContentOfWeb(conteudo){
 
 function alterLineHeight(content){
     // console.log(content.firstChild.nodeName)
+    content.style.lineHeight = 'normal';
     for(var c = content.firstChild; c != null; c = c.nextSibling){
         // console.log('**********************')
         // console.log(c)
         if(c.nodeName != '#text' && c.nodeName != 'H1' && c.nodeName != 'H2' && c.nodeName != 'H3' && c.nodeName != 'H4' && c.nodeName != 'H5' && c.nodeName != 'H6'){
             // console.log('Entrou aqui')
             // console.log(c.nodeName)
-            c.style.lineHeight = '1rem';
+            c.style.lineHeight = 'normal';
             alterLineHeight(c);
         }else if(c.nodeName != 'H1' && c.nodeName != 'H2' && c.nodeName != 'H3' && c.nodeName != 'H4' && c.nodeName != 'H5' && c.nodeName != 'H6'){
             // c.setAttribute('style', 'color:black;')
+            // console.log(c)
         }
     }
 }
@@ -2208,6 +2211,7 @@ function convertPToDiv(tag){
         div.setAttribute('style', tag.getAttribute('style'));
         div.style.lineHeight = '1rem';
         div.innerHTML = tag.innerHTML;
+        console.log(div)
         return div;
     }
     return tag;

@@ -13,6 +13,10 @@ class SimplePDF{
     script=document.createElement('link');
 
     constructor(){
+        this.insertScript();
+    }
+
+    insertScript(){
         this.stylePages('background-color:white;');
         this.script.rel = 'stylesheet';
         this.script.href = 'print.css';
@@ -208,7 +212,8 @@ class SimplePDF{
         div.style.left = '-160mm';
         document.body.appendChild(div);
         for(let i=0; i<content.children.length; i++){
-            if((div.getBoundingClientRect().height+content.children[i].getBoundingClientRect().height)<950){//Não pode passar de 5551
+            // if((div.getBoundingClientRect().height+content.children[i].getBoundingClientRect().height)<950){//Não pode passar de 5551
+            if((div.getBoundingClientRect().height+content.children[i].getBoundingClientRect().height)<1050){//Não pode passar de 5551
                 // div.appendChild(content.children[i]);
                 if(this.getBreakPage(content.children[i])){
                     div.appendChild(content.children[i].cloneNode(true));
@@ -250,9 +255,34 @@ class SimplePDF{
     }
 
     /********************** Aqui é feita a configuração final para imprimir o conteúdo do PDF ********************/
+    // toGeneratePDF(){
+    //     this.insertScript();
+    //     let body = document.body.innerHTML;
+    //     document.body.innerHTML = ''
+    //     let div = document.createElement('div');
+    //     div.setAttribute('id', 'pages');
+    //     div.style.position = 'absolute';
+    //     div.style.top = 0;
+    //     div.style.left = 0;
+    //     div.style.zIndex = '10025';
+    //     for(let i=0; i<this.pages.length; i++){
+    //         div.appendChild(this.pages[i]);
+    //     }
+    //     document.body.appendChild(div);
+    //     window.print();
+    //     // window.onafterprint = function(){
+    //     //     document.head.removeChild(this.script);
+    //     //     document.body.removeChild(document.getElementById('pages'));
+    //     // }
+    //         // document.head.removeChild(this.script);
+    //         document.body.removeChild(document.getElementById('pages'));
+    //         document.body.innerHTML = body;
+    // }
+
     toGeneratePDF(){
-        let body = document.body.innerHTML;
-        document.body.innerHTML = ''
+        this.insertScript();
+        // let body = document.body.innerHTML;
+        // document.body.innerHTML = ''
         let div = document.createElement('div');
         div.setAttribute('id', 'pages');
         div.style.position = 'absolute';
@@ -262,15 +292,31 @@ class SimplePDF{
         for(let i=0; i<this.pages.length; i++){
             div.appendChild(this.pages[i]);
         }
-        document.body.appendChild(div);
-        window.print();
-        // window.onafterprint = function(){
-        //     document.head.removeChild(this.script);
-        //     document.body.removeChild(document.getElementById('pages'));
-        // }
-            document.head.removeChild(this.script);
-            document.body.removeChild(document.getElementById('pages'));
-            document.body.innerHTML = body;
+        // document.body.appendChild(div);
+        // window.print();
+        var conteudo = div.innerHTML;
+        let tela_impressao = window.open('about:blank');
+        let html = document.createElement('html');
+        let head = document.createElement('head');
+        let body = document.createElement('body');
+        body.append(div);
+
+        //inseri os heads
+        console.log('Número de elementos no head: '+document.head.children.length)
+        console.log(document.head.children[0])
+        for(let i=0; i<document.head.children.length; i++){
+            // tela_impressao.document.head.append(document.head.children[i].cloneNode())
+            head.append(document.head.children[i].cloneNode());
+        }
+        html.append(head)
+        html.append(body)
+        // tela_impressao.document.getElementsByTagName("head")[0].appendChild(document.head.children)
+
+        tela_impressao.document.write(html.innerHTML);
+        setTimeout(()=>{
+            tela_impressao.window.print();
+        }, 2000);
+        // tela_impressao.window.close();
     }
 
     /*************************************************************************************************/
