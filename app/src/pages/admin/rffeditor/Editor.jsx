@@ -123,12 +123,12 @@ function Editor(){
             </div>
             
             {/* Inserir efeito de texto */}
-            <EfeitoTexto />
+            {/* <EfeitoTexto /> */}
             
             {/* Inserir emotions */}
             <Emotions />
                         
-            <div id="ferramentas">
+            <div id="ferramentas" style={{marginTop: '10px'}}>
                 
                 <select name="typefontface" id="typefontface">
                     {/* <option value="padrao" name="padrao" id="padrao" disabled="" selected>Font</option> */}
@@ -174,10 +174,11 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/resetattributes.svg")} title="Remover formatação" onClick={()=>{removeFormatT()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/subscript.svg")} title="Colocar em subescrito" onClick={()=>{addSubScript(), document.getElementById('subescrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="subescrito" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/superscript.svg")} title="Colocar em superescrito" onClick={()=>{addSuperScript(), document.getElementById('superescrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="superescrito" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetoupper.svg")} title="Deixar texto em caixa alta" onClick={()=>{insertTag("span", "style=\"text-transform:uppercase;\"")}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetolower.svg")} title="Deixar texto em caixa baixa" onClick={()=>{insertTag("span", "style=\"text-transform:lowercase;\"")}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/capitalize.svg")} title="Deixar iniciais das palavras em caixa alta" onClick={()=>{insertTag("span", "style=\"text-transform:capitalize;\"")}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/capitular.svg")} title="Inserir capitular" onClick={()=>{insertTag("p", "className=\"p\""), document.getElementById('p').setAttribute("style", "background-color:#cdcdcd;"), selectElem()}} id="p" />
+                {/* <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetoupper.svg")} title="Deixar texto em caixa alta" onClick={()=>{insertTag("span", "style=\"text-transform:uppercase;\"")}} /> */}
+                <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetoupper.svg")} title="Deixar texto em caixa alta" onClick={()=>{upperCase()}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/changecasetolower.svg")} title="Deixar texto em caixa baixa" onClick={()=>{lowerCase()}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/capitalize.svg")} title="Deixar iniciais das palavras em caixa alta" onClick={()=>{capitalize()}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/capitular.svg")} title="Inserir capitular" onClick={()=>{insertTag("p", "class=\"p\""), document.getElementById('p').setAttribute("style", "background-color:#cdcdcd;"), selectElem()}} id="p" />
                 
                 <img src={ConfigUrlImg("rffeditor/imgEditor/insertShadowText.svg")} title="Inserir sombra no texto" onClick={()=>{insertTagsNew('rffTextShadow'), document.getElementById('rffTextShadow').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffTextShadow" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/insertNeonText.svg")} title="Inserir um neon no texto" onClick={()=>{insertTagsNew('rffNeonText'), document.getElementById('rffNeonText').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffNeonText" />
@@ -188,7 +189,7 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextSimples.svg")} title="rffText3DSimples" onClick={()=>{insertTagsNew('rffText3DSimples'), document.getElementById('rffText3DSimples').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3DSimples" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextExtreme.svg")} title="rffText3DExtreme" onClick={()=>{insertTagsNew('rffText3DExtreme'), document.getElementById('rffText3DExtreme').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffText3DExtreme" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/rffTextDegrade.svg")} title="rffTextDegrade" onClick={()=>{insertTagsNew('rffTextDegrade'), document.getElementById('rffTextDegrade').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="rffTextDegrade" />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/coroa2.svg")} title="rffEfeitoBGText" onClick={()=>{abreJanEfeitosTexto()}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/coroa2.svg")} title="rffEfeitoBGText" onClick={()=>{window.open('/admin/efeitoTexto/aplicar/', 'janela', 'height=400, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}} />
                 
                 <select name="formatH" id="formatH">
                     <option value="h1">H1</option>

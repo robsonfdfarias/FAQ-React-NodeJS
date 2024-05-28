@@ -63,25 +63,25 @@ function watchColorPicker(event) {
 let colorPicker;
 const defaultColor = "#0000ff";
 
-window.addEventListener("load", startup1, false);
+// window.addEventListener("load", startup1, false);
 
-function startup1() {
-    colorPicker = document.querySelector("#cores");
-    colorPicker.value = defaultColor;
-    colorPicker.addEventListener("input", cor, false);
-    //colorPicker.addEventListener("change", updateAll, false);
-    colorPicker.select();
-}
+// function startup1() {
+//     colorPicker = document.querySelector("#cores");
+//     colorPicker.value = defaultColor;
+//     colorPicker.addEventListener("input", cor, false);
+//     //colorPicker.addEventListener("change", updateAll, false);
+//     colorPicker.select();
+// }
 
-window.addEventListener("load", startup, false);
+// window.addEventListener("load", startup, false);
 
-function startup() {
-    colorPicker = document.querySelector("#coresDestaque");
-    colorPicker.value = defaultColor;
-    colorPicker.addEventListener("input", backColorText, false);
-    //colorPicker.addEventListener("change", updateAll, false);
-    colorPicker.select();
-}
+// function startup() {
+//     colorPicker = document.querySelector("#coresDestaque");
+//     colorPicker.value = defaultColor;
+//     colorPicker.addEventListener("input", backColorText, false);
+//     //colorPicker.addEventListener("change", updateAll, false);
+//     colorPicker.select();
+// }
 
 
 
@@ -138,7 +138,7 @@ function delElement(){
     // console.log(content)
     // document.execCommand('insertHTML', true, pai)
     if(getTagName(tag.nodeName)=='p'){
-        abre = '<'+getTagName(tag.nodeName)+' classname="p">';
+        abre = '<'+getTagName(tag.nodeName)+' class="p">';
         fecha = '</'+getTagName(tag.nodeName)+'>';
         t = t.replace(abre, '');
         t = t.replace(fecha, '');
@@ -2350,4 +2350,39 @@ function checkAndReturnConfigTD(td){
 function openWindowSetColor(type){
     localStorage.setItem("type", ''+type);
     window.open('/admin/color/', 'janela', 'height=350, width=500, top=50, left=100, scrollbar=no, fullscreen=no');
+}
+
+function upperCase(){
+    let selection = window.getSelection().toString();
+    let range = window.getSelection().getRangeAt(0);
+    selection = selection.toLocaleUpperCase('pt-br');
+    let texto = document.createTextNode(selection);
+    range.deleteContents();
+    range.insertNode(texto);
+}
+
+function lowerCase(){
+    let selection = window.getSelection().toString();
+    let range = window.getSelection().getRangeAt(0);
+    selection = selection.toLocaleLowerCase('pt-br');
+    let texto = document.createTextNode(selection);
+    range.deleteContents();
+    range.insertNode(texto);
+}
+
+function capitalize(){
+    let selection = window.getSelection().toString();
+    let range = window.getSelection().getRangeAt(0);
+    const palavras = selection.split(' ');
+    for(let i=0; i<palavras.length; i++){
+        if(palavras[i]!=''){
+            palavras[i] = palavras[i][0].toLocaleUpperCase()+palavras[i].substring(1).toLocaleLowerCase();
+        }else{
+            palavras[i]=' '
+        }
+    }
+    let palavra = palavras.join(" ");
+    let texto = document.createTextNode(palavra);
+    range.deleteContents();
+    range.insertNode(texto);
 }

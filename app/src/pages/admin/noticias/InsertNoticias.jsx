@@ -2,7 +2,7 @@ import DivCenterContent from "../../DivCenterContent"
 import FooterPage from "../../Footerpage"
 import TopoTitulo from "../../TopoTitulo"
 import MenuAdmin from "../MenuAdmin"
-import Editor from "../rffeditor/Editor"
+import Formulario from "./Formulario"
 
 function InsertNoticias(){
     return (
@@ -10,7 +10,7 @@ function InsertNoticias(){
             <MenuAdmin />
             <TopoTitulo titulo={"Inserir notícia"} subtitulo={"Administrar notícias SEI"} />
             <DivCenterContent
-                content={<Editor />}
+                content={<Formulario />}
             />
             <FooterPage />
         </div>

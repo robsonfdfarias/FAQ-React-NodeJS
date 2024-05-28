@@ -11,7 +11,7 @@ function Emotions(){
         .then((response)=>response.json())
         .then((json)=>{
             if(conta<1){
-                console.log(json)
+                // console.log(json)
                 setEmotions(json);
                 conta++;
             }

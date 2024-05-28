@@ -268,25 +268,35 @@ router.post('/upload', upload.array('file'), async (req, res) => {
 
 router.post('/getImages', (req, res) => {
     var { pasta } = req.body;
-    console.log('A pasta escolhida foi: '+pasta)
+    console.log('A pasta escolhida foi: '+pasta);
     // const filenames = fs.readdirSync('./public/upload')
     if(pasta!=undefined && pasta!=null){
         pasta = './public/upload/'+pasta;
     }else{
         pasta = './public/upload';
     }
-    const filenames = fs.readdirSync(pasta)
-    console.log('acessando as imagens')
-    console.log(filenames)
+    const filenames = fs.readdirSync(pasta);
+    console.log('acessando as imagens');
+    console.log(filenames);
     res.status(200).json(filenames);
-})
+});
 
 
 const emotions = require('../getEmotions');
 router.get('/getEmotions', (req, res) => {
     const filenames = emotions.getEmotions();
-    console.log('acessando as emotion')
+    console.log('acessando as emotion');
     res.status(200).json(filenames);
+});
+
+router.post('/insertNews', async (req, res) => {
+    const {titulo, resumo, autor, datacad, conteudo, statusNews} = req.body;
+    const query = await querys.insertNews(titulo, resumo, autor, datacad, conteudo, statusNews);
+    if(query){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(200).json({retorno: true});
+    }
 })
 
 

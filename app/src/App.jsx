@@ -24,6 +24,7 @@ import InsertVideo from "./pages/admin/rffeditor/InsertVideo";
 import InsertLink from "./pages/admin/rffeditor/InsertLink";
 import ColorFont from "./pages/admin/rffeditor/ColorFont";
 import PasteContentWeb from "./pages/admin/rffeditor/PasteContentWeb";
+import EfeitoTexto from "./pages/admin/rffeditor/EfeitoTexto";
 function App(){
   return (
   <div>
@@ -56,6 +57,7 @@ function App(){
         <Route exact path="/admin/link/" element={<InsertLink />} />
         <Route exact path="/admin/color/" element={<ColorFont />} />
         <Route exact path="/admin/colarDaWeb/" element={<PasteContentWeb />} />
+        <Route exact path="/admin/efeitoTexto/aplicar/" element={<EfeitoTexto />} />
       </Routes>
     </BrowserRouter>
   </div>)

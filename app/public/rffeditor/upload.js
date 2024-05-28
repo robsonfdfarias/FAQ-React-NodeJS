@@ -1,4 +1,5 @@
 var formUpload = document.getElementById('upload');
+// var formUpload = document.getElementById('formulario');
 var preview = document.getElementById('preview');
 var porcentagem = document.getElementById("porcento");
 var i = 0;

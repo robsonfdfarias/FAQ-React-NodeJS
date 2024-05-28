@@ -148,6 +148,13 @@ const getNumberNews = async () =>{
     return query[0]['COUNT(*)'];
 }
 
+const insertNews = async (titulo, resumo, autor, datacad, conteudo, statusNews) => {
+    const [query] = await connection.execute('INSERT INTO base.noticias(titulo, resumo, autor, datacad, conteudo, statusNews) values (?, ?, ?, ?, ?, ?)',
+    [titulo, resumo, autor, datacad, conteudo, statusNews]);
+    console.log(query);
+    return true;
+}
+
 
 module.exports = {
     allItems, 
@@ -171,5 +178,6 @@ module.exports = {
     returnCategoryById,
     logar,
     getAdmNewsPage,
-    getNumberNews
+    getNumberNews,
+    insertNews
 };
