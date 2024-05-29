@@ -142,7 +142,7 @@ function Editor(){
                     <option value="Bebas Neue" name="Bebas Neue" id="Bebas Neue">Bebas Neue</option>
                 </select>
                 
-                <button onClick={()=>window.open('/admin/colarDaWeb/', 'janela', 'height=550, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}>Colar da Web</button>
+                {/* <button onClick={()=>window.open('/admin/colarDaWeb/', 'janela', 'height=550, width=500, top=50, left=100, scrollbar=no, fullscreen=no')}>Colar da Web</button> */}
                 <img src={ConfigUrlImg("rffeditor/imgEditor/bold.svg")} title="Colocar em Negrito" onClick={()=>{negrito(), document.getElementById('negrito').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} unselectable="on" spaw_state="true" id="negrito" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/italic.svg")} title="Colocar em Itálico" onClick={()=>{italico(), document.getElementById('italico').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="italico" />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/underline.svg")} title="Colocar em Sublinhado" onClick={()=>{sublinhado(), document.getElementById('sublinhado').setAttribute('style', 'background-color:#cdcdcd;'), selectElem()}} id="sublinhado" />
@@ -204,9 +204,10 @@ function Editor(){
                 <img src={ConfigUrlImg("rffeditor/imgEditor/hangingindent.svg")} title="Identar linha" onClick={()=>{addIdent()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/hangingindentremove.svg")} title="Remove a identação" onClick={()=>{addOutIdent()}} />
             
+                <img src={ConfigUrlImg("rffeditor/imgEditor/cut.svg")} title="Recortar" onClick={()=>{recortar()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/copy.svg")} title="Copiar" onClick={()=>{copiar()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/paste.svg")} title="Colar" onClick={()=>{colar()}} />
-                <img src={ConfigUrlImg("rffeditor/imgEditor/cut.svg")} title="Recortar" onClick={()=>{recortar()}} />
+                <img src={ConfigUrlImg("rffeditor/imgEditor/paste-web.svg")} title="Colar da web" onClick={()=>window.open('/admin/colarDaWeb/', 'janela', 'height=550, width=500, top=50, left=100, scrollbar=no, fullscreen=no')} />
             
                 <img src={ConfigUrlImg("rffeditor/imgEditor/redo.svg")} title="Refazer" onClick={()=>{refazer()}} />
                 <img src={ConfigUrlImg("rffeditor/imgEditor/undo.svg")} title="Desfazer" onClick={()=>{desfazer()}} />

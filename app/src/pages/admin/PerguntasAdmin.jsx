@@ -5,7 +5,7 @@ import TopoTitulo from "../TopoTitulo";
 import MenuAdmin from "./MenuAdmin";
 import RegisterAdminContent from "./RegisterAdminContent";
 
-function NoticiaAdmin(){
+function PerguntasAdmin(){
     const {page} = useParams();
     // console.log(page)
     const pagAtual = page==undefined?0:page-1;
@@ -13,15 +13,15 @@ function NoticiaAdmin(){
     return (
         <div>
             <MenuAdmin />
-            <TopoTitulo titulo={"Notícias"} subtitulo={"Administrar notícias SEI"} />
+            <TopoTitulo titulo={"Perguntas"} subtitulo={"Painel de perguntas"} />
             <DivCenterContent content={<RegisterAdminContent
                                             page={pagAtual}
                                             numberOfRecords={numberOfRecords}
-                                            bigTitle={"Últimas notícias"}
-                                            titleBtNew={"+ Nova Notícia"}
-                                            urlQuery={'http://localhost:3003/actors/getAdmNewsPage'}
-                                            urlPaginator={'http://localhost:3003/actors/getNumberNews'}
-                                            linkBtNew={'/admin/noticias/insert/'}
+                                            bigTitle={"Postagens recentes"}
+                                            titleBtNew={"+ Nova Pergunta"}
+                                            urlQuery={'http://localhost:3003/actors/getAdmPergPage'}
+                                            urlPaginator={'http://localhost:3003/actors/getNumberPerg'}
+                                            linkBtNew={'/admin/pergunta/insert/'}
                                             linkEditRegist={''}
                                             linkDeleteRegist={''}
                                             idCateg={1}
@@ -32,4 +32,4 @@ function NoticiaAdmin(){
     )
 }
 
-export default NoticiaAdmin
+export default PerguntasAdmin

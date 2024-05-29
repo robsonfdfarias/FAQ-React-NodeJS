@@ -7,13 +7,15 @@ export function ButtonIcon(props){
     const estiloBase = {
         padding: '10px 10px',
         color: 'white',
-        fontSize: '1.1rem',
+        fontSize: '1.3rem',
         borderRadius: '5px',
         // backgroundColor: '#0c582c',
         backgroundColor: props.colorDefault,
         border: 'none',
         cursor: 'pointer',
         margin: '3px',
+        display: 'flex',
+        justifyContent: 'center',
         transition: 'all ease-in-out 0.3s'
     };
     const estiloHover = {
@@ -26,13 +28,15 @@ export function ButtonIcon(props){
     }
 
     return (
-        <div id="insertArticle" onClick={()=>openLink()}
+        // <div id="insertArticle" onClick={()=>openLink()}
+        <div id="insertArticle" onClick={props.onClick}
                         style={isHovered?{...estiloBase, ...estiloHover}:estiloBase}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                     >
             {/* <img src={"../../"+props.img} width="20" title="Editar notícia" /> */}
-            <img src={url} width="20" title="Editar notícia" />
+            {/* <img src={url} width="20" title="Editar notícia" /> */}
+            {props.img!=undefined?<img src={url} width="20" title="Editar notícia" />:props.titulo}
         </div>
     )
 }

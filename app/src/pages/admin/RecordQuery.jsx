@@ -1,15 +1,15 @@
 
 import { useEffect, useState } from "react";
-import { ButtonIcon } from "./ButtonIcon";
+import { ButtonIcon } from "../ButtonIcon";
 
-function NoticiasQuery(props){
+function RecordQuery(props){
     const [questions, setQuestions] = useState([]);
     var testa = 0;
-    var idCat = props.idCategoria!=undefined?props.idCategoria:1;
+    var idCat = props.idCateg!=undefined?props.idCateg:1;
     // console.log(idCat);
     useEffect(()=>{
         // fetch('http://localhost:3003/actors/commonQuestions', {
-        fetch(props.urlPergQuery, {
+        fetch(props.urlQuery, {
             method: 'POST',
             headers: {
                 'Accept-Encoding': 'gzip, delate, br',
@@ -105,6 +105,13 @@ function NoticiasQuery(props){
     }
     getUrl();
 
+    const btEdit = (url)=>{
+        window.location.href = url
+    }
+    const btDelete = (url)=>{
+        window.location.href = url
+    }
+
 
     return (
         <div>
@@ -119,13 +126,15 @@ function NoticiasQuery(props){
                             img={"imgs/edit-lapis.svg"}
                             href={"/divBtEdit/"+obj.id}
                             colorDefault={"#0c582c"}
-                            colorHover={"#32CD32"}
+                            colorHover={"#458807"}
+                            onClick={()=>btEdit(props.linkEditRegist+obj.id)}
                         />
                         <ButtonIcon
                             img={"imgs/delete-bin.svg"}
                             href={"/divBtDelete/"+obj.id}
                             colorDefault={"#8B0000"}
                             colorHover={"#FF0000"}
+                            onClick={()=>btDelete(props.linkDeleteRegist+obj.id)}
                         />
                     </div>
                 </div>
@@ -134,4 +143,4 @@ function NoticiasQuery(props){
     )
 }
 
-export default NoticiasQuery
+export default RecordQuery

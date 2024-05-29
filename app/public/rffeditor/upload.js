@@ -16,55 +16,55 @@ var srcImg;
 var objImg;
 var json;
 
-formUpload.addEventListener('submit', async function(event){
-  event.preventDefault();
+// formUpload.addEventListener('submit', async function(event){
+//   event.preventDefault();
 
-  var xhr = new XMLHttpRequest();
+//   var xhr = new XMLHttpRequest();
 
-  //xhr.open("POST", formUpload.getAttribute('action'));
-  xhr.open("POST", "ex2.class.php");
+//   //xhr.open("POST", formUpload.getAttribute('action'));
+//   xhr.open("POST", "ex2.class.php");
 
-  xhr.upload.addEventListener('onprogress', function(e) {
-        var perc = (e.loaded/e.total)*100;
-        porcentagem.innerHTML = perc;
-	});
+//   xhr.upload.addEventListener('onprogress', function(e) {
+//         var perc = (e.loaded/e.total)*100;
+//         porcentagem.innerHTML = perc;
+// 	});
 
-  var formData = new FormData(formUpload);
-  formData.append("i", i++);
-  await xhr.send(formData);
-console.log(i)
-  xhr.addEventListener('readystatechange', function() {
-    if (xhr.readyState === 4 && xhr.status == 200) {
-      console.log(xhr.responseText+'------------************');
-      preview.innerHTML = xhr.status;
-      json = JSON.parse(xhr.responseText);
+//   var formData = new FormData(formUpload);
+//   formData.append("i", i++);
+//   await xhr.send(formData);
+// console.log(i)
+//   xhr.addEventListener('readystatechange', function() {
+//     if (xhr.readyState === 4 && xhr.status == 200) {
+//       console.log(xhr.responseText+'------------************');
+//       preview.innerHTML = xhr.status;
+//       json = JSON.parse(xhr.responseText);
 
-      if (json.status!=='no_file' && json.status === 'ok') {
-        porcentagem.innerHTML = '<img id="previewImage" src="'+json.img+'" width="300">';
-        preview.innerHTML = '<img id="previewImage" src="'+json.img+'" width="300">';
-      } else {
-        preview.innerHTML = 'Arquivo não enviado';
-      }
-    } else {
-      console.log('Erro robson')
-      preview.innerHTML = xhr.statusText+' ------------------';
-    }
-  });
-/*
-  xhr.upload.addEventListener("progress", function(e) {
-        var perc = (e.loaded/e.total)*100;
-        porcentagem.innerHTML = perc;
-    if (e.lengthComputable) {
-      var percentage = Math.round((e.loaded * 100) / e.total);
-      $preview.innerHTML = String(percentage) + '%';
-    }
-  }, false);*/
+//       if (json.status!=='no_file' && json.status === 'ok') {
+//         porcentagem.innerHTML = '<img id="previewImage" src="'+json.img+'" width="300">';
+//         preview.innerHTML = '<img id="previewImage" src="'+json.img+'" width="300">';
+//       } else {
+//         preview.innerHTML = 'Arquivo não enviado';
+//       }
+//     } else {
+//       console.log('Erro robson')
+//       preview.innerHTML = xhr.statusText+' ------------------';
+//     }
+//   });
+// /*
+//   xhr.upload.addEventListener("progress", function(e) {
+//         var perc = (e.loaded/e.total)*100;
+//         porcentagem.innerHTML = perc;
+//     if (e.lengthComputable) {
+//       var percentage = Math.round((e.loaded * 100) / e.total);
+//       $preview.innerHTML = String(percentage) + '%';
+//     }
+//   }, false);*/
 
-  xhr.upload.addEventListener("load", function(e){
-    porcentagem.innerHTML = String(100) + '%';
-  }, false);
+//   xhr.upload.addEventListener("load", function(e){
+//     porcentagem.innerHTML = String(100) + '%';
+//   }, false);
 
-}, false);
+// }, false);
 
 
 

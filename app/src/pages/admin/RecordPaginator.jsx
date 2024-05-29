@@ -1,7 +1,7 @@
-import NoticiasQuery from "./NoticiasQuery";
+import RecordQuery from "./RecordQuery";
 import { useEffect, useState } from "react";
 
-function NoticiasPaginator(props){
+function RecordPaginator(props){
     const [pagin, setPagin] = useState();
     var quantidade;
     var totalPages;
@@ -38,11 +38,11 @@ function NoticiasPaginator(props){
         }
     }
 
-    const idCat = props.idCategoria!=undefined?props.idCategoria:1;
+    const idCat = props.idCateg!=undefined?props.idCateg:1;
 
     useEffect(()=>{
         // fetch('http://localhost:3003/actors/numberAllQuestions',{
-        fetch(props.urlPergPaginator,{
+        fetch(props.urlPaginator,{
             method: 'POST',
             headers: {
                 Accept: 'application/json', 
@@ -113,11 +113,13 @@ function NoticiasPaginator(props){
     return (
         <div>
             <div>
-                <NoticiasQuery
-                    idCategoria={props.idCategoria}
+                <RecordQuery
+                    idCateg={props.idCateg}
                     page={props.page}
                     numberOfRecords={props.numberOfRecords}
-                    urlPergQuery={props.urlPergQuery}
+                    urlQuery={props.urlQuery}
+                    linkEditRegist={props.linkEditRegist}
+                    linkDeleteRegist={props.linkDeleteRegist}
                 />
             </div>
             <br />
@@ -128,4 +130,4 @@ function NoticiasPaginator(props){
     )
 }
 
-export default NoticiasPaginator
+export default RecordPaginator

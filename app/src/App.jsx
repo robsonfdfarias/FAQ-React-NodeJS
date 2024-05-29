@@ -25,6 +25,8 @@ import InsertLink from "./pages/admin/rffeditor/InsertLink";
 import ColorFont from "./pages/admin/rffeditor/ColorFont";
 import PasteContentWeb from "./pages/admin/rffeditor/PasteContentWeb";
 import EfeitoTexto from "./pages/admin/rffeditor/EfeitoTexto";
+import PerguntasAdmin from "./pages/admin/PerguntasAdmin";
+import InsertPerg from "./pages/admin/perguntas/InsertPerg";
 function App(){
   return (
   <div>
@@ -58,6 +60,8 @@ function App(){
         <Route exact path="/admin/color/" element={<ColorFont />} />
         <Route exact path="/admin/colarDaWeb/" element={<PasteContentWeb />} />
         <Route exact path="/admin/efeitoTexto/aplicar/" element={<EfeitoTexto />} />
+        <Route exact path="/admin/perguntasAdm/:page?" element={<PerguntasAdmin />} />
+        <Route exact path="/admin/pergunta/insert/" element={<InsertPerg />} />
       </Routes>
     </BrowserRouter>
   </div>)

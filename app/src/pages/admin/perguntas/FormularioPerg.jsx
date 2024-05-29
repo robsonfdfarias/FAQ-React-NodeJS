@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 import Editor from "../rffeditor/Editor"
+import SelectCategory from "../SelectCategory";
 
-function Formulario(){
+function FormularioPerg(){
     const styles = {
         inputs: {
             width: '98%', 
@@ -115,11 +116,27 @@ function Formulario(){
                     </tr>
                     <tr>
                         <td colSpan="2">
-                            Status:<br />
-                            <select name="statusNews" id="statusNews" style={{width: '100%', minHeight: '30px', borderRadius: '10px', border: '1px solid #cfcfcf', padding: '10px', fontSize: '1.3rem'}}>
-                                <option value="1">Ativo</option>
-                                <option value="0">Inativo</option>
+                            <input type="text" id="tags" name="tags" placeholder="Insira as tags em maiúsculo separado por virgulas. Ex: PHP,ASP,JAVA" required="" pattern="[A-Za-z0-9.-\/|* ']{4,}" maxLength="250"
+                            style={styles.inputs} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan="2">
+                            Prioridade:<br />
+                            <select name="prioridade" id="prioridade" style={{width: '100%', minHeight: '30px', borderRadius: '10px', border: '1px solid #cfcfcf', padding: '10px', fontSize: '1.3rem'}}>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
                             </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colSpan="2">
+                            Categoria:<br />
+                            {/* <select name="prioridade" id="prioridade" style={{width: '100%', minHeight: '30px', borderRadius: '10px', border: '1px solid #cfcfcf', padding: '10px', fontSize: '1.3rem'}}>
+                                <option value="1">Sim</option>
+                                <option value="0">Não</option>
+                            </select> */}
+                            <SelectCategory />
                         </td>
                     </tr>
                     <tr>
@@ -132,4 +149,4 @@ function Formulario(){
     )
 }
 
-export default Formulario
+export default FormularioPerg

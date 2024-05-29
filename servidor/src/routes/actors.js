@@ -297,7 +297,26 @@ router.post('/insertNews', async (req, res) => {
     }else{
         return res.status(200).json({retorno: true});
     }
-})
+});
+
+router.post('/getNumberPerg', async (req, res) => {
+    const query = await querys.getNumberPerg();
+    console.log('Quantidade de registros: '+query);
+    return res.status(200).json({'NumReg': query});
+});
+
+router.post('/getAdmPergPage', async (req, res) => {
+    const {page, numberOfRecords} = req.body;
+    // console.log('Início do getAdmPergPage');
+    // console.log('Página: '+page);
+    // console.log('Número de registros: '+numberOfRecords);
+    const query = await querys.getAdmPergPage(page, numberOfRecords);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json({'id': false});
+    }
+});
 
 
 module.exports = router;

@@ -2171,7 +2171,7 @@ function pasteContentOfWeb(conteudo){
             alterLineHeight(tag)
             pai.insertBefore(tag, range);
         }else if(conteudo.children[c].nodeName=='TABLE'){
-            console.log(conteudo.children[c].cloneNode(true))
+            // console.log(conteudo.children[c].cloneNode(true))
             let tag = convertTable(conteudo.children[c].cloneNode(true));
             pai.insertBefore(tag, range);
         }else{
@@ -2211,7 +2211,7 @@ function convertPToDiv(tag){
         div.setAttribute('style', tag.getAttribute('style'));
         div.style.lineHeight = '1rem';
         div.innerHTML = tag.innerHTML;
-        console.log(div)
+        // console.log(div)
         return div;
     }
     return tag;
@@ -2223,7 +2223,7 @@ p.innerHTML = 'Exemplo'
 
 function convertTable(table){
     if(table.nodeName=='TABLE'){
-        console.log(table)
+        // console.log(table)
         return convertTableNew(table);
     }
     return table;

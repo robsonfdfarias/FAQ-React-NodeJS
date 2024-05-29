@@ -1,7 +1,7 @@
 import { useState } from "react"
-import NoticiasPaginator from "../NoticiasPaginator";
+import RecordPaginator from "./RecordPaginator";
 
-function NoticiaAdminContent(props){
+function RegisterAdminContent(props){
 
     const [isHovered, setIsHovered] = useState(false);
     const estiloBase = {
@@ -19,29 +19,35 @@ function NoticiaAdminContent(props){
         backgroundColor: 'green'
     };
     const newArticle = () =>{
-        window.location.href = '/admin/noticias/insert/'
+        // window.location.href = '/admin/noticias/insert/'
+        window.location.href = props.linkBtNew
     }
     return (
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', marginTop: '20px', marginBottom: '15px'}}>
-                <div id="tituloCatMenuPag" style={{fontWeight: 'bold', fontSize: '1.5rem'}}>Últimas notícias</div>
+                {/* <div id="tituloCatMenuPag" style={{fontWeight: 'bold', fontSize: '1.5rem'}}>Últimas notícias</div> */}
+                <div id="tituloCatMenuPag" style={{fontWeight: 'bold', fontSize: '1.5rem'}}>{props.bigTitle}</div>
                 <div id="addCatMenuPag">
                     <button id="insertArticle" onClick={()=>newArticle()}
                         style={isHovered?{...estiloBase, ...estiloHover}:estiloBase}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
-                    >+ Nova Notícia</button>
+                    >{props.titleBtNew}</button>
                 </div>
             </div>
-            <NoticiasPaginator
-                idCategoria={1}
+            <RecordPaginator
+                idCateg={props.idCateg}
                 page={props.page}
                 numberOfRecords={props.numberOfRecords}
-                urlPergQuery={'http://localhost:3003/actors/getAdmNewsPage'}
-                urlPergPaginator={'http://localhost:3003/actors/getNumberNews'}
+                // urlPergQuery={'http://localhost:3003/actors/getAdmNewsPage'}
+                // urlPergPaginator={'http://localhost:3003/actors/getNumberNews'}
+                urlQuery={props.urlQuery}
+                urlPaginator={props.urlPaginator}
+                linkEditRegist={props.linkEditRegist}
+                linkDeleteRegist={props.linkDeleteRegist}
             />
         </div>
     )
 }
 
-export default NoticiaAdminContent
+export default RegisterAdminContent

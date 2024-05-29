@@ -155,6 +155,17 @@ const insertNews = async (titulo, resumo, autor, datacad, conteudo, statusNews) 
     return true;
 }
 
+const getNumberPerg = async () =>{
+    const [query] = await connection.execute('SELECT COUNT(*) FROM base.artigo');
+    return query[0]['COUNT(*)'];
+}
+
+const getAdmPergPage = async (page, numberOfRecords) => {
+    const pageA = page*numberOfRecords;
+    const [query] = await connection.execute('SELECT * FROM base.artigo ORDER BY id DESC LIMIT ?, ?', [pageA, numberOfRecords]);
+    return query;
+}
+
 
 module.exports = {
     allItems, 
@@ -179,5 +190,7 @@ module.exports = {
     logar,
     getAdmNewsPage,
     getNumberNews,
-    insertNews
+    insertNews,
+    getNumberPerg,
+    getAdmPergPage
 };
