@@ -3,8 +3,14 @@ import { ConfigUrlImg } from "../../ConfigUrlImg";
 import Emotions from "./Emotions";
 import EfeitoTexto from "./EfeitoTexto";
 
-function Editor(){
-
+function Editor(props){
+    var content=''
+    if(props.content!='' && props.content!=undefined && props.content!=null){
+        content='';
+    }else{
+        // content=(<div>Digite o seu artigo aqui...</div>);
+        content='<div>Digite o seu artigo aqui...</div>';
+    }
     useEffect(()=>{
         const editorRobsonFarias = document.createElement('link');
         editorRobsonFarias.rel = "stylesheet";
@@ -233,11 +239,7 @@ function Editor(){
                 
             </div>
             <div id="conteiner">
-                <div id="texto" contentEditable="true" autoFocus="" required="" autoComplete="off" spellCheck="true" className="box">
-                    <div>Digite o seu artigo aqui...</div>
-                    <div><br /></div>
-                    <div><br /></div>
-                    <div><br /></div>
+                <div id="texto" contentEditable="true" autoFocus="" required="" autoComplete="off" spellCheck="true" className="box" dangerouslySetInnerHTML={{ __html: content!=''?content:props.content }}>
                 </div>
                 
             </div>

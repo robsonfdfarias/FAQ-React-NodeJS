@@ -40,8 +40,10 @@ router.get('/news/', async (req, res) => {
 
 router.get('/news/:id', async (req, res) => {
     const {id} = req.params;
+    console.log(id)
     const query = await querys.getNewsById(id);
     console.log('pesquisa por ID')
+    console.log(query)
     if(query.length === 0){
         return res.status(400).json({message: 'Actor not found'});
     }
@@ -317,6 +319,27 @@ router.post('/getAdmPergPage', async (req, res) => {
         return res.status(400).json({'id': false});
     }
 });
+
+router.post('/insertPerg', async (req, res) => {
+    const {titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost} = req.body;
+    const query = querys.insertPerg(titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost);
+    if(query){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.post('/updateNews', async (req, res) => {
+    const {id, titulo, resumo, conteudo, statusNews} = req.body;
+    console.log('_________________________***********-----------')
+    const query = await querys.updateNews(id, titulo, resumo, conteudo, statusNews);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+})
 
 
 module.exports = router;

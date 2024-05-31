@@ -27,6 +27,7 @@ import PasteContentWeb from "./pages/admin/rffeditor/PasteContentWeb";
 import EfeitoTexto from "./pages/admin/rffeditor/EfeitoTexto";
 import PerguntasAdmin from "./pages/admin/PerguntasAdmin";
 import InsertPerg from "./pages/admin/perguntas/InsertPerg";
+import EditNoticias from "./pages/admin/noticias/EditNoticias";
 function App(){
   return (
   <div>
@@ -62,6 +63,7 @@ function App(){
         <Route exact path="/admin/efeitoTexto/aplicar/" element={<EfeitoTexto />} />
         <Route exact path="/admin/perguntasAdm/:page?" element={<PerguntasAdmin />} />
         <Route exact path="/admin/pergunta/insert/" element={<InsertPerg />} />
+        <Route exact path="/admin/noticia/edit/:id" element={<EditNoticias />} />
       </Routes>
     </BrowserRouter>
   </div>)

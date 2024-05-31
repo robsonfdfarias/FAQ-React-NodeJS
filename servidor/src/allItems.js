@@ -166,6 +166,23 @@ const getAdmPergPage = async (page, numberOfRecords) => {
     return query;
 }
 
+const insertPerg = async (titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost) => {
+    const [query] = await connection.execute('INSERT INTO base.artigo(titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost) values (?, ?, ?, ?, ?, ?, ?, ?)',
+    [titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost]);
+    console.log(query)
+    if(query.affectedRows>0){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+const updateNews = async (id, titulo, resumo, conteudo, statusNews) => {
+    const [query] = await connection.execute('UPDATE base.noticias SET titulo=?, resumo=?, conteudo=?, statusNews=? WHERE id=?',
+    [titulo, resumo, conteudo, statusNews, id]);
+    return query;
+}
+
 
 module.exports = {
     allItems, 
@@ -192,5 +209,7 @@ module.exports = {
     getNumberNews,
     insertNews,
     getNumberPerg,
-    getAdmPergPage
+    getAdmPergPage,
+    insertPerg,
+    updateNews
 };

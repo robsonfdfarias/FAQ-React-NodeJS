@@ -22,7 +22,7 @@ function NoticiaAdmin(){
                                             urlQuery={'http://localhost:3003/actors/getAdmNewsPage'}
                                             urlPaginator={'http://localhost:3003/actors/getNumberNews'}
                                             linkBtNew={'/admin/noticias/insert/'}
-                                            linkEditRegist={''}
+                                            linkEditRegist={'/admin/noticia/edit/'}
                                             linkDeleteRegist={''}
                                             idCateg={1}
                                         />} 

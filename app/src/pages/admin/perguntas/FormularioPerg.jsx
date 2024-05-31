@@ -15,14 +15,12 @@ function FormularioPerg(){
     }
 
     useEffect(()=>{
-        var titulo='';
-        var resumo = '';
-        var conteudo = '';
-        var statusNews = '';
-        titulo = document.getElementById("titulo");
-        resumo = document.getElementById("resumo");
-        conteudo = document.getElementById("conteudo");
-        statusNews = document.getElementById("statusNews");
+        var titulo= document.getElementById("titulo");
+        var resumo = document.getElementById("resumo");
+        var conteudo = document.getElementById("conteudo");
+        var tags = document.getElementById("tags");
+        var prioridade = document.getElementById("prioridade");
+        var category = document.getElementById("category");
 
         var enviar = document.getElementById("enviar");
         enviar.addEventListener("click", function(){
@@ -57,11 +55,12 @@ function FormularioPerg(){
         }
 
         async function cadastra(){
+            category = document.getElementById("category");
             var dt = new Date();
             let arrayMonth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', 
                                 '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
             var data = dt.getDate()+'/'+arrayMonth[dt.getMonth()]+'/'+dt.getFullYear();
-            await fetch('http://localhost:3003/actors/insertNews', {
+            await fetch('http://localhost:3003/actors/insertPerg', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -70,10 +69,13 @@ function FormularioPerg(){
                 body: JSON.stringify({
                     titulo: titulo.value,
                     resumo: resumo.value,
-                    autor: localStorage.getItem("id"),
-                    datacad: data,
                     conteudo: conteudo.value,
-                    statusNews: statusNews.value
+                    tags: tags.value,
+                    img: '',
+                    prioridade: prioridade.value,
+                    categoria: category.value,
+                    // autor: localStorage.getItem("id"),
+                    dataPost: data
                 })
             })
             .then((response)=>response.json())
@@ -81,6 +83,7 @@ function FormularioPerg(){
                 if(json.retorno){
                     alert('Cadastrado com sucesso');
                     console.log('Cadastrado com sucesso')
+                    window.location.href = '/admin/perguntasAdm/'
                 }else{
                     alert('Falha no cadastro');
                     console.log('Falha no cadastro')
