@@ -22,8 +22,8 @@ function PerguntasAdmin(){
                                             urlQuery={'http://localhost:3003/actors/getAdmPergPage'}
                                             urlPaginator={'http://localhost:3003/actors/getNumberPerg'}
                                             linkBtNew={'/admin/pergunta/insert/'}
-                                            linkEditRegist={''}
-                                            linkDeleteRegist={''}
+                                            linkEditRegist={'/admin/pergunta/edit/'}
+                                            linkDeleteRegist={'/admin/pergunta/delete/'}
                                             idCateg={1}
                                         />} 
             />

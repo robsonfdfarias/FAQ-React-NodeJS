@@ -129,7 +129,7 @@ function Formulario(props){
                 console.log(error)
             })
         }
-    })
+    }, [])
     
     return (
         <div id="formInsert"> 

@@ -37,8 +37,8 @@ const paginateCommonQuestions = async (page, numberOfRecords) => {
 
 const getNumberOfAllCommonQuestions = async () => {
     const [query] = await connection.execute('SELECT COUNT(*) FROM base.artigo');
-    console.log('------------------------------------------------')
-    console.log(query)
+    // console.log('------------------------------------------------')
+    // console.log(query)
     return [{"NumReg": query[0]['COUNT(*)']}];
 }
 
@@ -52,7 +52,7 @@ const getTreiningByDay = async (day, month, year) => {
 const getTreiningBymonth = async (year, month) => {
     const arrayMonth = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
     const data = year+'-'+arrayMonth[month]+'-%';
-    console.log(data)
+    // console.log(data)
     const [query] = await connection.execute('SELECT * FROM base.agenda WHERE dtinicio like ?', [data]);
     return query;
 }
@@ -80,7 +80,7 @@ const registerTreining = async (matricula, idEvento, nome, secretaria, email) =>
         return false;
     }else{
         const [query] = await connection.execute('INSERT INTO base.inscritos (nome, secretaria, matricula, email, idevento) VALUES (?, ?, ?, ?, ?)', [nome, secretaria, matricula, email, idEvento]);
-        console.log(query);
+        // console.log(query);
         return true;
     }
 }
@@ -88,7 +88,7 @@ const registerTreining = async (matricula, idEvento, nome, secretaria, email) =>
 const blockNextEvent = async () => {
     let dateCurrent = new Date();
     let dt = dateCurrent.getFullYear()+'-'+arrayMonth[(dateCurrent.getMonth()+1)]+'-'+dateCurrent.getDate();
-    console.log(dt)
+    // console.log(dt)
     const [query] = await connection.execute('SELECT * FROM base.agenda WHERE dtinicio >= ?', [dt]);
     return query;
 }
@@ -117,7 +117,7 @@ const returnAllCommonQuestionsForCategoryById = async (idCat, page, numberOfReco
 
 const getNumberCommonQuestionPesq = async (pesq) => {
     const [query] = await connection.execute('SELECT COUNT(*) FROM base.artigo WHERE titulo like ? OR conteudo like ? OR resumo like ?', [('%'+pesq+'%'), ('%'+pesq+'%'), ('%'+pesq+'%')]);
-    console.log(query);
+    // console.log(query);
     return query[0]['COUNT(*)'];
 }
 
@@ -151,7 +151,7 @@ const getNumberNews = async () =>{
 const insertNews = async (titulo, resumo, autor, datacad, conteudo, statusNews) => {
     const [query] = await connection.execute('INSERT INTO base.noticias(titulo, resumo, autor, datacad, conteudo, statusNews) values (?, ?, ?, ?, ?, ?)',
     [titulo, resumo, autor, datacad, conteudo, statusNews]);
-    console.log(query);
+    // console.log(query);
     return true;
 }
 
@@ -169,7 +169,6 @@ const getAdmPergPage = async (page, numberOfRecords) => {
 const insertPerg = async (titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost) => {
     const [query] = await connection.execute('INSERT INTO base.artigo(titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost) values (?, ?, ?, ?, ?, ?, ?, ?)',
     [titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost]);
-    console.log(query)
     if(query.affectedRows>0){
         return true;
     }else{
@@ -180,6 +179,33 @@ const insertPerg = async (titulo, resumo, conteudo, tags, img, prioridade, categ
 const updateNews = async (id, titulo, resumo, conteudo, statusNews) => {
     const [query] = await connection.execute('UPDATE base.noticias SET titulo=?, resumo=?, conteudo=?, statusNews=? WHERE id=?',
     [titulo, resumo, conteudo, statusNews, id]);
+    return query;
+}
+
+const delNewsGetById = async (id)  => {
+    const [query] = await connection.execute('DELETE FROM base.noticias WHERE id=?', [id]);
+    return query;
+}
+
+const getCommonQuestionById = async (id) => {
+    const [query] = await connection.execute('SELECT * FROM base.artigo WHERE id=?', [id]);
+    return query;
+}
+
+const updateCommonQuestion = async (id, titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost, dataAlter) => {
+    const [query] = await connection.execute('UPDATE base.artigo SET titulo=?, resumo=?, conteudo=?, tags=?, img=?, prioridade=?, categoria=?, dataPost=?, dataAlter=? WHERE id=?',
+    [titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost, dataAlter, id]);
+    return query;
+}
+
+const insertCommonQuestion = async (titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost) => {
+    const [query] = await connection.execute('INSERT INTO base.artigo (titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost) values (?, ?, ?, ?, ?, ?, ?, ?)',
+    [titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost]);
+    return query;
+}
+
+const deleteCommonQuestion = async (id) => {
+    const [query] = await connection.execute('DELETE FROM base.artigo WHERE id=?', [id]);
     return query;
 }
 
@@ -211,5 +237,10 @@ module.exports = {
     getNumberPerg,
     getAdmPergPage,
     insertPerg,
-    updateNews
+    updateNews,
+    delNewsGetById,
+    getCommonQuestionById,
+    updateCommonQuestion,
+    insertCommonQuestion,
+    deleteCommonQuestion
 };

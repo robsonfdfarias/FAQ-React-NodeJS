@@ -28,6 +28,9 @@ import EfeitoTexto from "./pages/admin/rffeditor/EfeitoTexto";
 import PerguntasAdmin from "./pages/admin/PerguntasAdmin";
 import InsertPerg from "./pages/admin/perguntas/InsertPerg";
 import EditNoticias from "./pages/admin/noticias/EditNoticias";
+import DeleteNoticia from "./pages/admin/noticias/DeleteNoticia";
+import EditPerg from "./pages/admin/perguntas/EditPerg";
+import DeletePerg from "./pages/admin/perguntas/DeletePerg";
 function App(){
   return (
   <div>
@@ -52,9 +55,7 @@ function App(){
         <Route exact path="/admin/table/insert/" element={<TableInsert />} />
         <Route exact path="/admin/table/configCell/" element={<TableInsertConfigCell />} />
         <Route exact path="/admin/table/configTable/" element={<TableInsertConfigTable />} />
-        {/* <Route exact path="/admin/table/insertImg/" element={<InsertImgDefault />} /> */}
         <Route exact path="/admin/insertImg/" element={<InsertImgDefault />} />
-        {/* <Route exact path="/admin/table/img/" element={<ImageList />} /> */}
         <Route exact path="/admin/img/" element={<ImageList />} />
         <Route exact path="/admin/video/" element={<InsertVideo />} />
         <Route exact path="/admin/link/" element={<InsertLink />} />
@@ -64,6 +65,9 @@ function App(){
         <Route exact path="/admin/perguntasAdm/:page?" element={<PerguntasAdmin />} />
         <Route exact path="/admin/pergunta/insert/" element={<InsertPerg />} />
         <Route exact path="/admin/noticia/edit/:id" element={<EditNoticias />} />
+        <Route exact path="/admin/noticia/delete/:id" element={<DeleteNoticia />} />
+        <Route exact path="/admin/pergunta/edit/:id" element={<EditPerg />} />
+        <Route exact path="/admin/pergunta/delete/:id" element={<DeletePerg />} />
       </Routes>
     </BrowserRouter>
   </div>)

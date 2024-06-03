@@ -303,7 +303,7 @@ router.post('/insertNews', async (req, res) => {
 
 router.post('/getNumberPerg', async (req, res) => {
     const query = await querys.getNumberPerg();
-    console.log('Quantidade de registros: '+query);
+    // console.log('Quantidade de registros: '+query);
     return res.status(200).json({'NumReg': query});
 });
 
@@ -332,8 +332,58 @@ router.post('/insertPerg', async (req, res) => {
 
 router.post('/updateNews', async (req, res) => {
     const {id, titulo, resumo, conteudo, statusNews} = req.body;
-    console.log('_________________________***********-----------')
+    // console.log('_________________________***********-----------')
     const query = await querys.updateNews(id, titulo, resumo, conteudo, statusNews);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.delete('/delNewsGetById', async (req, res) => {
+    const {id} = req.body;
+    const query = await querys.delNewsGetById(id);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.get('/getCommonQuestionById/:id', async (req, res) => {
+    const {id} = req.params;
+    const query = await querys.getCommonQuestionById(id);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json([{'id': false}]);
+    }
+});
+
+router.post('/updateCommonQuestion', async (req, res) => {
+    const {id, titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost, dataAlter} = req.body;
+    const query = await querys.updateCommonQuestion(id, titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost, dataAlter);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.post('/insertCommonQuestion', async (req, res) => {
+    const {titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost} = req.body;
+    const query = await querys.insertCommonQuestion(titulo, resumo, conteudo, tags, img, prioridade, categoria, dataPost);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.delete('/deleteCommonQuestion', async (req, res) => {
+    const {id} = req.body;
+    const query = await querys.deleteCommonQuestion(id);
     if(query.affectedRows>0){
         return res.status(200).json({retorno: true});
     }else{

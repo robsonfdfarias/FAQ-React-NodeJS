@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-function SelectCategory(){
+function SelectCategory(props){
     const [categories, setCategories] = useState([]);
     const [loaded, setLoaded] = useState(false);
     useEffect(()=>{
@@ -18,16 +18,8 @@ function SelectCategory(){
                 setLoaded(true);
             }
         })
-    })
+    }, [])
     return (
-        // <select name="category" id="category" style={{width: '100%', minHeight: '30px', borderRadius: '10px', border: '1px solid #cfcfcf', padding: '10px', fontSize: '1.3rem'}}>
-        //     {!loaded?
-        //     <span>Carregando...</span>:
-        //     categories.map((obj)=>(
-        //         <option value={obj.categoria.id} key={obj.categoria.id}>{obj.categoria.titulo}</option>
-        //     ))}
-        // </select>
-
         <div>
             {!loaded?
                 <span>Carregando...</span>:
@@ -35,6 +27,9 @@ function SelectCategory(){
                         {categories.map((obj)=>(
                             <option value={obj.categoria.id} key={obj.categoria.id}>{obj.categoria.titulo}</option>
                         ))}
+                        {props.titulo!=undefined?
+                            <option value={props.id} id={'selecionado'} selected={"selected"}>{'Atual -> '+props.titulo}</option>
+                        :''}
                     </select>
                 }
         </div>
