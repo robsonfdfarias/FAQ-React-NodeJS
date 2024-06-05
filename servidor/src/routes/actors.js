@@ -389,6 +389,26 @@ router.delete('/deleteCommonQuestion', async (req, res) => {
     }else{
         return res.status(400).json({retorno: false});
     }
+});
+
+router.get('/getEventById/:id', async (req, res) => {
+    const {id} = req.params;
+    const query = await querys.getEventById(id);
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json([{'id': false}]);
+    }
+});
+
+router.post('/insertEvent', async (req, res) => {
+    const {dtpost, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent} = req.body;
+    const query = await querys.insertEvent(dtpost, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
 })
 
 

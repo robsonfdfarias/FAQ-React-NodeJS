@@ -87,17 +87,19 @@ function CapacitacaoCalendario(props){
         let testa = 0;
         let days=1;
         let print = true;
-        for(let j=1; j<=5; j++){
-            if(days==daysOfMonth){
-                continue;
-            }
+        for(let j=1; j<=6; j++){
+            // if(days==daysOfMonth){
+            //     continue;
+            // }
             let tr = document.createElement('tr');
+            // console.log('J: '+j)
             for(let i=1; i<=7; i++){
                 if(testa<dayOfWeek){
                     let td = document.createElement('td');
                     td.setAttribute('style', 'background-color: #fff; cursor:default;');
                     tr.appendChild(td);
                     testa++;
+                    // console.log('testa: '+testa)
                     // i=0;
                     continue;
                 }
@@ -197,7 +199,13 @@ function CapacitacaoCalendario(props){
     const linkDate = (day, month, year) => {
         let currentDt = window.location.href;
         let parte = currentDt.split('/');
-        let url = parte[0]+'/'+parte[1]+'/'+parte[2]+'/capacitacao/'+day+'/'+month+'/'+year;
+        let url='';
+        if(parte[3]!="admin"){
+            url = parte[0]+'/'+parte[1]+'/'+parte[2]+'/capacitacao/'+day+'/'+month+'/'+year;
+        }else{
+            url = parte[0]+'/'+parte[1]+'/'+parte[2]+'/admin/agenda/'+day+'/'+month+'/'+year;
+        }
+        // console.log(url)
         return url;
     }
 

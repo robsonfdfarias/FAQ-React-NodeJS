@@ -209,6 +209,17 @@ const deleteCommonQuestion = async (id) => {
     return query;
 }
 
+const getEventById = async (id) => {
+    const [query] = await connection.execute('SELECT * FROM base.agenda WHERE id=?', [id]);
+    return query;
+}
+
+const insertEvent = async (dtpost, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent) => {
+    const [query] = await connection.execute('INSERT INTO base.agenda (dtpost, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent) values (?,?,?,?,?,?,?,?,?,?)',
+    [dtpost, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent]);
+    return query;
+}
+
 
 module.exports = {
     allItems, 
@@ -242,5 +253,7 @@ module.exports = {
     getCommonQuestionById,
     updateCommonQuestion,
     insertCommonQuestion,
-    deleteCommonQuestion
+    deleteCommonQuestion,
+    getEventById,
+    insertEvent
 };

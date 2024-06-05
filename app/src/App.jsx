@@ -31,6 +31,8 @@ import EditNoticias from "./pages/admin/noticias/EditNoticias";
 import DeleteNoticia from "./pages/admin/noticias/DeleteNoticia";
 import EditPerg from "./pages/admin/perguntas/EditPerg";
 import DeletePerg from "./pages/admin/perguntas/DeletePerg";
+import AgendaAdmin from "./pages/admin/AgendaAdmin";
+import InsertEvent from "./pages/admin/agenda/InsertEvent";
 function App(){
   return (
   <div>
@@ -68,6 +70,8 @@ function App(){
         <Route exact path="/admin/noticia/delete/:id" element={<DeleteNoticia />} />
         <Route exact path="/admin/pergunta/edit/:id" element={<EditPerg />} />
         <Route exact path="/admin/pergunta/delete/:id" element={<DeletePerg />} />
+        <Route exact path="/admin/agenda/:dia?/:mes?/:ano?" element={<AgendaAdmin />} />
+        <Route exact path="/admin/agenda/insert/" element={<InsertEvent />} />
       </Routes>
     </BrowserRouter>
   </div>)
