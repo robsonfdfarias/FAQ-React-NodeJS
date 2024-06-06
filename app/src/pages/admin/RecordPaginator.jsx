@@ -1,4 +1,4 @@
-import RecordQuery from "./RecordQuery";
+// import RecordQuery from "./RecordQuery";
 import { useEffect, useState } from "react";
 
 function RecordPaginator(props){
@@ -111,21 +111,24 @@ function RecordPaginator(props){
     }
 
     return (
-        <div>
-            <div>
-                <RecordQuery
-                    idCateg={props.idCateg}
-                    page={props.page}
-                    numberOfRecords={props.numberOfRecords}
-                    urlQuery={props.urlQuery}
-                    linkEditRegist={props.linkEditRegist}
-                    linkDeleteRegist={props.linkDeleteRegist}
-                />
-            </div>
-            <br />
-            <div className="paginator">
-                {pagin>0?print2(pagin).map(link => ( link )):testa=testa}
-            </div>
+        // <div>
+        //     <div>
+        //         <RecordQuery
+        //             idCateg={props.idCateg}
+        //             page={props.page}
+        //             numberOfRecords={props.numberOfRecords}
+        //             urlQuery={props.urlQuery}
+        //             linkEditRegist={props.linkEditRegist}
+        //             linkDeleteRegist={props.linkDeleteRegist}
+        //         />
+        //     </div>
+        //     <br />
+        //     <div className="paginator">
+        //         {pagin>0?print2(pagin).map(link => ( link )):testa=testa}
+        //     </div>
+        // </div>
+        <div className="paginator" style={{marginTop: '20px'}}>
+        {pagin>0?print2(pagin).map(link => ( link )):testa=testa}
         </div>
     )
 }

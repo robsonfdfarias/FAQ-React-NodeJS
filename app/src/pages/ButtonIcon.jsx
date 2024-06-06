@@ -23,13 +23,10 @@ export function ButtonIcon(props){
         // backgroundColor: 'green'
         backgroundColor: props.colorHover
     };
-    const openLink = () =>{
-        alert('Clicou no link: '+props.href);
-    }
 
     return (
         // <div id="insertArticle" onClick={()=>openLink()}
-        <div id="insertArticle" onClick={props.onClick}
+        <div id={props.id} onClick={props.onClick}
                         style={isHovered?{...estiloBase, ...estiloHover}:estiloBase}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}

@@ -228,6 +228,35 @@ const updateEvent = async (id, dtinicio, dtfim, texto, vagas, certificado, titul
     return query;
 }
 
+const getAdmCategoryPage = async (page, numberOfRecords) => {
+    const pageA = page*numberOfRecords;
+    console.log('Começa do registro: '+pageA);
+    console.log('Busca o total de: '+numberOfRecords);
+    const [query] = await connection.execute('SELECT * FROM base.categoria ORDER BY id DESC LIMIT ?, ?', [pageA, numberOfRecords]);
+    return query;
+}
+
+const getNumberCategories = async () => {
+    const [query] = await connection.execute('SELECT COUNT(*) FROM base.categoria');
+    return query[0]["COUNT(*)"];
+}
+
+const insertCategory = async (titulo, statusCat) => {
+    const [query] = await connection.execute('INSERT INTO base.categoria (titulo, statusCat) values (?,?)',
+    [titulo, statusCat]);
+    return query;
+}
+
+const deleteCategory = async (id) => {
+    const [query] = await connection.execute('DELETE FROM base.categoria where id=?', [id]);
+    return query;
+}
+
+const updateCategory = async (id, titulo, statusCat) => {
+    const [query] = await connection.execute('UPDATE base.categoria SET titulo=?, statusCat=? WHERE id=?', [titulo, statusCat, id]);
+    return query;
+}
+
 
 module.exports = {
     allItems, 
@@ -264,5 +293,10 @@ module.exports = {
     deleteCommonQuestion,
     getEventById,
     insertEvent,
-    updateEvent
+    updateEvent,
+    getAdmCategoryPage,
+    getNumberCategories,
+    insertCategory,
+    deleteCategory,
+    updateCategory
 };

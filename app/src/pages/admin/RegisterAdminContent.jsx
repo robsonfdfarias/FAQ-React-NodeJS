@@ -1,5 +1,6 @@
 import { useState } from "react"
 import RecordPaginator from "./RecordPaginator";
+import RecordQuery from "./RecordQuery";
 
 function RegisterAdminContent(props){
 
@@ -35,17 +36,27 @@ function RegisterAdminContent(props){
                     >{props.titleBtNew}</button>
                 </div>
             </div>
-            <RecordPaginator
-                idCateg={props.idCateg}
-                page={props.page}
-                numberOfRecords={props.numberOfRecords}
-                // urlPergQuery={'http://localhost:3003/actors/getAdmNewsPage'}
-                // urlPergPaginator={'http://localhost:3003/actors/getNumberNews'}
-                urlQuery={props.urlQuery}
-                urlPaginator={props.urlPaginator}
-                linkEditRegist={props.linkEditRegist}
-                linkDeleteRegist={props.linkDeleteRegist}
-            />
+            <div>
+                <RecordQuery
+                    idCateg={props.idCateg}
+                    page={props.page}
+                    numberOfRecords={props.numberOfRecords}
+                    urlQuery={props.urlQuery}
+                    linkEditRegist={props.linkEditRegist}
+                    linkDeleteRegist={props.linkDeleteRegist}
+                />
+                <RecordPaginator
+                    idCateg={props.idCateg}
+                    page={props.page}
+                    numberOfRecords={props.numberOfRecords}
+                    // urlPergQuery={'http://localhost:3003/actors/getAdmNewsPage'}
+                    // urlPergPaginator={'http://localhost:3003/actors/getNumberNews'}
+                    urlQuery={props.urlQuery}
+                    urlPaginator={props.urlPaginator}
+                    linkEditRegist={props.linkEditRegist}
+                    linkDeleteRegist={props.linkDeleteRegist}
+                />
+            </div>
         </div>
     )
 }

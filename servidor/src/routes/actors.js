@@ -413,23 +413,69 @@ router.post('/insertEvent', async (req, res) => {
 
 router.post('/updateEvent', async (req, res) => {
     const {id, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent} = req.body;
-    console.log(id)
-    console.log(dtinicio)
-    console.log(dtfim)
-    console.log(texto)
-    console.log(vagas)
-    console.log(certificado)
-    console.log(titulo)
-    console.log(horainicio)
-    console.log(horafim)
-    console.log(localEvent)
     const query = await querys.updateEvent(id, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent);
     if(query.affectedRows>0){
         return res.status(200).json({retorno: true});
     }else{
         return res.status(400).json({retorno: false});
     }
-})
+});
 
+router.post('/getAdmCategoryPage', async (req, res) => {
+    const {page, numberOfRecords} = req.body;
+    console.log('Início do getAdmCategoryPage');
+    console.log('Página: '+page);
+    console.log('Número de registros: '+numberOfRecords);
+    const query = await querys.getAdmCategoryPage(page, numberOfRecords);
+    console.log(query)
+    if(query.length>0){
+        return res.status(200).json(query);
+    }else{
+        return res.status(400).json([{'id': false}]);
+    }
+});
+
+router.post('/getNumberCategories', async (req, res) => {
+    const query = await querys.getNumberCategories();
+    return res.status(200).json({'NumReg': query});
+});
+
+
+router.post('/insertCategory', async (req, res) => {
+    const {titulo, statusCat} = req.body;
+    console.log('acessou o insertCategory')
+    console.log(titulo)
+    console.log(statusCat)
+    if(titulo==undefined){
+        return res.status(400).json({retorno: false});
+    }
+    const query = await querys.insertCategory(titulo, statusCat);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.delete('/deleteCategory', async (req, res) => {
+    const {id} = req.body;
+    console.log('Você está no deleteCategory')
+    const query = await querys.deleteCategory(id);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+});
+
+router.post('/updateCategory', async (req, res) => {
+    const {id, titulo, statusCat} = req.body;
+    const query = await querys.updateCategory(id, titulo, statusCat);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
+})
 
 module.exports = router;
