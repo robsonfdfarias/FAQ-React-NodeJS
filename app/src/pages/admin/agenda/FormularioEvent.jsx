@@ -48,6 +48,8 @@ function FormularioEvent(props){
             // console.log(campoTexto)
             // var conteudo = document.getElementById("conteudo");
             // conteudo.innerHTML = campoTexto;
+            console.log('================= CAMPO conteudo')
+            console.log(conteudo)
             conteudo.innerHTML = campoTexto;
         }
 
@@ -72,7 +74,7 @@ function FormularioEvent(props){
             if(props.type=='insert'){
                 url = 'http://localhost:3003/actors/insertEvent'
             }else{
-                url='http://localhost:3003/actors/updateNews'
+                url='http://localhost:3003/actors/updateEvent'
                 data = evento.datacad;
             }
 
@@ -136,9 +138,9 @@ function FormularioEvent(props){
             })
         }
 
-        const script = document.createElement('script');
-        script.src=ConfigUrlImg('rffeditor/ScriptInternoFormularioEvent.js');
-        document.getElementById('scripts').append(script);
+        // const script = document.createElement('script');
+        // script.src=ConfigUrlImg('rffeditor/ScriptInternoFormularioEvent.js');
+        // document.getElementById('scripts').append(script);
     }, [])
     
     return (
@@ -162,7 +164,7 @@ function FormularioEvent(props){
                     </tr>
                     <tr>
                         <td colSpan="2">
-                            <input type="text" id="local" name="local" placeholder="Insira o local do evento" required="" spellCheck="true" defaultValue={evento[0]!=undefined?evento[0].titulo:''}
+                            <input type="text" id="local" name="local" placeholder="Insira o local do evento" required="" spellCheck="true" defaultValue={evento[0]!=undefined?evento[0].localEvent:''}
                             style={styles.inputs} />
                         </td>
                     </tr>

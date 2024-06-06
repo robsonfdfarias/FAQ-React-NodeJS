@@ -409,6 +409,26 @@ router.post('/insertEvent', async (req, res) => {
     }else{
         return res.status(400).json({retorno: false});
     }
+});
+
+router.post('/updateEvent', async (req, res) => {
+    const {id, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent} = req.body;
+    console.log(id)
+    console.log(dtinicio)
+    console.log(dtfim)
+    console.log(texto)
+    console.log(vagas)
+    console.log(certificado)
+    console.log(titulo)
+    console.log(horainicio)
+    console.log(horafim)
+    console.log(localEvent)
+    const query = await querys.updateEvent(id, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent);
+    if(query.affectedRows>0){
+        return res.status(200).json({retorno: true});
+    }else{
+        return res.status(400).json({retorno: false});
+    }
 })
 
 

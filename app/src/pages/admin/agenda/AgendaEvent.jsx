@@ -44,6 +44,7 @@ function AgendaEvent(props){
                 </div>
                 {agenda.length>0?agenda.map((obj)=>(
                     <AgendaEventModel
+                        id={obj.id}
                         titulo={obj.titulo}
                         localEvent={obj.localEvent}
                         horainicio={obj.horainicio}

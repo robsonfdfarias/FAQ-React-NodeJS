@@ -33,6 +33,7 @@ import EditPerg from "./pages/admin/perguntas/EditPerg";
 import DeletePerg from "./pages/admin/perguntas/DeletePerg";
 import AgendaAdmin from "./pages/admin/AgendaAdmin";
 import InsertEvent from "./pages/admin/agenda/InsertEvent";
+import EditEvent from "./pages/admin/agenda/EditEvent";
 function App(){
   return (
   <div>
@@ -72,6 +73,7 @@ function App(){
         <Route exact path="/admin/pergunta/delete/:id" element={<DeletePerg />} />
         <Route exact path="/admin/agenda/:dia?/:mes?/:ano?" element={<AgendaAdmin />} />
         <Route exact path="/admin/agenda/insert/" element={<InsertEvent />} />
+        <Route exact path="/admin/agenda/edit/:id?" element={<EditEvent />} />
       </Routes>
     </BrowserRouter>
   </div>)

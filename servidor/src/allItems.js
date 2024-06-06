@@ -2,6 +2,9 @@ const connection = require('./connection');
 
 const arrayMonth = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
+const days = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', 
+                        '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+    
 var md5 = require('md5');
 
 const allItems = async () => {
@@ -87,8 +90,7 @@ const registerTreining = async (matricula, idEvento, nome, secretaria, email) =>
 
 const blockNextEvent = async () => {
     let dateCurrent = new Date();
-    let dt = dateCurrent.getFullYear()+'-'+arrayMonth[(dateCurrent.getMonth()+1)]+'-'+dateCurrent.getDate();
-    // console.log(dt)
+    let dt = dateCurrent.getFullYear()+'-'+arrayMonth[(dateCurrent.getMonth()+1)]+'-'+days[(dateCurrent.getDate())];
     const [query] = await connection.execute('SELECT * FROM base.agenda WHERE dtinicio >= ?', [dt]);
     return query;
 }
@@ -220,6 +222,12 @@ const insertEvent = async (dtpost, dtinicio, dtfim, texto, vagas, certificado, t
     return query;
 }
 
+const updateEvent = async (id, dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent) => {
+    const [query] = await connection.execute('UPDATE base.agenda SET dtinicio=?, dtfim=?, texto=?, vagas=?, certificado=?, titulo=?, horainicio=?, horafim=?, localEvent=? WHERE id=?',
+    [dtinicio, dtfim, texto, vagas, certificado, titulo, horainicio, horafim, localEvent, id]);
+    return query;
+}
+
 
 module.exports = {
     allItems, 
@@ -255,5 +263,6 @@ module.exports = {
     insertCommonQuestion,
     deleteCommonQuestion,
     getEventById,
-    insertEvent
+    insertEvent,
+    updateEvent
 };
